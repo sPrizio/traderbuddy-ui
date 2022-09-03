@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {displayString} from "../../services/FormattingService";
+import {displayString} from "../../../services/FormattingService";
 import TradingRecordComponent from "./TradingRecordComponent";
 
 export default class TradingSummaryComponent extends Component {

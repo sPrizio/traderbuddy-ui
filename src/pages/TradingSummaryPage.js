@@ -1,16 +1,63 @@
 import React, {Component} from "react";
-import TradeComponent from "./trades/TradeComponent";
+import TradeTotalsComponent from "../components/trades/overview/TradeTotalsComponent";
+import HeroComponent from "../components/layout/HeroComponent";
+import FileImportComponent from "../components/FileImportComponent";
+import GridComponent from "../components/layout/grid/GridComponent";
+import moment from "moment";
 
-export default class SummaryPage extends Component {
+export default class TradingSummaryPage extends Component {
 
     static tradeSummaryUrl = 'http://localhost:8080/api/v1/trade-summary'
+    static disregardTradeUrl = 'http://localhost:8080/api/v1/trades/disregard'
 
     constructor(props) {
         super(props);
         this.state = {
             isLoading: false,
             report: [],
-            interval: 'daily'
+            totals: {},
+            interval: 'daily',
+            startDate: moment().startOf('month').format('YYYY-MM-DDTHH:mm:ss'),
+            endDate: moment().add(1, 'months').startOf('month').format('YYYY-MM-DDTHH:mm:ss')
+        }
+
+        this.handleStartAndEndDateChanges = this.handleStartAndEndDateChanges.bind(this)
+        this.resetViewHandler = this.resetViewHandler.bind(this)
+        this.disregardTrade = this.disregardTrade.bind(this)
+    }
+
+
+    //  HANDLERS
+
+    handleStartAndEndDateChanges(st, ed, interval) {
+        this.setState({startDate: st, endDate: ed, interval: interval}, () => this.getTradeSummaryReport())
+    }
+
+    resetViewHandler(val) {
+        this.setState({
+            startDate: moment().startOf('year').format('YYYY-MM-DDTHH:mm:ss'),
+            endDate: moment().add(1, 'years').startOf('year').format('YYYY-MM-DDTHH:mm:ss'),
+            interval: val === 'month' ?  'monthly' : 'yearly'
+        }, () => this.getTradeSummaryReport())
+    }
+
+    async disregardTrade(val) {
+        try {
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({tradeId: val})
+            };
+            const response = await fetch(TradingSummaryPage.disregardTradeUrl, requestOptions);
+            const data = await response.json();
+
+            console.log(data.data)
+
+            if (data.data) {
+                await this.getTradeSummaryReport()
+            }
+        } catch (e) {
+            console.log(e)
         }
     }
 
@@ -20,12 +67,13 @@ export default class SummaryPage extends Component {
     async getTradeSummaryReport() {
         try {
             this.setState({isLoading: true})
-            const response = await fetch(SummaryPage.tradeSummaryUrl + '/report?start=2022-08-01T00:00:00&end=2022-09-01T00:00:00&interval=' + this.state.interval);
+            const response = await fetch(TradingSummaryPage.tradeSummaryUrl + '/report?start=' + this.state.startDate + '&end=' + this.state.endDate + '&interval=' + this.state.interval);
             const data = await response.json();
 
             this.setState({
                 isLoading: false,
-                report: data.data
+                report: data.data.records,
+                totals: data.data.statistics
             })
         } catch (e) {
             this.setState({isLoading: false})
@@ -37,94 +85,32 @@ export default class SummaryPage extends Component {
     //  RENDER FUNCTION
 
     render() {
+        let centralDisplay
+        if (this.state.report && this.state.report.length > 0) {
+            centralDisplay =
+                <div className="container">
+                    <hr className="card-hr card-hr-colored"/>
+                    <GridComponent records={this.state.report} interval={this.state.interval}
+                                   dateChangeHandler={this.handleStartAndEndDateChanges}
+                                   disregardHandler={this.disregardTrade} currentDate={this.state.startDate}
+                                   resetViewHandler={this.resetViewHandler}/>
+                    <hr className="card-hr card-hr-colored"/>
+                    <TradeTotalsComponent totals={this.state.totals}/>
+                </div>
+        } else {
+            centralDisplay =
+                <div className="container">
+                    <p className="has-text-centered">Looks like you don't have any trading history. You can start by
+                        adding some trades.<br/>You can even import trades from your trading platform!</p>
+                </div>
+        }
+
         return (
             <div>
-                <section className="hero is-medium">
-                    <div className="hero-body">
-                        <p className="title">
-                            Hero title
-                        </p>
-                        <p className="subtitle">
-                            Hero subtitle
-                        </p>
-                    </div>
-                </section>
-                <div className="container">
-                    <div className="columns is-multiline">
-                        <div className="column is-8-desktop is-offset-2-desktop is-12-tablet is-12-mobile">
-                            <div className="box box-border-blue">
-                                <h2 className="is-size-5">Daily Target Tracker</h2>
-                                <h6 className="is-size-7">August 2022</h6>
-                                <hr className="card-hr"/>
-                                <table className="table is-striped is-hoverable is-fullwidth is-narrow">
-                                    <thead>
-                                    <tr>
-                                        <th>
-                                            <abbr title="Date">Date</abbr>
-                                        </th>
-                                        <th className="has-text-centered">
-                                            <abbr title="Profit Target">Target</abbr>
-                                        </th>
-                                        <th className="has-text-centered">
-                                            <abbr title="Number of Trades"># of Trades</abbr>
-                                        </th>
-                                        <th className="has-text-centered">
-                                            <abbr title="Win Percentage">Win %</abbr>
-                                        </th>
-                                        <th className="has-text-centered">
-                                            <abbr title="Net Profit">Net Profit</abbr>
-                                        </th>
-                                        <th className="has-text-centered">
-                                            <abbr title="Net Profit Percentage">% Net Profit</abbr>
-                                        </th>
-                                        <th className="has-text-centered">
-                                            <abbr title="Surplus/Deficit">Surplus</abbr>
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {
-                                        this.state.report.map((item, key) => {
-                                                return (
-                                                    <TradeComponent date={item.date} target={item.target}
-                                                                    numberOfTrades={item.numberOfTrades}
-                                                                    winPercentage={item.winPercentage}
-                                                                    netProfit={item.netProfit}
-                                                                    profitPercentage={item.percentageProfit}
-                                                                    surplus={item.surplus}/>
-                                                )
-                                            }
-                                        )
-                                    }
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>
-                                            Totals
-                                        </th>
-                                        <th/>
-                                        <th className="has-text-centered">
-                                            65
-                                        </th>
-                                        <th className="has-text-centered">
-                                            66
-                                        </th>
-                                        <th className="has-text-centered">
-                                            163.7
-                                        </th>
-                                        <th className="has-text-centered">
-                                            0.0
-                                        </th>
-                                        <th className="has-text-centered">
-                                            0.0
-                                        </th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <HeroComponent title={"Trading History"} subtitle={"A look at your trading history"}>
+                    <FileImportComponent/>
+                </HeroComponent>
+                {centralDisplay}
             </div>
         );
     }

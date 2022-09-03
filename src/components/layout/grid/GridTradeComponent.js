@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import Moment from "react-moment";
-import moment from "moment";
 import {CgCheckO} from "react-icons/cg";
 import {TiDeleteOutline} from "react-icons/ti";
+import moment from "moment";
 
 export default class GridTradeComponent extends Component {
 
@@ -22,6 +22,30 @@ export default class GridTradeComponent extends Component {
         }
     }
 
+    handleClick() {
+        if (this.props.record.empty) {
+            // do nothing
+        }
+
+        if (this.props.interval === 'daily') {
+            this.props.listHandler(this.props.record.date)
+        } else if (this.props.interval === 'monthly') {
+            const date = moment(this.props.record.date)
+            this.props.dateChangeHandler(
+                date.startOf('month').format('YYYY-MM-DDTHH:mm:ss'),
+                date.add(1, "months").startOf('month').format('YYYY-MM-DDTHH:mm:ss'),
+                'daily'
+            )
+        } else if (this.props.interval === 'yearly') {
+            const date = moment(this.props.record.date)
+            this.props.dateChangeHandler(
+                date.startOf('year').format('YYYY-MM-DDTHH:mm:ss'),
+                date.add(1, "years").startOf('year').format('YYYY-MM-DDTHH:mm:ss'),
+                'monthly'
+            )
+        }
+    }
+
 
     //  RENDER FUNCTION
 
@@ -33,18 +57,17 @@ export default class GridTradeComponent extends Component {
             iconDisplay = <span className={"negative-profit"}><TiDeleteOutline /></span>
         }
 
-
         if (this.props.record.weekend) {
             return null
         } else {
             return (
                 <div className={this.props.columnSize + ' ' + this.props.offset}>
-                    <div className={"box " + (this.props.record.empty ? ' opacity-35' : ' hoverable ')} onClick={this.props.record.empty ? undefined : () => this.props.listHandler(this.props.record.date)}>
+                    <div className={"box " + (this.props.record.empty ? ' opacity-35' : ' hoverable ')} onClick={() => this.handleClick()}>
                         <div className="level grid-trade-border">
                             <div className="level-left">
                                 <div className="level-item">
                                     <h6 className="is-size-7">
-                                        {this.formatDate(this.props.record.date)}&nbsp;
+                                        {this.formatDate(this.props.record.date)}
                                     </h6>
                                 </div>
                             </div>

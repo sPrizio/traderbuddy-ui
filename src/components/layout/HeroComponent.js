@@ -15,7 +15,9 @@ export default class HeroComponent extends Component {
                                 <p className="title">{this.props.title}</p>
                                 <p className="subtitle">{this.props.subtitle}</p>
                             </div>
-                            <div className="column is-4 has-text-right" />
+                            <div className="column is-4 has-text-right">
+                                {this.props.children}
+                            </div>
                         </div>
                     </div>
                 </div>
