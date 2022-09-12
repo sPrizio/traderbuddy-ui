@@ -22,3 +22,12 @@ U
 %src/components/FileImportComponent.js,b\1\b1397f578bb31d0986a5735ddbb95243f2deb3d4
 e
 5src/components/trades/overview/TradesListComponent.js,f\f\ffa1ef82438a7cc86ce61c7ce0ec2ff200f86a35
+X
+(src/components/layout/FooterComponent.js,f\9\f98e6779142aaaa587d354fc500f8a5d23e4891e
+`
+0src/components/layout/grid/GridTradeComponent.js,2\c\2c3b7c8f90664e7e119a67de857e3a19d65907e0
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

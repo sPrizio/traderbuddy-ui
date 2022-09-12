@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import TradingSummaryPage from "./TradingSummaryPage";
 import FooterComponent from "../components/layout/FooterComponent";
+import TradingPlanPage from "./TradingPlanPage";
 
 export default class AbstractPage extends Component {
 
@@ -10,7 +10,8 @@ export default class AbstractPage extends Component {
     render() {
         return (
             <div>
-                <TradingSummaryPage/>
+                {/*<TradingSummaryPage/>*/}
+                <TradingPlanPage />
                 <FooterComponent />
             </div>
         );
