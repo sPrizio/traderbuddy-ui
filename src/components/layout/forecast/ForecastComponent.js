@@ -6,7 +6,7 @@ export default class ForecastComponent extends Component {
 
 
     //  GENERAL FUNCTIONS
-
+//emm
     computeDateHeader() {
         switch (this.props.interval) {
             case 'DAILY':
