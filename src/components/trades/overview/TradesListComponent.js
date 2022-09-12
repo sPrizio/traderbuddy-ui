@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Moment from "react-moment";
 import moment from "moment";
-import {displayString} from "../../../services/FormattingService"
+import {displayString, formatNumberForDisplay} from "../../../services/FormattingService"
 import {AiFillDelete} from "react-icons/ai";
 
 export default class TradesListComponent extends Component {
@@ -90,7 +90,7 @@ export default class TradesListComponent extends Component {
                             <td className="has-text-centered is-vcentered">{displayString(item.tradeType)}</td>
                             <td className="has-text-centered is-vcentered">{item.product}</td>
                             <td className="has-text-centered is-vcentered">{item.lotSize}</td>
-                            <td className="has-text-right is-vcentered">{item.netProfit}</td>
+                            <td className="has-text-right is-vcentered">{formatNumberForDisplay(item.netProfit)}</td>
                             <td className="has-text-centered is-vcentered">
                                 <button className="button" onClick={() => {
                                     this.props.disregardHandler(item.tradeId)

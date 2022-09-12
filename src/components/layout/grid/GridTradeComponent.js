@@ -3,6 +3,7 @@ import Moment from "react-moment";
 import {CgCheckO} from "react-icons/cg";
 import {TiDeleteOutline} from "react-icons/ti";
 import moment from "moment";
+import {formatNumberForDisplay} from "../../../services/FormattingService"
 
 export default class GridTradeComponent extends Component {
 
@@ -94,7 +95,7 @@ export default class GridTradeComponent extends Component {
                             <div className="level-item has-text-centered">
                                 <div>
                                     <p className="heading">Profit</p>
-                                    <p className="">{this.props.record.netProfit}</p>
+                                    <p className="">{formatNumberForDisplay(this.props.record.netProfit)}</p>
                                 </div>
                             </div>
                         </div>

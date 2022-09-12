@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {formatNumberForDisplay} from "../../../services/FormattingService";
 
 export default class TradeTotalsComponent extends Component {
 
@@ -11,7 +12,7 @@ export default class TradeTotalsComponent extends Component {
                 <div className="level-item has-text-centered">
                     <div>
                         <p className="heading">Total Trades</p>
-                        <p className="subtitle">{this.props.totals.totalNumberOfTrades}</p>
+                        <p className="subtitle">{formatNumberForDisplay(this.props.totals.totalNumberOfTrades)}</p>
                     </div>
                 </div>
                 <div className="level-item has-text-centered">
@@ -23,7 +24,7 @@ export default class TradeTotalsComponent extends Component {
                 <div className="level-item has-text-centered">
                     <div>
                         <p className="heading">Net Profit</p>
-                        <p className="subtitle">{this.props.totals.netProfit}</p>
+                        <p className="subtitle">{formatNumberForDisplay(this.props.totals.netProfit)}</p>
                     </div>
                 </div>
             </div>

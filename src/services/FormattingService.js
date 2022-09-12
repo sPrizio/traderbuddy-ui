@@ -1,4 +1,5 @@
 export function displayString(value) {
+
     if (value) {
         if (value.includes("_")) {
             value = value.replaceAll("_", " ")
@@ -10,4 +11,13 @@ export function displayString(value) {
     }
 
     return ''
+}
+
+export function formatNumberForDisplay(value) {
+
+    if (value) {
+        return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    return '0.00'
 }
