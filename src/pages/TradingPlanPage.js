@@ -13,6 +13,7 @@ export default class TradingPlanPage extends Component {
         this.state = {
             isLoading: false,
             forecast: [],
+            forecastTotals: {},
             interval: 'MONTHLY',
             begin: moment().startOf('year').format('YYYY-MM-DD'),
             limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
@@ -30,7 +31,8 @@ export default class TradingPlanPage extends Component {
 
             this.setState({
                 isLoading: false,
-                forecast: data.data
+                forecast: data.data.entries,
+                forecastTotals: data.data.statistics
             })
         } catch (e) {
             this.setState({isLoading: false})
@@ -43,12 +45,12 @@ export default class TradingPlanPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="min-height-for-footer">
                 <HeroComponent title={"Trade Planner"} subtitle={"Forecast and plan your trading days"} />
                 <div className="container">
                     <div className="columns is-multiline">
                         <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                            <ForecastComponent selectedDate={moment().format('YYYY-MM-DD')} interval={this.state.interval} data={this.state.forecast} />
+                            <ForecastComponent selectedDate={moment().format('YYYY-MM-DD')} interval={this.state.interval} data={this.state.forecast} totals={this.state.forecastTotals} />
                         </div>
                     </div>
                 </div>

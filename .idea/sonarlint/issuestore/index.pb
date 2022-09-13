@@ -8,14 +8,10 @@ A
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 A
 src/css/fonts.css,6\f\6fba100dad58d31e51893b8a59e78ec98bc2ab08
-Q
-!src/services/FormattingService.js,a\2\a247bf81f55dbb2be2586c3f65c202f9422328e8
 j
 :src/components/trades/deprecated/TradingRecordComponent.js,9\8\98917888a476682c1aaabce3dbcc13016457952c
 k
 ;src/components/trades/deprecated/TradingSummaryComponent.js,3\7\37389d5f071f3d50f5b1025f65a4f32c4c03ca99
-f
-6src/components/trades/overview/TradeTotalsComponent.js,7\9\79324029391137970092dd02b720522032453ea3
 V
 &src/components/layout/HeroComponent.js,3\5\35f95f66f8a4ad61e7c88156015f6d7cfd74bfab
 U
@@ -29,5 +25,3 @@ X
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d

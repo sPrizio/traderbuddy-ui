@@ -106,7 +106,7 @@ export default class TradingSummaryPage extends Component {
         }
 
         return (
-            <div>
+            <div className="min-height-for-footer">
                 <HeroComponent title={"Trading History"} subtitle={"A look at your trading history"}>
                     <FileImportComponent/>
                 </HeroComponent>

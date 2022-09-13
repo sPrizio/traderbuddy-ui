@@ -15,6 +15,10 @@ body {
     min-height: 100vh;
 }
 
+.min-height-for-footer {
+    min-height: 85vh;
+}
+
 .card-hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -90,4 +94,12 @@ THEMES
 
 .grid-trade-border {
     border-bottom: 2px solid rgba(62, 142, 208, 0.45);
+}
+
+/*
+TYPOGRAPHY
+ */
+
+.is-size-6-half {
+    font-size: 0.875rem !important;
 }

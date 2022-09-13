@@ -19,5 +19,5 @@ export function formatNumberForDisplay(value) {
         return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    return '0.00'
+    return '0'
 }
