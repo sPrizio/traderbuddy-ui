@@ -6,6 +6,24 @@ import {BsQuestionCircleFill} from "react-icons/bs";
 
 export default class ForecastComponent extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedForecastInterval: 'Monthly'
+        }
+
+        this.handleForecastIntervalChange = this.handleForecastIntervalChange.bind(this);
+    }
+
+
+    //  HANDLER FUNCTIONS
+
+    handleForecastIntervalChange(event) {
+        this.props.intervalChangeHandler(event.target.value)
+        this.setState({selectedForecastInterval: event.target.value})
+    }
+
 
     //  GENERAL FUNCTIONS
 
@@ -26,7 +44,7 @@ export default class ForecastComponent extends Component {
             case 'DAILY':
                 return moment(val1).format('MMM Do')
             case 'WEEKLY':
-                return moment(val1).format('MMM D') + '-' + moment(val2).format('D')
+                return moment(val1).format('MMM Do') + ' - ' + moment(val2).subtract(1, 'day').format('Do')
             case 'MONTHLY':
                 return moment(val1).format('MMMM')
             case 'YEARLY':
@@ -44,8 +62,29 @@ export default class ForecastComponent extends Component {
     render() {
         return (
             <div className="box box-border-blue">
-                <h2 className="is-size-5">Forecast</h2>
-                <h6 className="is-size-7">{this.computeDateHeader()}</h6>
+                <div className="level">
+                    <div className="level-left">
+                        <div className="level-item">
+                            <div>
+                                <h2 className="is-size-5">Forecast</h2>
+                                <h6 className="is-size-7">{this.computeDateHeader()}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="level-right">
+                        <div className="level-item">
+                            <div className="select is-info is-rounded">
+                                <select onChange={this.handleForecastIntervalChange} value={this.state.selectedForecastInterval}>
+                                    <option value="Daily">Daily</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                    <option value="Yearly">Yearly</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <hr className="card-hr"/>
                 <table className="table is-fullwidth is-striped">
                     <thead>
@@ -57,7 +96,7 @@ export default class ForecastComponent extends Component {
                             <span className="icon-text">
                                 <span>Net</span>
                                 <span className="icon has-tooltip-link"
-                                      data-tooltip={"Refers to net earnings. In this case net earnings is equal to Earnings + Credits - Debits"}>
+                                      data-tooltip={"Refers to net earnings. In this case net earnings is equal to Earnings + Credits"}>
                                     <BsQuestionCircleFill/>
                                 </span>
                             </span>

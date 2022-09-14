@@ -25,3 +25,13 @@ X
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+f
+6src/components/trades/overview/TradeTotalsComponent.js,7\9\79324029391137970092dd02b720522032453ea3
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+A
+package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
+Q
+!src/services/FormattingService.js,a\2\a247bf81f55dbb2be2586c3f65c202f9422328e8
+O
+src/pages/TradingSummaryPage.js,0\7\074bfa67984cffc8739b3eac74a6d3aa221eccd6
