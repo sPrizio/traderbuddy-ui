@@ -78,6 +78,10 @@ body {
     border-radius: 25px;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 /*
 THEMES
  */
@@ -99,6 +103,12 @@ THEMES
 
 .negative-profit {
     color: #eb0f29;
+}
+
+.target-hit {
+    color: #00873c;
+    font-weight: 500;
+    background: rgba(0, 215, 50, 0.15);
 }
 
 .grid-trade-border {

@@ -11,7 +11,7 @@ export default class ForecastComponent extends Component {
         super(props);
 
         this.state = {
-            selectedForecastInterval: 'Daily'
+            selectedForecastInterval: 'Monthly'
         }
 
         this.handleForecastIntervalChange = this.handleForecastIntervalChange.bind(this);
@@ -27,18 +27,6 @@ export default class ForecastComponent extends Component {
 
 
     //  GENERAL FUNCTIONS
-
-    computeDateHeader() {
-        switch (this.props.interval) {
-            case 'DAILY':
-                return moment(this.props.selectedDate).format('MMMM yyyy')
-            case 'WEEKLY':
-            case 'MONTHLY':
-                return moment(this.props.selectedDate).format('yyyy')
-            default:
-                return ''
-        }
-    }
 
     computeDateDisplay(val1, val2) {
         switch (this.props.interval) {
@@ -85,7 +73,7 @@ export default class ForecastComponent extends Component {
                         <div className="level-item">
                             <div>
                                 <h2 className="is-size-5">Forecast</h2>
-                                <h6 className="is-size-7">{this.computeDateHeader()}</h6>
+                                <h6 className="is-size-7">{this.props.dateHeader}</h6>
                             </div>
                         </div>
                     </div>
@@ -95,7 +83,6 @@ export default class ForecastComponent extends Component {
                             <div className="select is-info is-rounded">
                                 <select onChange={this.handleForecastIntervalChange} value={this.state.selectedForecastInterval}>
                                     <option value="Daily">Daily</option>
-                                    <option value="Weekly">Weekly</option>
                                     <option value="Monthly">Monthly</option>
                                     <option value="Yearly">Yearly</option>
                                 </select>
@@ -157,13 +144,4 @@ export default class ForecastComponent extends Component {
             </div>
         );
     }
-
-
-    //  LIFECYCLE FUNCTIONS
-
-    /*componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.interval !== this.props.interval) {
-            this.setState({selectedForecastInterval: this.props.interval.charAt(0).toUpperCase() + this.props.interval.slice(1)})
-        }
-    }*/
 }

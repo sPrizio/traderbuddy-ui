@@ -2,10 +2,12 @@ import React, {Component} from "react";
 import HeroComponent from "../components/layout/HeroComponent";
 import ForecastComponent from "../components/layout/forecast/ForecastComponent";
 import moment from "moment";
+import TradingRecordComponent from "../components/layout/record/TradingRecordComponent";
 
 export default class TradingPlanPage extends Component {
 
     static forecastUrl = 'http://localhost:8080/api/v1/trading-plans/forecast'
+    static performanceUrl = 'http://localhost:8080/api/v1/trading-plans/performance'
 
     constructor(props) {
         super(props);
@@ -14,7 +16,9 @@ export default class TradingPlanPage extends Component {
             isLoading: false,
             forecast: [],
             forecastTotals: {},
-            interval: 'DAILY',
+            interval: 'MONTHLY',
+            recordReport: [],
+            recordTotals: {},
             begin: moment().startOf('year').format('YYYY-MM-DD'),
             limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
         }
@@ -35,21 +39,30 @@ export default class TradingPlanPage extends Component {
                     interval: val.toUpperCase(),
                     begin: moment().startOf('month').format('YYYY-MM-DD'),
                     limit: moment().startOf('month').add(1, 'months').format('YYYY-MM-DD')
-                }, () => this.forecast())
+                }, () => {
+                    this.forecast()
+                    this.getTradeSummaryReport()
+                })
                 break
             case 'Weekly':
                 this.setState({
                     interval: val.toUpperCase(),
                     begin: moment().startOf('month').format('YYYY-MM-DD'),
                     limit: moment().startOf('month').add(3, 'months').format('YYYY-MM-DD')
-                }, () => this.forecast())
+                }, () => {
+                    this.forecast()
+                    this.getTradeSummaryReport()
+                })
                 break
             default:
                 this.setState({
                     interval: val.toUpperCase(),
                     begin: moment().startOf('year').format('YYYY-MM-DD'),
                     limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
-                }, () => this.forecast())
+                }, () => {
+                    this.forecast()
+                    this.getTradeSummaryReport()
+                })
                 break
         }
     }
@@ -59,7 +72,10 @@ export default class TradingPlanPage extends Component {
             interval: 'DAILY',
             begin: moment(val).startOf('month').format('YYYY-MM-DD'),
             limit: moment(val).startOf('month').add(1, 'months').format('YYYY-MM-DD')
-        }, () => this.forecast())
+        }, () => {
+            this.forecast()
+            this.getTradeSummaryReport()
+        })
     }
 
     reset() {
@@ -67,11 +83,26 @@ export default class TradingPlanPage extends Component {
             interval: 'MONTHLY',
             begin: moment().startOf('year').format('YYYY-MM-DD'),
             limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
-        }, () => this.forecast())
+        }, () => {
+            this.forecast()
+            this.getTradeSummaryReport()
+        })
     }
 
 
     //  GENERAL FUNCTIONS
+
+    computeDateHeader() {
+        switch (this.state.interval) {
+            case 'DAILY':
+                return moment(this.state.begin).format('MMMM yyyy')
+            case 'WEEKLY':
+            case 'MONTHLY':
+                return moment(this.state.begin).format('yyyy')
+            default:
+                return ''
+        }
+    }
 
     async forecast() {
         try {
@@ -90,6 +121,23 @@ export default class TradingPlanPage extends Component {
         }
     }
 
+    async getTradeSummaryReport() {
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(TradingPlanPage.performanceUrl + '?interval=' + this.state.interval + '&begin=' + this.state.begin + '&limit=' + this.state.limit);
+            const data = await response.json();
+
+            this.setState({
+                isLoading: false,
+                recordReport: data.data.records,
+                recordTotals: data.data.statistics
+            })
+        } catch (e) {
+            this.setState({isLoading: false})
+            console.log(e)
+        }
+    }
+
 
     //  RENDER FUNCTION
 
@@ -100,12 +148,20 @@ export default class TradingPlanPage extends Component {
                 <div className="container">
                     <div className="columns is-multiline">
                         <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                            <ForecastComponent selectedDate={moment(this.state.begin).format('YYYY-MM-DD')}
-                                               interval={this.state.interval} data={this.state.forecast}
+                            <ForecastComponent interval={this.state.interval}
+                                               data={this.state.forecast}
                                                totals={this.state.forecastTotals}
                                                intervalChangeHandler={this.handleForecastIntervalChange}
                                                rowClickHandler={this.handleRowClick}
                                                resetHandler={this.reset}
+                                               dateHeader={this.computeDateHeader()}
+                            />
+                        </div>
+                        <div className="column is-6-desktop is-12-tablet is-12-mobile">
+                            <TradingRecordComponent dateHeader={this.computeDateHeader()}
+                                                    data={this.state.recordReport}
+                                                    totals={this.state.recordTotals}
+                                                    interval={this.state.interval}
                             />
                         </div>
                     </div>
@@ -119,5 +175,6 @@ export default class TradingPlanPage extends Component {
 
     async componentDidMount() {
         await this.forecast()
+        await this.getTradeSummaryReport()
     }
 }
