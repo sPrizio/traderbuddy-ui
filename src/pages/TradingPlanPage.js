@@ -14,12 +14,14 @@ export default class TradingPlanPage extends Component {
             isLoading: false,
             forecast: [],
             forecastTotals: {},
-            interval: 'MONTHLY',
+            interval: 'DAILY',
             begin: moment().startOf('year').format('YYYY-MM-DD'),
             limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
         }
 
         this.handleForecastIntervalChange = this.handleForecastIntervalChange.bind(this);
+        this.handleRowClick = this.handleRowClick.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
 
@@ -52,6 +54,22 @@ export default class TradingPlanPage extends Component {
         }
     }
 
+    handleRowClick(val) {
+        this.setState({
+            interval: 'DAILY',
+            begin: moment(val).startOf('month').format('YYYY-MM-DD'),
+            limit: moment(val).startOf('month').add(1, 'months').format('YYYY-MM-DD')
+        }, () => this.forecast())
+    }
+
+    reset() {
+        this.setState({
+            interval: 'MONTHLY',
+            begin: moment().startOf('year').format('YYYY-MM-DD'),
+            limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
+        }, () => this.forecast())
+    }
+
 
     //  GENERAL FUNCTIONS
 
@@ -82,10 +100,12 @@ export default class TradingPlanPage extends Component {
                 <div className="container">
                     <div className="columns is-multiline">
                         <div className="column is-6-desktop is-12-tablet is-12-mobile">
-                            <ForecastComponent selectedDate={moment().format('YYYY-MM-DD')}
+                            <ForecastComponent selectedDate={moment(this.state.begin).format('YYYY-MM-DD')}
                                                interval={this.state.interval} data={this.state.forecast}
                                                totals={this.state.forecastTotals}
                                                intervalChangeHandler={this.handleForecastIntervalChange}
+                                               rowClickHandler={this.handleRowClick}
+                                               resetHandler={this.reset}
                             />
                         </div>
                     </div>

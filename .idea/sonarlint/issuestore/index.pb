@@ -33,5 +33,3 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 Q
 !src/services/FormattingService.js,a\2\a247bf81f55dbb2be2586c3f65c202f9422328e8
-O
-src/pages/TradingSummaryPage.js,0\7\074bfa67984cffc8739b3eac74a6d3aa221eccd6

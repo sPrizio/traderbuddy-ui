@@ -3,6 +3,7 @@ import moment from "moment";
 import {formatNumberForDisplay} from "../../../services/FormattingService"
 import "@creativebulma/bulma-tooltip/dist/bulma-tooltip.min.css";
 import {BsQuestionCircleFill} from "react-icons/bs";
+import {IoReturnUpBackOutline} from "react-icons/io5";
 
 export default class ForecastComponent extends Component {
 
@@ -10,7 +11,7 @@ export default class ForecastComponent extends Component {
         super(props);
 
         this.state = {
-            selectedForecastInterval: 'Monthly'
+            selectedForecastInterval: 'Daily'
         }
 
         this.handleForecastIntervalChange = this.handleForecastIntervalChange.bind(this);
@@ -54,12 +55,29 @@ export default class ForecastComponent extends Component {
         }
     }
 
-    //  TODO: clicking on a row of a month shows the days
-    //  TODO: select for daily, weekly, monthly, yearly
 
     //  RENDER FUNCTION
 
     render() {
+        let returnButton;
+        if (this.state.selectedForecastInterval === 'Daily') {
+            returnButton =
+                <p className="has-text-left is-text-blue has-text-weight-medium back-link-hover is-size-6-half"
+                   onClick={() => {
+                       this.setState({selectedForecastInterval: 'Monthly'})
+                       this.props.resetHandler()
+                   }}>
+                            <span className="icon-text back-link-hover">
+                                <span className="icon">
+                                    <IoReturnUpBackOutline/>
+                                </span>
+                                <span className="back-link-hover">Monthly Forecast</span>
+                            </span>
+                </p>
+        } else {
+            returnButton = null;
+        }
+
         return (
             <div className="box box-border-blue">
                 <div className="level">
@@ -86,7 +104,8 @@ export default class ForecastComponent extends Component {
                     </div>
                 </div>
                 <hr className="card-hr"/>
-                <table className="table is-fullwidth is-striped">
+                {returnButton}
+                <table className={"table is-fullwidth is-striped " + (this.props.interval === 'MONTHLY' ? ' is-hoverable ' : '')}>
                     <thead>
                     <tr>
                         <th className="has-text-left is-size-6-half">Period</th>
@@ -109,7 +128,10 @@ export default class ForecastComponent extends Component {
                     {
                         this.props.data.map((item, key) => {
                             return (
-                                <tr key={key}>
+                                <tr key={key} className={item.active ? ' is-selected ' : ''} onClick={() => {
+                                    this.setState({selectedForecastInterval: 'Daily'})
+                                    this.props.rowClickHandler(item.startDate)
+                                }}>
                                     <td className="has-text-left is-size-6-half">{this.computeDateDisplay(item.startDate, item.endDate)}</td>
                                     <td className="has-text-centered is-size-6-half">{formatNumberForDisplay(item.deposits)}</td>
                                     <td className="has-text-centered is-size-6-half">{formatNumberForDisplay(item.earnings)}</td>
@@ -135,4 +157,13 @@ export default class ForecastComponent extends Component {
             </div>
         );
     }
+
+
+    //  LIFECYCLE FUNCTIONS
+
+    /*componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.interval !== this.props.interval) {
+            this.setState({selectedForecastInterval: this.props.interval.charAt(0).toUpperCase() + this.props.interval.slice(1)})
+        }
+    }*/
 }

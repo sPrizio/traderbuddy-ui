@@ -68,6 +68,15 @@ body {
     background-color: rgb(237, 242, 249);
 }
 
+.is-hoverable {
+    cursor: pointer;
+}
+
+.table tr.is-selected {
+    background-color: #3e8ed0;
+    color: #fff;
+    border-radius: 25px;
+}
 
 /*
 THEMES
