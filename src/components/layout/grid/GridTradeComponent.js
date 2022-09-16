@@ -29,16 +29,16 @@ export default class GridTradeComponent extends Component {
         }
 
         if (this.props.interval === 'daily') {
-            this.props.listHandler(this.props.record.date)
+            this.props.listHandler(this.props.record.start)
         } else if (this.props.interval === 'monthly') {
-            const date = moment(this.props.record.date)
+            const date = moment(this.props.record.start)
             this.props.dateChangeHandler(
                 date.startOf('month').format('YYYY-MM-DDTHH:mm:ss'),
                 date.add(1, "months").startOf('month').format('YYYY-MM-DDTHH:mm:ss'),
                 'daily'
             )
         } else if (this.props.interval === 'yearly') {
-            const date = moment(this.props.record.date)
+            const date = moment(this.props.record.start)
             this.props.dateChangeHandler(
                 date.startOf('year').format('YYYY-MM-DDTHH:mm:ss'),
                 date.add(1, "years").startOf('year').format('YYYY-MM-DDTHH:mm:ss'),
@@ -68,7 +68,7 @@ export default class GridTradeComponent extends Component {
                             <div className="level-left">
                                 <div className="level-item">
                                     <h6 className="is-size-7">
-                                        {this.formatDate(this.props.record.date)}
+                                        {this.formatDate(this.props.record.start)}
                                     </h6>
                                 </div>
                             </div>

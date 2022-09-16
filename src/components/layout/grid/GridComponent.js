@@ -186,7 +186,7 @@ export default class GridComponent extends Component {
                                 <GridTradeComponent key={key} index={key} record={item}
                                                     listHandler={this.toggleTradeListView}
                                                     interval={this.props.interval}
-                                                    offset={this.computeOffset(item.date, key)}
+                                                    offset={this.computeOffset(item.start, key)}
                                                     columnSize={this.computeColumnSize()}
                                                     dateChangeHandler={this.props.dateChangeHandler}
                                 />
