@@ -11,7 +11,7 @@ export default class ForecastComponent extends Component {
         super(props);
 
         this.state = {
-            selectedForecastInterval: 'Monthly'
+            selectedForecastInterval: 'Daily'
         }
 
         this.handleForecastIntervalChange = this.handleForecastIntervalChange.bind(this);

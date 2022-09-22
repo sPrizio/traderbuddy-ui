@@ -16,11 +16,11 @@ export default class TradingPlanPage extends Component {
             isLoading: false,
             forecast: [],
             forecastTotals: {},
-            interval: 'MONTHLY',
+            interval: 'DAILY',
             recordReport: [],
             recordTotals: {},
-            begin: moment().startOf('year').format('YYYY-MM-DD'),
-            limit: moment().startOf('year').add(1, 'years').format('YYYY-MM-DD')
+            begin: moment().startOf('month').format('YYYY-MM-DD'),
+            limit: moment().startOf('month').add(1, 'months').format('YYYY-MM-DD')
         }
 
         this.handleForecastIntervalChange = this.handleForecastIntervalChange.bind(this);

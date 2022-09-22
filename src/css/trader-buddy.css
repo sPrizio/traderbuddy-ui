@@ -82,6 +82,24 @@ body {
     visibility: hidden;
 }
 
+.retro-list {
+    position: relative;
+    list-style: none !important;
+    margin-left: 0;
+    padding-left: 1.2em;
+}
+
+.retro-list li:before {
+    content: "➦";
+    position: absolute;
+    left: 0;
+}
+
+.modal-card {
+    width: 45%;
+    min-height: 500px;
+}
+
 /*
 THEMES
  */
