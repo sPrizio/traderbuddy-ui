@@ -70,7 +70,7 @@ export default class RetrospectiveComponent extends Component {
                             </button>
                         </div>
                         <div className="level-item">
-                            <button className="button">
+                            <button className="button" onClick={() => this.props.deleteHandler(this.props.retro.startDate, this.props.retro.endDate, this.props.retro.intervalFrequency)}>
                                 <span className="icon is-size-4">
                                     <AiFillDelete/>
                                 </span>

@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import {CgSoftwareUpload} from "react-icons/cg";
+import {getDomain} from "../services/ConfigurationService"
 
 export default class FileImportComponent extends Component {
 
-    static importTradesUrl = 'http://localhost:8080/api/v1/trades/import-trades'
+    static importTradesUrl = getDomain() + '/trades/import-trades'
 
     constructor(props) {
         super(props);

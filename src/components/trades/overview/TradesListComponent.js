@@ -3,10 +3,11 @@ import Moment from "react-moment";
 import moment from "moment";
 import {displayString, formatNumberForDisplay} from "../../../services/FormattingService"
 import {AiFillDelete} from "react-icons/ai";
+import {getDomain} from "../../../services/ConfigurationService"
 
 export default class TradesListComponent extends Component {
 
-    static tradesUrl = 'http://localhost:8080/api/v1/trades/for-interval'
+    static tradesUrl = getDomain() + '/trades/for-interval'
 
     constructor(props) {
         super(props);

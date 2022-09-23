@@ -7,13 +7,15 @@ import {HiPlus} from "react-icons/hi";
 import '@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css'
 import 'react-calendar/dist/Calendar.css'
 import RetrospectiveModal from "../components/layout/retrospective/RetrospectiveModal";
+import {getDomain} from "../services/ConfigurationService"
 
 export default class RetrospectivePage extends Component {
 
-    static fetchRetroUrl = 'http://localhost:8080/api/v1/retrospectives/unique'
-    static timespanUrl = 'http://localhost:8080/api/v1/retrospectives/timespan'
-    static createRetroUrl = 'http://localhost:8080/api/v1/retrospectives/create'
-    static updateRetroUrl = 'http://localhost:8080/api/v1/retrospectives/update'
+    static fetchRetroUrl = getDomain() + '/retrospectives/unique'
+    static timespanUrl = getDomain() + '/retrospectives/timespan'
+    static createRetroUrl = getDomain() + '/retrospectives/create'
+    static deleteRetroUrl = getDomain() + '/retrospectives/delete'
+    static updateRetroUrl = getDomain() + '/retrospectives/update'
 
     constructor(props) {
         super(props);
@@ -40,6 +42,7 @@ export default class RetrospectivePage extends Component {
         }
 
         this.handleEdit = this.handleEdit.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.toggleModal = this.toggleModal.bind(this)
     }
@@ -50,6 +53,10 @@ export default class RetrospectivePage extends Component {
     handleEdit(val1, val2, val3) {
         this.setState({isEditing: true})
         this.getRetrospective(val1, val2, val3)
+    }
+
+    handleDelete(val1, val2, val3) {
+        this.deleteRetrospective(val1, val2, val3)
     }
 
     handleSubmit(val) {
@@ -110,6 +117,20 @@ export default class RetrospectivePage extends Component {
                 },
             })
 
+            const data = await response.json()
+            if (data.success) {
+                await this.getRetrospectives()
+            }
+        } catch (e) {
+            this.setState({isLoading: false})
+            console.log(e)
+        }
+    }
+
+    async deleteRetrospective(val1, val2, val3) {
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(RetrospectivePage.deleteRetroUrl + '?start=' + val1 + '&end=' + val2 + '&interval=' + val3, {method: 'DELETE'})
             const data = await response.json()
             if (data.success) {
                 await this.getRetrospectives()
@@ -192,7 +213,7 @@ export default class RetrospectivePage extends Component {
                             this.state.retros.map((item, key) => {
                                 return (
                                     <div className="column is-12" key={key}>
-                                        <RetrospectiveComponent retro={item} editHandler={this.handleEdit} />
+                                        <RetrospectiveComponent retro={item} editHandler={this.handleEdit} deleteHandler={this.handleDelete} />
                                     </div>
                                 )
                             })

@@ -3,11 +3,12 @@ import HeroComponent from "../components/layout/HeroComponent";
 import ForecastComponent from "../components/layout/forecast/ForecastComponent";
 import moment from "moment";
 import TradingRecordComponent from "../components/layout/record/TradingRecordComponent";
+import {getDomain} from "../services/ConfigurationService"
 
 export default class TradingPlanPage extends Component {
 
-    static forecastUrl = 'http://localhost:8080/api/v1/trading-plans/forecast'
-    static performanceUrl = 'http://localhost:8080/api/v1/trading-plans/performance'
+    static forecastUrl = getDomain() + '/trading-plans/forecast'
+    static performanceUrl = getDomain() + '/trading-plans/performance'
 
     constructor(props) {
         super(props);

@@ -4,11 +4,12 @@ import HeroComponent from "../components/layout/HeroComponent";
 import FileImportComponent from "../components/FileImportComponent";
 import GridComponent from "../components/layout/grid/GridComponent";
 import moment from "moment";
+import {getDomain} from "../services/ConfigurationService"
 
 export default class TradingSummaryPage extends Component {
 
-    static tradeSummaryUrl = 'http://localhost:8080/api/v1/trade-summary'
-    static disregardTradeUrl = 'http://localhost:8080/api/v1/trades/disregard'
+    static tradeSummaryUrl = getDomain() + '/trade-summary'
+    static disregardTradeUrl = getDomain() + '/trades/disregard'
 
     constructor(props) {
         super(props);
