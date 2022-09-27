@@ -63,14 +63,14 @@ export default class RetrospectiveComponent extends Component {
 
                     <div className="level-right">
                         <div className="level-item">
-                            <button className="button" onClick={() => this.props.editHandler(this.props.retro.startDate, this.props.retro.endDate, this.props.retro.intervalFrequency)}>
+                            <button className="button" onClick={() => this.props.editHandler(this.props.retro.uid)}>
                                 <span className="icon is-size-4">
                                     <AiFillEdit />
                                 </span>
                             </button>
                         </div>
                         <div className="level-item">
-                            <button className="button" onClick={() => this.props.deleteHandler(this.props.retro.startDate, this.props.retro.endDate, this.props.retro.intervalFrequency)}>
+                            <button className="button" onClick={() => this.props.deleteHandler(this.props.retro.uid)}>
                                 <span className="icon is-size-4">
                                     <AiFillDelete/>
                                 </span>
@@ -81,11 +81,8 @@ export default class RetrospectiveComponent extends Component {
                 <hr className="card-hr"/>
                 <div className="content">
                     {
-                        this.props.retro.points ?
+                        this.props.retro.points.filter(i => i.keyPoint).length > 0 ?
                             <blockquote>
-                                This would contain any key notes or important takeaways from the time period.<br/>
-                                Each new element would probably be separated into individual lines?<br/>
-                                br tags look nicer than p tags since the spacing isn't as excessive<br />
                                 {
                                     this.props.retro.points.map((item, key) => {
                                         if (item.keyPoint) {
@@ -115,31 +112,31 @@ export default class RetrospectiveComponent extends Component {
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Total Trades</p>
-                            <p className="subtitle">54</p>
+                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.totalTrades}</p>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Trading Rate</p>
-                            <p className="subtitle">10.58</p>
+                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.tradingRate}</p>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Win%</p>
-                            <p className="subtitle">58</p>
+                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.winPercentage}</p>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Net Profit</p>
-                            <p className="subtitle">108.65</p>
+                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.netProfit}</p>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Average Gain</p>
-                            <p className="subtitle">1.55%</p>
+                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.averageGain}%</p>
                         </div>
                     </div>
                 </div>

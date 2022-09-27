@@ -11,7 +11,7 @@ import {getDomain} from "../services/ConfigurationService"
 
 export default class RetrospectivePage extends Component {
 
-    static fetchRetroUrl = getDomain() + '/retrospectives/unique'
+    static fetchRetroUrl = getDomain() + '/retrospectives/uid'
     static timespanUrl = getDomain() + '/retrospectives/timespan'
     static createRetroUrl = getDomain() + '/retrospectives/create'
     static deleteRetroUrl = getDomain() + '/retrospectives/delete'
@@ -27,16 +27,12 @@ export default class RetrospectivePage extends Component {
             startDate: moment().subtract(2, "months").format('YYYY-MM-DD'),
             endDate: moment().add(1, "weeks").format('YYYY-MM-DD'),
             modalActive: false,
-            textAreaValue: '',
-            keyPoint: false,
             newRetro: {
                 intervalFrequency: 'WEEKLY',
                 startDate: '',
                 endDate: '',
                 points: []
             },
-            isInvalidText: false,
-            isInvalidDate: false,
             datePicker: [new Date(), new Date()],
             isEditing: false
         }
@@ -50,13 +46,13 @@ export default class RetrospectivePage extends Component {
 
     //  HANDLER FUNCTIONS
 
-    handleEdit(val1, val2, val3) {
+    handleEdit(val1) {
         this.setState({isEditing: true})
-        this.getRetrospective(val1, val2, val3)
+        this.getRetrospective(val1)
     }
 
-    handleDelete(val1, val2, val3) {
-        this.deleteRetrospective(val1, val2, val3)
+    handleDelete(val1) {
+        this.deleteRetrospective(val1)
     }
 
     handleSubmit(val) {
@@ -90,16 +86,12 @@ export default class RetrospectivePage extends Component {
 
     resetForm() {
         this.setState({
-            textAreaValue: '',
-            keyPoint: false,
             newRetro: {
                 intervalFrequency: 'WEEKLY',
                 startDate: '',
                 endDate: '',
                 points: []
             },
-            isInvalidText: false,
-            isInvalidDate: false,
             isEditing: false,
             datePicker: [new Date(), new Date()]
         })
@@ -127,10 +119,10 @@ export default class RetrospectivePage extends Component {
         }
     }
 
-    async deleteRetrospective(val1, val2, val3) {
+    async deleteRetrospective(val1) {
         try {
             this.setState({isLoading: true})
-            const response = await fetch(RetrospectivePage.deleteRetroUrl + '?start=' + val1 + '&end=' + val2 + '&interval=' + val3, {method: 'DELETE'})
+            const response = await fetch(RetrospectivePage.deleteRetroUrl + '?uid=' + val1, {method: 'DELETE'})
             const data = await response.json()
             if (data.success) {
                 await this.getRetrospectives()
@@ -144,7 +136,7 @@ export default class RetrospectivePage extends Component {
     async updateRetrospective() {
         try {
             this.setState({isLoading: true})
-            const response = await fetch(RetrospectivePage.updateRetroUrl + '?start=' + this.state.newRetro.startDate + '&end=' + this.state.newRetro.endDate + '&interval=' + this.state.newRetro.intervalFrequency, {
+            const response = await fetch(RetrospectivePage.updateRetroUrl + '?uid=' + this.state.newRetro.uid, {
                 method: 'PUT',
                 body: JSON.stringify({'retrospective': this.state.newRetro}),
                 headers: {
@@ -163,10 +155,10 @@ export default class RetrospectivePage extends Component {
         }
     }
 
-    async getRetrospective(val1, val2, val3) {
+    async getRetrospective(val1) {
         try {
             this.setState({isLoading: true})
-            const response = await fetch(RetrospectivePage.fetchRetroUrl + '?start=' + val1 + '&end=' + val2 + '&interval=' + val3);
+            const response = await fetch(RetrospectivePage.fetchRetroUrl + '?uid=' + val1);
             const data = await response.json();
 
             this.setState({
