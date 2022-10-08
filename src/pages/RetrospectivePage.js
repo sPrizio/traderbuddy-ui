@@ -25,8 +25,8 @@ export default class RetrospectivePage extends Component {
             isLoading: false,
             retroInterval: 'WEEKLY',
             retros: [],
-            startDate: moment().subtract(2, "months").format('YYYY-MM-DD'),
-            endDate: moment().add(1, "weeks").format('YYYY-MM-DD'),
+            startDate: moment().startOf("month").format('YYYY-MM-DD'),
+            endDate: moment().add(1, "months").startOf('month').format('YYYY-MM-DD'),
             modalActive: false,
             newRetro: {
                 intervalFrequency: 'WEEKLY',
