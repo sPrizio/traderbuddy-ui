@@ -16,6 +16,7 @@ export default class RetrospectivePage extends Component {
     static createRetroUrl = getDomain() + '/retrospectives/create'
     static deleteRetroUrl = getDomain() + '/retrospectives/delete'
     static updateRetroUrl = getDomain() + '/retrospectives/update'
+    static fetchMonthsUrl = getDomain() + "/retrospectives/active-months"
 
     constructor(props) {
         super(props);
@@ -34,12 +35,16 @@ export default class RetrospectivePage extends Component {
                 points: []
             },
             datePicker: [new Date(), new Date()],
-            isEditing: false
+            isEditing: false,
+            activeMonth: moment().startOf('month').format('YYYY-MM-DD'),
+            activeMonths: []
         }
 
         this.handleEdit = this.handleEdit.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
+        this.handleMonthChange = this.handleMonthChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleTabClick = this.handleTabClick.bind(this)
         this.toggleModal = this.toggleModal.bind(this)
     }
 
@@ -53,6 +58,14 @@ export default class RetrospectivePage extends Component {
 
     handleDelete(val1) {
         this.deleteRetrospective(val1)
+    }
+
+    handleMonthChange(e) {
+        this.setState({
+            activeMonth: e.target.value,
+            startDate: moment(e.target.value).format('YYYY-MM-DD'),
+            endDate: moment(e.target.value).add(1, 'months').startOf('month').format('YYYY-MM-DD')
+        }, () => this.getRetrospectives())
     }
 
     handleSubmit(val) {
@@ -70,6 +83,10 @@ export default class RetrospectivePage extends Component {
                 this.resetForm()
             })
         }
+    }
+
+    handleTabClick(val) {
+        this.setState({retroInterval: val}, () => this.getRetrospectives())
     }
 
     toggleModal(shouldCancel) {
@@ -190,31 +207,84 @@ export default class RetrospectivePage extends Component {
         }
     }
 
+    async getActiveMonths() {
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(RetrospectivePage.fetchMonthsUrl);
+            const data = await response.json();
+
+            this.setState({
+                isLoading: false,
+                activeMonths: data.data,
+            })
+        } catch (e) {
+            this.setState({isLoading: false})
+            console.log(e)
+        }
+    }
+
 
     //  RENDER FUNCTION
 
     render() {
+        let mainDisplay;
+        if (this.state.retros && this.state.retros.length > 0) {
+            let loop =
+                this.state.retros.map((item, key) => {
+                    return (
+                        <div className="column is-12" key={key}>
+                            <RetrospectiveComponent retro={item} editHandler={this.handleEdit}
+                                                    deleteHandler={this.handleDelete}/>
+                        </div>
+                    )
+                })
+
+            mainDisplay =
+                <div>
+                    <div className="level">
+                        <div className="level-left" />
+                        <div className="level-right">
+                            <div className="select">
+                                <select onChange={this.handleMonthChange} value={this.state.activeMonth}>
+                                    {
+                                        this.state.activeMonths.map((item, key) => {
+                                            return (
+                                                <option key={key} value={moment(item).format('YYYY-MM-DD')}>{moment(item).format('MMMM YYYY')}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="columns is-multiline">
+                        {loop}
+                    </div>
+                </div>
+        } else {
+            mainDisplay =
+                <div className="column is-12 has-text-centered">
+                    <p>Looks like you don't have any retrospectives. You should add some! Reflecting on your previous performances is a great way to help set up future success.</p>
+                </div>
+        }
+
+
         return (
             <div className="min-height-for-footer">
                 <HeroComponent title={"Retrospectives"}
                                subtitle={"Reflect on previous trading performances and track your progress and evolution"}/>
                 <div className="container">
-                    <div className="columns is-multiline">
-                        {
-                            this.state.retros ?
-                            this.state.retros.map((item, key) => {
-                                return (
-                                    <div className="column is-12" key={key}>
-                                        <RetrospectiveComponent retro={item} editHandler={this.handleEdit} deleteHandler={this.handleDelete} />
-                                    </div>
-                                )
-                            })
-                                :
-                                <div className="column is-12 has-text-centered">
-                                    <p>Looks like you don't have any retrospectives. You should add some! Reflecting on your previous performances is a great way to help set up future success.</p>
-                                </div>
-                        }
+                    <div className="tabs is-centered">
+                        <ul>
+                            <li className={this.state.retroInterval === 'WEEKLY' ? ' is-active ' : ''}>
+                                <a href="#" onClick={() => this.handleTabClick('WEEKLY')}><span>Weekly</span></a>
+                            </li>
+                            <li className={this.state.retroInterval === 'MONTHLY' ? ' is-active ' : ''}>
+                                <a href="#" onClick={() => this.handleTabClick('MONTHLY')}><span>Monthly</span></a>
+                            </li>
+                        </ul>
                     </div>
+                    {mainDisplay}
                 </div>
 
                 <button className="button is-floating is-info is-vcentered has-text-centered"
@@ -239,5 +309,6 @@ export default class RetrospectivePage extends Component {
 
     async componentDidMount() {
         await this.getRetrospectives()
+        await this.getActiveMonths()
     }
 }
