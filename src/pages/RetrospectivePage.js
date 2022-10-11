@@ -200,7 +200,7 @@ export default class RetrospectivePage extends Component {
             this.setState({
                 isLoading: false,
                 retros: data.data,
-            })
+            }, () => this.getActiveMonths())
         } catch (e) {
             this.setState({isLoading: false})
             console.log(e)
@@ -210,7 +210,7 @@ export default class RetrospectivePage extends Component {
     async getActiveMonths() {
         try {
             this.setState({isLoading: true})
-            const response = await fetch(RetrospectivePage.fetchMonthsUrl);
+            const response = await fetch(RetrospectivePage.fetchMonthsUrl + '?includeStarterMonth=true');
             const data = await response.json();
 
             this.setState({
@@ -241,22 +241,6 @@ export default class RetrospectivePage extends Component {
 
             mainDisplay =
                 <div>
-                    <div className="level">
-                        <div className="level-left" />
-                        <div className="level-right">
-                            <div className="select">
-                                <select onChange={this.handleMonthChange} value={this.state.activeMonth}>
-                                    {
-                                        this.state.activeMonths.map((item, key) => {
-                                            return (
-                                                <option key={key} value={moment(item).format('YYYY-MM-DD')}>{moment(item).format('MMMM YYYY')}</option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
-                        </div>
-                    </div>
                     <div className="columns is-multiline">
                         {loop}
                     </div>
@@ -284,6 +268,28 @@ export default class RetrospectivePage extends Component {
                             </li>
                         </ul>
                     </div>
+                    <div className="level">
+                        <div className="level-left">
+                            <div className="level-item">
+                                <h2 className="subtitle">{moment(this.state.startDate).format('MMMM YYYY')}</h2>
+                            </div>
+                        </div>
+                        <div className="level-right">
+                            <div className="level-item">
+                                <div className="select">
+                                    <select onChange={this.handleMonthChange} value={this.state.activeMonth}>
+                                        {
+                                            this.state.activeMonths.map((item, key) => {
+                                                return (
+                                                    <option key={key} value={moment(item).format('YYYY-MM-DD')}>{moment(item).format('MMMM YYYY')}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {mainDisplay}
                 </div>
 
@@ -309,6 +315,5 @@ export default class RetrospectivePage extends Component {
 
     async componentDidMount() {
         await this.getRetrospectives()
-        await this.getActiveMonths()
     }
 }
