@@ -1,10 +1,51 @@
 import React, {Component} from "react";
+import RecentTradesComponent from "../components/trades/overview/RecentTradesComponent";
 
 export default class HomePage extends Component {
+
+
+    //  RENDER FUNCTION
+
     render() {
         return (
-            <div>
-                <p>This is the homepage!</p>
+            <div className="min-height-for-footer">
+                <div className="container is-fluid">
+                    <br /><br/>
+                    <div className="columns is-multiline">
+                        <div className="column is-3-desktop is-12-tablet is-12-mobile is-offset-1-desktop">
+                            <div className="columns is-multiline">
+                                <div className="column is-12">
+                                    <article className="notification is-primary">
+                                        <p className="title">Vertical...</p>
+                                        <p className="subtitle">Top tile</p>
+                                    </article>
+                                    <article className="notification is-warning">
+                                        <p className="title">...tiles</p>
+                                        <p className="subtitle">Bottom tile</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column is-4-desktop is-12-tablet is-12-mobile">
+                            <div className="columns is-multiline">
+                                <div className="column is-12">
+                                    <article className="notification is-info">
+                                        <p className="title">Middle tile</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="column is-3-desktop is-12-tablet is-12-mobile">
+                            <div className="columns is-multiline">
+                                <div className="column is-12">
+                                    <article className="tile is-child">
+                                        <RecentTradesComponent numberOfTrades={7} />
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }

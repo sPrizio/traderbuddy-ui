@@ -103,14 +103,6 @@ body {
 /*
 THEMES
  */
-.box-border-blue {
-    border-top: 5px solid #3e8ed0;
-}
-
-.box-border-blue h2 {
-    color: #3e8ed0;
-}
-
 .is-text-blue {
     color: #3e8ed0;
 }
@@ -131,6 +123,25 @@ THEMES
 
 .grid-trade-border {
     border-bottom: 2px solid rgba(62, 142, 208, 0.45);
+}
+
+/*
+BOX THEMES
+ */
+.box-border-blue {
+    border-top: 5px solid #3e8ed0;
+}
+
+.box-border-blue h2 {
+    color: #3e8ed0;
+}
+
+.box-border-green {
+    border-top: 5px solid #48c78e;
+}
+
+.box-border-green h2 {
+    color: #48c78e;
 }
 
 /*
