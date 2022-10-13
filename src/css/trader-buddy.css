@@ -144,6 +144,14 @@ BOX THEMES
     color: #48c78e;
 }
 
+.box-border-turquoise {
+    border-top: 5px solid #00D1B2FF;
+}
+
+.box-border-turquoise h2 {
+    color: #00D1B2FF;
+}
+
 /*
 TYPOGRAPHY
  */
