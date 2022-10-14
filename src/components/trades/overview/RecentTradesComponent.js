@@ -11,6 +11,7 @@ export default class RecentTradesComponent extends Component {
         super(props);
 
         this.state = {
+            isLoading: false,
             recentTrades: []
         }
     }
@@ -54,7 +55,7 @@ export default class RecentTradesComponent extends Component {
                     {
                         this.state.recentTrades.map((item, key) => {
                             return (
-                                <tr>
+                                <tr key={key}>
                                     <td className="has-text-left">{moment(item.start).format('MMM Do, YYYY')}</td>
                                     <td className="has-text-centered">{item.numberOfTrades}</td>
                                     <td className="has-text-centered">{item.winPercentage}</td>

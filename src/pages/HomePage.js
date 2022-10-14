@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import RecentTradesComponent from "../components/trades/overview/RecentTradesComponent";
-import BalanceSummaryComponent from "../components/layout/home/BalanceSummaryComponent";
+import PerformanceSummaryComponent from "../components/layout/home/PerformanceSummaryComponent";
 
 export default class HomePage extends Component {
 
@@ -20,7 +20,7 @@ export default class HomePage extends Component {
                                         <p className="title">...tiles</p>
                                         <p className="subtitle">Bottom tile</p>
                                     </article>
-                                    <BalanceSummaryComponent />
+                                    <PerformanceSummaryComponent />
                                 </div>
                             </div>
                         </div>

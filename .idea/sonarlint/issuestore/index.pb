@@ -1,11 +1,6 @@
 
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
 A
 public/robots.txt,d\a\dac799070c2d0c2fa24462b02c1f2dcc3fb3a1e9
-<
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 A
 src/css/fonts.css,6\f\6fba100dad58d31e51893b8a59e78ec98bc2ab08
 j
@@ -25,14 +20,8 @@ f
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 [
 +src/components/layout/grid/GridComponent.js,b\8\b8d38ce25512e3f7773676f71ef39055829cbf0c
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-A
-package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 c
 3src/components/layout/forecast/ForecastComponent.js,6\2\620df38104e642eba4e136bda94746706631b401
-T
-$src/services/ConfigurationService.js,6\7\67c294a06210220f636becf590749633eec0083f
 U
 %src/components/FileImportComponent.js,b\1\b1397f578bb31d0986a5735ddbb95243f2deb3d4
 i
@@ -41,3 +30,17 @@ m
 =src/components/layout/retrospective/RetrospectiveComponent.js,1\9\1960c929972b51f9fcd31ffb9dfde63d3121a241
 c
 3src/components/layout/navigation/NavbarComponent.js,3\b\3bb90c7b8963faadd7b4c3fe307138e0afe2d775
+Q
+!src/services/FormattingService.js,a\2\a247bf81f55dbb2be2586c3f65c202f9422328e8
+e
+5src/components/trades/overview/TradesListComponent.js,f\f\ffa1ef82438a7cc86ce61c7ce0ec2ff200f86a35
+`
+0src/components/layout/grid/GridTradeComponent.js,2\c\2c3b7c8f90664e7e119a67de857e3a19d65907e0
+N
+src/pages/RetrospectivePage.js,c\c\cc61efb804bc7b025c41df435236c790a81630f5
+O
+src/pages/TradingSummaryPage.js,0\7\074bfa67984cffc8739b3eac74a6d3aa221eccd6
+L
+src/pages/TradingPlanPage.js,9\9\998c71dff8ccc062371d0ca753eefd11f8f81b16
+f
+6src/components/layout/record/TradingRecordComponent.js,c\1\c1d760cf36c5ebc90107494c07e2771b33694c17
