@@ -12,7 +12,7 @@ export default class TradeTotalsComponent extends Component {
                 <div className="level-item has-text-centered">
                     <div>
                         <p className="heading">Total Trades</p>
-                        <p className="subtitle">{formatNumberForDisplay(this.props.totals.totalNumberOfTrades)}</p>
+                        <p className="subtitle">{this.props.totals.totalNumberOfTrades}</p>
                     </div>
                 </div>
                 <div className="level-item has-text-centered">

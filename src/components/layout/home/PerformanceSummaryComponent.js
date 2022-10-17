@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {PieChart, Pie, Sector, ResponsiveContainer, Cell} from 'recharts';
 import moment from "moment";
 import {getDomain} from "../../../services/ConfigurationService";
+import {formatNumberForDisplay} from "../../../services/FormattingService";
 
 export default class PerformanceSummaryComponent extends Component {
 
@@ -124,7 +125,7 @@ export default class PerformanceSummaryComponent extends Component {
                         <div>
                             <p className="heading">Trading Rate</p>
                             <p className="is-size-6">
-                                {this.state.performanceSummary.tradingRate}&nbsp;
+                                {formatNumberForDisplay(this.state.performanceSummary.tradingRate)}&nbsp;
                             </p>
                         </div>
                     </div>
@@ -137,7 +138,7 @@ export default class PerformanceSummaryComponent extends Component {
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Net Profit</p>
-                            <p className="is-size-6">{this.state.performanceSummary.netProfit}</p>
+                            <p className="is-size-6">{formatNumberForDisplay(this.state.performanceSummary.netProfit)}</p>
                         </div>
                     </div>
                 </div>
@@ -149,25 +150,25 @@ export default class PerformanceSummaryComponent extends Component {
                             <tr>
                                 <td className="has-text-left">Average Win</td>
                                 <td className="has-text-centered">
-                                    25&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
+                                    {formatNumberForDisplay(this.state.performanceSummary.averageWinSize)}&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
                                 </td>
                             </tr>
                             <tr>
                                 <td className="has-text-left">Biggest Win</td>
                                 <td className="has-text-centered">
-                                    25&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
+                                    {formatNumberForDisplay(this.state.performanceSummary.largestWinSize)}&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
                                 </td>
                             </tr>
                             <tr>
                                 <td className="has-text-left">Average Loss</td>
                                 <td className="has-text-centered">
-                                    25&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
+                                    {formatNumberForDisplay(this.state.performanceSummary.averageLossSize)}&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
                                 </td>
                             </tr>
                             <tr>
                                 <td className="has-text-left">Biggest Loss</td>
                                 <td className="has-text-centered">
-                                    25&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
+                                    {formatNumberForDisplay(this.state.performanceSummary.largestLossSize)}&nbsp;<small><abbr title={"Points or Units, sometimes referred to as Pips."}>pts</abbr></small>
                                 </td>
                             </tr>
                             </tbody>

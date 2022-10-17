@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import moment from "moment";
 import {AiFillDelete, AiFillEdit} from "react-icons/ai";
+import {formatNumberForDisplay} from "../../../services/FormattingService";
 
 export default class RetrospectiveComponent extends Component {
 
@@ -118,7 +119,7 @@ export default class RetrospectiveComponent extends Component {
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Trading Rate</p>
-                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.tradingRate}</p>
+                            <p className="subtitle">{formatNumberForDisplay(this.props.retro.retrospectiveStatistics.tradingRate)}</p>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
@@ -130,13 +131,13 @@ export default class RetrospectiveComponent extends Component {
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Net Profit</p>
-                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.netProfit}</p>
+                            <p className="subtitle">{formatNumberForDisplay(this.props.retro.retrospectiveStatistics.netProfit)}</p>
                         </div>
                     </div>
                     <div className="level-item has-text-centered">
                         <div>
                             <p className="heading">Average Gain</p>
-                            <p className="subtitle">{this.props.retro.retrospectiveStatistics.averageGain}%</p>
+                            <p className="subtitle">{formatNumberForDisplay(this.props.retro.retrospectiveStatistics.averageGain)}%</p>
                         </div>
                     </div>
                 </div>

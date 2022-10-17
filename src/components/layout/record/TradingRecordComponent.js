@@ -86,8 +86,8 @@ export default class TradingRecordComponent extends Component {
                                 <tr key={key} className={((item.active) ? ' is-selected ' : '')}>
                                     <td className="has-text-left is-size-6-half">{this.computeDateDisplay(item.start)}</td>
                                     <td className="has-text-centered is-size-6-half">{formatNumberForDisplay(item.target)}</td>
-                                    <td className="has-text-centered is-size-6-half">{formatNumberForDisplay(item.numberOfTrades)}</td>
-                                    <td className="has-text-centered is-size-6-half">{formatNumberForDisplay(item.winPercentage)}</td>
+                                    <td className="has-text-centered is-size-6-half">{item.totalNumberOfTrades}</td>
+                                    <td className="has-text-centered is-size-6-half">{item.winPercentage}</td>
                                     <td className="has-text-centered is-size-6-half">{formatNumberForDisplay(item.netProfit)}</td>
                                     <td className={"has-text-centered is-size-6-half " + (this.computeTargetHit(item.targetHit))}>
                                         {
@@ -114,8 +114,8 @@ export default class TradingRecordComponent extends Component {
                     <tr>
                         <th className="has-text-left is-size-6-half">Totals</th>
                         <th/>
-                        <th className="has-text-centered is-size-6-half">{formatNumberForDisplay(this.props.totals.totalNumberOfTrades)}</th>
-                        <th className="has-text-centered is-size-6-half">{formatNumberForDisplay(this.props.totals.averageWinPercentage)}</th>
+                        <th className="has-text-centered is-size-6-half">{this.props.totals.totalNumberOfTrades}</th>
+                        <th className="has-text-centered is-size-6-half">{this.props.totals.averageWinPercentage}</th>
                         <th className="has-text-centered is-size-6-half">{formatNumberForDisplay(this.props.totals.netProfit)}</th>
                         <th className="has-text-centered is-size-6-half">{formatNumberForDisplay(this.props.totals.averageProfitPercentage)}</th>
                         <th className="has-text-centered is-size-6-half">{formatNumberForDisplay(this.props.totals.surplus)}</th>

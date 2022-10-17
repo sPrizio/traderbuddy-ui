@@ -16,7 +16,7 @@ export function displayString(value) {
 export function formatNumberForDisplay(value) {
 
     if (value) {
-        return value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        return value.toFixed(2).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     }
 
     return '0'

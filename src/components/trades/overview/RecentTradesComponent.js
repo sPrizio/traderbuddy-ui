@@ -57,7 +57,7 @@ export default class RecentTradesComponent extends Component {
                             return (
                                 <tr key={key}>
                                     <td className="has-text-left">{moment(item.start).format('MMM Do, YYYY')}</td>
-                                    <td className="has-text-centered">{item.numberOfTrades}</td>
+                                    <td className="has-text-centered">{item.totalNumberOfTrades}</td>
                                     <td className="has-text-centered">{item.winPercentage}</td>
                                     <td className="has-text-centered">{formatNumberForDisplay(item.netProfit)}</td>
                                 </tr>

@@ -83,7 +83,7 @@ export default class GridTradeComponent extends Component {
                             <div className="level-item has-text-centered">
                                 <div>
                                     <p className="heading">Trades</p>
-                                    <p className="">{this.props.record.numberOfTrades}</p>
+                                    <p className="">{this.props.record.totalNumberOfTrades}</p>
                                 </div>
                             </div>
                             <div className="level-item has-text-centered">
