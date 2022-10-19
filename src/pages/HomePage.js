@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import RecentTradesComponent from "../components/trades/overview/RecentTradesComponent";
 import PerformanceSummaryComponent from "../components/layout/home/PerformanceSummaryComponent";
+import BalanceComponent from "../components/layout/home/BalanceComponent";
 
 export default class HomePage extends Component {
 
@@ -16,10 +17,7 @@ export default class HomePage extends Component {
                         <div className="column is-3-desktop is-12-tablet is-12-mobile is-offset-1-desktop">
                             <div className="columns is-multiline">
                                 <div className="column is-12">
-                                    <article className="notification is-warning">
-                                        <p className="title">...tiles</p>
-                                        <p className="subtitle">Bottom tile</p>
-                                    </article>
+                                    <BalanceComponent />
                                     <PerformanceSummaryComponent />
                                 </div>
                             </div>

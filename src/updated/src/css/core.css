@@ -1,0 +1,196 @@
+body {
+    background-color: rgb(245, 245, 249);
+    /*background-color: rgb(237, 242, 249);*/
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-height: 100vh;
+    padding-bottom: 25px;
+}
+
+.global-container {
+    margin-top: 25px;
+}
+
+.test-border {
+    border: 1px solid green;
+
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card .card-content .header {
+    color: rgb(86, 106, 127);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card .card-content .sub-header {
+    color: rgb(161, 172, 184);
+    font-size: 12.75px;
+    font-weight: 400;
+}
+
+.button.is-primary {
+    background-color: #696cff;
+    box-shadow: rgba(105, 108, 255, 0.4) 0 2px 4px 0;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+}
+
+.button.is-primary:hover {
+    background-color: rgba(105, 108, 255, 0.40);
+    color: #696cff;
+}
+
+/*
+Account Summary
+ */
+.account-summary .title {
+    color: rgb(105, 122, 141);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.account-summary .balance {
+    color: rgb(86, 106, 127);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.account-summary .net {
+    font-size: 12.75px;
+    font-weight: 600;
+}
+
+.account-summary .net .positive {
+    color: rgb(113, 221, 55)
+}
+
+.account-summary .net .negative {
+    color: rgb(255, 62, 29)
+}
+
+.account-summary .target {
+    color: #a1acb8;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/*
+Profit Curve
+ */
+.profit-curve .chart-container {
+    margin-top: 25px;
+}
+
+/*
+Performance Statistics
+ */
+.performance-statistics .container {
+    margin-top: 25px;
+}
+
+.performance-statistics .row-entry-header {
+    color: rgb(86, 106, 127);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.performance-statistics .row-entry-small {
+    color: rgb(161, 172, 184);
+    font-size: 12.75px;
+    font-weight: 400;
+}
+
+.performance-statistics .value {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.performance-statistics-entry .positive {
+    color: rgb(113, 221, 55);
+    font-size: 12.75px;
+    font-weight: 600;
+}
+
+.performance-statistics-entry .negative {
+    color: rgb(255, 62, 29);
+    font-size: 12.75px;
+    font-weight: 600;
+}
+
+/*
+Performance Summary
+ */
+.performance-summary .container {
+    margin-top: 25px;
+}
+
+.performance-summary .value {
+    color: #696CFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/*
+Trade History
+ */
+.trade-history .container {
+    margin-top: 25px;
+}
+
+.trade-history .value {
+    color: #696CFF;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/*
+Retrospective
+ */
+.retrospective .container {
+    margin-top: 25px;
+}
+
+.retrospective .message .message-body p:not(:last-child) {
+    padding-bottom: 15px;
+}
+.retrospective .message.is-primary {
+    background-color: rgba(105, 108, 255, 0.075);
+}
+
+.retrospective .message.is-primary .message-header {
+    background-color: #696CFF;
+    color: #fff;
+}
+
+.retrospective .message.is-primary .message-body {
+    border-color: #696CFF;
+    color: #696CFF;
+}
+
+.retrospective .block {
+    font-size: 15px;
+}
+
+.retrospective .block .icon {
+    color: #696CFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.retrospective .value {
+    color: #696CFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/*
+Footer
+ */
+.footer {
+    padding-top: 6rem;
+    background-color: rgb(245, 245, 249);
+}

@@ -152,6 +152,14 @@ BOX THEMES
     color: #00D1B2FF;
 }
 
+.box-border-yellow {
+    border-top: 5px solid #ffe08a;
+}
+
+.box-border-yellow h2 {
+    color: #ffe08a;
+}
+
 /*
 TYPOGRAPHY
  */
