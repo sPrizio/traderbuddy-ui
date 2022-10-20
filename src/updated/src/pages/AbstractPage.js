@@ -1,25 +1,57 @@
 import React, {Component} from "react";
 import HomePage from "./HomePage";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+import NavBar from "../components/layout/NavBar";
+import Footer from "../components/layout/Footer";
+import TradeHistoryPage from "./TradeHistoryPage";
+import ForecastingPage from "./ForecastingPage";
 
 export default class AbstractPage extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentPage: 'forecasting'
+        }
+
+        this.handlePageChange = this.handlePageChange.bind(this)
+    }
+
+
+    //  HANDLER FUNCTIONS
+
+    handlePageChange(val) {
+        this.setState({currentPage: val})
+    }
 
 
     //  RENDER FUNCTION
 
     render() {
+        let currentPage;
+        switch (this.state.currentPage) {
+            case "history":
+                currentPage = <TradeHistoryPage/>
+                break
+            case "forecasting":
+                currentPage = <ForecastingPage/>
+                break
+            default:
+                currentPage = <HomePage/>
+                break
+        }
+
         return (
             <div className="abstract-page">
-                <NavBar />
+                <NavBar pageChangeHandler={this.handlePageChange}/>
                 <div className="container global-container">
                     <div className="columns is-multiline is-mobile">
                         <div className="column is-12-desktop is-12-tablet is-12-mobile">
-                            <HomePage />
+                            {currentPage}
                         </div>
                     </div>
                 </div>
-                <Footer />
+                <Footer/>
             </div>
         );
     }

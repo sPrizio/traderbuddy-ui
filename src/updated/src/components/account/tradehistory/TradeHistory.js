@@ -38,36 +38,42 @@ export default class TradeHistory extends Component {
                                     </thead>
                                     <tbody>
                                     <TradeHistoryEntry
+                                        format={'MMMM Do'}
                                         date={'2022-10-18'}
                                         trades={30}
                                         winPercentage={63}
                                         netProfit={41.79}
                                     />
                                     <TradeHistoryEntry
+                                        format={'MMMM Do'}
                                         date={'2022-10-17'}
                                         trades={6}
                                         winPercentage={100}
                                         netProfit={83.67}
                                     />
                                     <TradeHistoryEntry
+                                        format={'MMMM Do'}
                                         date={'2022-10-14'}
                                         trades={16}
                                         winPercentage={62}
                                         netProfit={64.13}
                                     />
                                     <TradeHistoryEntry
+                                        format={'MMMM Do'}
                                         date={'2022-10-13'}
                                         trades={12}
                                         winPercentage={83}
                                         netProfit={48.80}
                                     />
                                     <TradeHistoryEntry
+                                        format={'MMMM Do'}
                                         date={'2022-10-12'}
                                         trades={8}
                                         winPercentage={50}
                                         netProfit={35.49}
                                     />
                                     <TradeHistoryEntry
+                                        format={'MMMM Do'}
                                         date={'2022-10-11'}
                                         trades={18}
                                         winPercentage={56}

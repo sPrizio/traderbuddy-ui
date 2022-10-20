@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {AiFillRightCircle} from "react-icons/ai";
 import {RiAlarmWarningLine} from "react-icons/ri";
-import {formatNumberForDisplay} from "../service/FormattingService";
+import {formatNumberForDisplay} from "../../service/FormattingService";
 
 export default class Retrospective extends Component {
 

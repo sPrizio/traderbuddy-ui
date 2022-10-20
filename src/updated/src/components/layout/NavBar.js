@@ -29,7 +29,7 @@ export default class NavBar extends Component {
             <nav className="navbar is-spaced" role="navigation" aria-label="main navigation">
                 <div className="container">
                     <div className="navbar-brand">
-                        <a className="navbar-item" href="https://bulma.io">
+                        <a className="navbar-item" onClick={() => this.props.pageChangeHandler('home')}>
                             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"
                                  alt={"Navbar brand"}/>
                         </a>
@@ -43,9 +43,9 @@ export default class NavBar extends Component {
 
                     <div className={"navbar-menu" + (this.state.isMobileActive ? ' is-active ' : '')}>
                         <div className="navbar-start">
-                            <a className="navbar-item">Trade History</a>
-                            <a className="navbar-item">Forecasting</a>
-                            <a className="navbar-item">Retrospectives</a>
+                            <a className="navbar-item" onClick={() => this.props.pageChangeHandler('history')}>Trade History</a>
+                            <a className="navbar-item" onClick={() => this.props.pageChangeHandler('forecasting')}>Forecasting</a>
+                            <a className="navbar-item" onClick={() => this.props.pageChangeHandler('retrospectives')}>Retrospectives</a>
 
                             <div className="navbar-item has-dropdown is-hoverable">
                                 <a className="navbar-link">More</a>

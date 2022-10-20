@@ -8,6 +8,7 @@ body {
 
 .global-container {
     margin-top: 25px;
+    min-height: 80vh;
 }
 
 .test-border {
@@ -42,6 +43,24 @@ body {
     background-color: rgba(105, 108, 255, 0.40);
     color: #696cff;
 }
+
+.hoverable-table tbody tr:hover {
+    cursor: pointer;
+}
+
+.hoverable-table tbody tr:hover > td {
+    cursor: pointer;
+}
+
+.navbar {
+    box-shadow: rgba(10, 10, 10, 0.1) 0 8px 16px -2px, rgba(10, 10, 10, 0.02) 0 0 0 1px;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
 
 /*
 Account Summary
@@ -147,6 +166,23 @@ Trade History
     font-weight: 700;
 }
 
+.trade-history .positive-cell {
+    background: linear-gradient(to top right, #ffffff 60%, rgba(113, 221, 55, 0.35));
+}
+
+.trade-history .negative-cell {
+    background: linear-gradient(to bottom right, #ffffff 60%, rgba(255, 62, 29, 0.35));
+}
+
+.trade-history-entry.is-active, .trade-history-entry.is-active .positive-cell, .trade-history-entry.is-active .negative-cell {
+    background: #696CFF;
+    color: white;
+}
+
+.trade-history-entry.is-active .sub-header, .trade-history-entry.is-active .value {
+    color: white;
+}
+
 /*
 Retrospective
  */
@@ -157,6 +193,7 @@ Retrospective
 .retrospective .message .message-body p:not(:last-child) {
     padding-bottom: 15px;
 }
+
 .retrospective .message.is-primary {
     background-color: rgba(105, 108, 255, 0.075);
 }
@@ -184,6 +221,65 @@ Retrospective
 .retrospective .value {
     color: #696CFF;
     font-size: 18px;
+    font-weight: 700;
+}
+
+/*
+Trade List
+ */
+.trade-list .container {
+    margin-top: 25px;
+}
+
+.pagination-link {
+    color: rgb(105, 122, 141);
+    background-color: rgb(240, 242, 244);
+    border: none;
+}
+
+.pagination-link.is-current {
+    background-color: #696CFF;
+}
+
+/*
+Forecasting
+ */
+.forecasting-page .container {
+    margin-top: 25px;
+}
+
+.forecasting-page .min-height {
+    min-height: 350px;
+}
+
+.forecasting-page .flex-container {
+    display: flex;
+    margin-top: 25px;
+}
+
+.forecasting-page .flex-container .flex-block {
+    flex: 1;
+}
+
+.forecasting-page .table td {
+    height: 60px;
+}
+
+.forecasting-page .border-left {
+    border-left: 1px solid #696cff;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.forecasting-page .border-right {
+    border-right: 1px solid #696cff;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.forecasting-page .value {
+    color: #696CFF;
+    font-size: 15px;
     font-weight: 700;
 }
 

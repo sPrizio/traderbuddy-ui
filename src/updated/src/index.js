@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bulma/css/bulma.min.css'
+import 'bulma-extensions/bulma-divider/dist/css/bulma-divider.min.css'
 import './css/fonts.css'
 import './css/core.css'
 import reportWebVitals from './reportWebVitals';
