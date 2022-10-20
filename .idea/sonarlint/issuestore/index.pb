@@ -7,9 +7,6 @@ k
 ;src/components/trades/deprecated/TradingSummaryComponent.js,3\7\37389d5f071f3d50f5b1025f65a4f32c4c03ca99
 V
 &src/components/layout/HeroComponent.js,3\5\35f95f66f8a4ad61e7c88156015f6d7cfd74bfab
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 c
