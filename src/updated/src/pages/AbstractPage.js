@@ -4,6 +4,7 @@ import NavBar from "../components/layout/NavBar";
 import Footer from "../components/layout/Footer";
 import TradeHistoryPage from "./TradeHistoryPage";
 import ForecastingPage from "./ForecastingPage";
+import RetrospectivesPage from "./RetrospectivesPage";
 
 export default class AbstractPage extends Component {
 
@@ -11,7 +12,7 @@ export default class AbstractPage extends Component {
         super(props);
 
         this.state = {
-            currentPage: 'forecasting'
+            currentPage: 'home'
         }
 
         this.handlePageChange = this.handlePageChange.bind(this)
@@ -35,6 +36,9 @@ export default class AbstractPage extends Component {
                 break
             case "forecasting":
                 currentPage = <ForecastingPage/>
+                break
+            case "retrospectives":
+                currentPage = <RetrospectivesPage />
                 break
             default:
                 currentPage = <HomePage/>

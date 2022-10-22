@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {formatNumberForDisplay} from "../service/FormattingService";
 import moment from "moment/moment";
+import {AiOutlineArrowLeft} from "react-icons/ai";
 
 export default class ForecastingPage extends Component {
 
@@ -34,6 +35,31 @@ export default class ForecastingPage extends Component {
         return dateDisplay
     }
 
+    computeBackwardButton() {
+        switch (this.state.selectedInterval) {
+            case "DAILY":
+                return (
+                    <button className="button">
+                        <span className="icon">
+                            <AiOutlineArrowLeft/>
+                        </span>
+                        <span>2022</span>
+                    </button>
+                )
+            case "MONTHLY":
+                return (
+                    <button className="button">
+                        <span className="icon">
+                            <AiOutlineArrowLeft/>
+                        </span>
+                        <span>All-time</span>
+                    </button>
+                )
+            default:
+                return null
+        }
+    }
+
 
     //  RENDER FUNCTION
 
@@ -43,11 +69,16 @@ export default class ForecastingPage extends Component {
                 <div className="card">
                     <div className="card-content">
                         <div className="columns is-multiline is-vcentered is-mobile">
-                            <div className="column is-6">
+                            <div className="column is-5">
                                 <h5 className="header">Trading Plan</h5>
-                                <h6 className="sub-header">Global Forecasting & Performance Tracking</h6>
+                                <h6 className="sub-header">Forecasting & Performance Tracking</h6>
                             </div>
-                            <div className="column is-6">
+                            <div className="column is-2">
+                                <div className="has-text-centered">
+                                    {this.computeBackwardButton()}
+                                </div>
+                            </div>
+                            <div className="column is-5">
                                 <div className="has-text-right">
                                     <h5 className="header">Period</h5>
                                     <h6 className="sub-header">October 2022</h6>
@@ -94,7 +125,7 @@ export default class ForecastingPage extends Component {
                                                 <td className="has-text-centered">{formatNumberForDisplay(0)}</td>
                                                 <td className="has-text-centered">{formatNumberForDisplay(2656.11)}</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="is-active">
                                                 <td className="has-text-left">{this.displayDate('2022-10-06')}</td>
                                                 <td className="has-text-centered">{formatNumberForDisplay(0)}</td>
                                                 <td className="has-text-centered">{formatNumberForDisplay(33.20)}</td>
@@ -178,7 +209,7 @@ export default class ForecastingPage extends Component {
                                                 <td className="has-text-centered">{formatNumberForDisplay(1.38)}</td>
                                                 <td className="has-text-centered">{formatNumberForDisplay(3.53)}</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="is-active">
                                                 <td className="has-text-centered">6</td>
                                                 <td className="has-text-centered">50</td>
                                                 <td className="has-text-centered">{formatNumberForDisplay(24.01)}</td>

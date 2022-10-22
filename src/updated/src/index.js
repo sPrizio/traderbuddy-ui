@@ -5,12 +5,12 @@ import 'bulma-extensions/bulma-divider/dist/css/bulma-divider.min.css'
 import './css/fonts.css'
 import './css/core.css'
 import reportWebVitals from './reportWebVitals';
-import AbstractPage from "./pages/AbstractPage";
+import GenericPage from "./pages/GenericPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AbstractPage />
+    <GenericPage />
   </React.StrictMode>
 );
 

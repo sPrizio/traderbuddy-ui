@@ -44,6 +44,10 @@ body {
     color: #696cff;
 }
 
+.button.is-primary:focus:not(:active), .button.is-primary.is-focused:not(:active) {
+    box-shadow: 0 0 0 0.125em rgba(105, 108, 255, 0.25);
+}
+
 .hoverable-table tbody tr:hover {
     cursor: pointer;
 }
@@ -56,11 +60,89 @@ body {
     box-shadow: rgba(10, 10, 10, 0.1) 0 8px 16px -2px, rgba(10, 10, 10, 0.02) 0 0 0 1px;
 }
 
+/*
+Tabs
+ */
 .table td,
 .table th {
     vertical-align: middle;
 }
 
+.tabs ul {
+    border-bottom-color: rgba(105, 108, 255, 0.4);
+}
+
+.tabs ul li a {
+    color: rgb(86, 106, 127);
+}
+
+.tabs li.is-active a {
+    border-bottom-color: #696cff;
+    color: #696cff;
+}
+
+.tabs.is-boxed li.is-active a {
+    background-color: white;
+    border-color: rgba(105, 108, 255, 0.4);
+    border-bottom-color: transparent;
+}
+
+.tabs a:hover {
+    border-bottom-color: rgba(105, 108, 255, 0.4);
+    color: #696cff;
+}
+
+/*
+Login
+ */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 97vh;
+}
+
+.login-container .card {
+    width: 400px;
+}
+
+.login-container label {
+    color: rgb(86, 106, 127);
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.login-container .input {
+    margin-top: 10px;
+}
+
+.login-container .forgot-password {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.login-container .forgot-password .forgot-password-text {
+    color: #696cff;
+    font-size: 12.75px;
+}
+
+.login-container .register {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+}
+
+.login-container .welcome .header {
+    color: rgb(86, 106, 127);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.login-container .welcome .sub-header {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+    font-weight: 400;
+}
 
 /*
 Account Summary
@@ -248,6 +330,10 @@ Forecasting
     margin-top: 25px;
 }
 
+.forecasting-page .container .level {
+    margin-bottom: 5px;
+}
+
 .forecasting-page .min-height {
     min-height: 350px;
 }
@@ -281,6 +367,15 @@ Forecasting
     color: #696CFF;
     font-size: 15px;
     font-weight: 700;
+}
+
+.forecasting-page .table tr.is-active td {
+    background-color: #696CFF;
+    color: white;
+}
+
+.forecasting-page .table tr.is-active td .sub-header, .forecasting-page .table tr.is-active td .value {
+    color: white;
 }
 
 /*
