@@ -261,6 +261,12 @@ Trade History
     color: white;
 }
 
+.trade-history .chart-container {
+    margin: 0 auto;
+    height: 500px;
+    width: 100%;
+}
+
 .trade-history-entry.is-active .sub-header, .trade-history-entry.is-active .value {
     color: white;
 }

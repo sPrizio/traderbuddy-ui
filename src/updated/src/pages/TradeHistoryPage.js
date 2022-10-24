@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import TradeHistoryEntry from "../components/account/tradehistory/TradeHistoryEntry";
 import TradeList from "../components/account/tradehistory/TradeList";
 import {AiOutlineArrowLeft} from "react-icons/ai";
+import TradingViewWidget from 'react-tradingview-widget';
 
 export default class TradeHistoryPage extends Component {
 
@@ -77,12 +78,13 @@ export default class TradeHistoryPage extends Component {
                 </p>
             </div>
         if (this.state.tradeWindowActive) {
-            tradeWindow = <TradeList />
+            tradeWindow = <TradeList/>
         }
 
         return (
             <div className="trade-history">
-                <div className={"columns is-multiline is-mobile" + (!this.state.tradeWindowActive ? ' is-vcentered ' : '')}>
+                <div
+                    className={"columns is-multiline is-mobile" + (!this.state.tradeWindowActive ? ' is-vcentered ' : '')}>
                     <div className="column is-6">
                         <div className="card">
                             <div className="card-content">
@@ -172,6 +174,46 @@ export default class TradeHistoryPage extends Component {
                     </div>
                     <div className="column is-6">
                         {tradeWindow}
+                    </div>
+                    <div className="column is-12">
+                        <div className="card">
+                            <div className="card-content">
+                                <p>Hello World</p>
+                                <div className="chart-container">
+                                    <TradingViewWidget
+                                        symbol="NASDAQ:NDAQ"
+                                        theme={'Light'}
+                                        locale={"en"}
+                                        autosize={true}
+                                        allow_symbol_change={false}
+                                        interval={5}
+                                        timezone={'America/Toronto'}
+                                        withdateranges={true}
+                                        range={'1d'}
+                                        hide_top_toolbar={true}
+                                        show_popup_button={false}
+                                        hide_side_toolbar={true}
+                                        hide_legend={false}
+                                        hideideas={true}
+                                        enable_publishing={false}
+                                        studies={[
+                                            {
+                                                id: "MAExp@tv-basicstudies",
+                                                inputs: {
+                                                    length: 25
+                                                },
+                                                style: {
+
+                                                }
+                                            }
+                                        ]}
+                                        studies_overrides={[
+
+                                        ]}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

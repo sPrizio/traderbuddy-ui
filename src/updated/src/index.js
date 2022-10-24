@@ -9,9 +9,9 @@ import GenericPage from "./pages/GenericPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <GenericPage />
-  </React.StrictMode>
+    <React.StrictMode>
+        <GenericPage/>
+    </React.StrictMode>
 );
 
 // If you want to start measuring account in your app, pass a function

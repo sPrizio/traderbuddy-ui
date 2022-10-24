@@ -15,14 +15,10 @@ U
 %src/components/FileImportComponent.js,b\1\b1397f578bb31d0986a5735ddbb95243f2deb3d4
 i
 9src/components/layout/retrospective/RetrospectiveModal.js,d\e\de53ba260f7ae573950993248b5d3030b7f5c631
-N
-src/pages/RetrospectivePage.js,c\c\cc61efb804bc7b025c41df435236c790a81630f5
 O
 src/pages/TradingSummaryPage.js,0\7\074bfa67984cffc8739b3eac74a6d3aa221eccd6
 L
 src/pages/TradingPlanPage.js,9\9\998c71dff8ccc062371d0ca753eefd11f8f81b16
-T
-$src/services/ConfigurationService.js,6\7\67c294a06210220f636becf590749633eec0083f
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
@@ -100,10 +96,16 @@ o
 ?src/updated/src/components/account/tradehistory/TradeHistory.js,4\4\44acc28286ea3264dc30441921fba2a8193c21f7
 t
 Dsrc/updated/src/components/account/tradehistory/TradeHistoryEntry.js,9\8\980854e2a12d2a8318cc628d1c69c817c729eab9
-Y
-)src/updated/src/pages/TradeHistoryPage.js,7\f\7fb424a30f34db272d9ce2279be9ddd7b0372c09
 l
 <src/updated/src/components/account/tradehistory/TradeList.js,c\9\c941456d404acd69eca2882085f59620073a5f93
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+X
+(src/updated/src/pages/ForecastingPage.js,f\e\fe311a36dd7bbcff73d3a5cc34627f363a75a85a
+d
+4src/updated/src/pages/authentication/RegisterPage.js,4\1\41695a34b04ff0638b9ed67bbc241632264b7c00
+[
++src/updated/src/pages/RetrospectivesPage.js,1\d\1d8292cd29d8fa819f049039a4abc0739a83ebc8
+T
+$src/services/ConfigurationService.js,6\7\67c294a06210220f636becf590749633eec0083f
