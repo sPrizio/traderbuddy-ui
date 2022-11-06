@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {FiSettings} from "react-icons/fi";
 import {FaUserCircle} from "react-icons/fa";
+import FileImportComponent from "../account/FileImportComponent";
 
 export default class NavBar extends Component {
 
@@ -59,6 +60,9 @@ export default class NavBar extends Component {
                         </div>
 
                         <div className="navbar-end">
+                            <div className="navbar-item">
+                                <FileImportComponent />
+                            </div>
                             <div className="navbar-item">
                                 <span className="icon is-size-4">
                                     <FiSettings />

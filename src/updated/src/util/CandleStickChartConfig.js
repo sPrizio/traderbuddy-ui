@@ -1,18 +1,17 @@
 import moment from "moment/moment";
 import {formatNumberForDisplay} from "../service/FormattingService";
-
-const tbFontFamily = '"Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif'
+import {CoreConstants} from "../constants/coreConstants";
 
 const chartAxisStyle = {
-    colors: ['rgb(161, 172, 184)'],
-    fontFamily: tbFontFamily,
-    fontSize: '12.75px',
+    colors: [CoreConstants.CssConstants.FontAccentColor],
+    fontFamily: CoreConstants.CssConstants.PrimaryFont,
+    fontSize: CoreConstants.CssConstants.SubHeaderFontSize,
 }
 
 const chartTitleStyle = {
-    color: 'rgb(86, 106, 127)',
-    fontFamily: tbFontFamily,
-    fontSize: '16px',
+    color: CoreConstants.CssConstants.HeaderFontColor,
+    fontFamily: CoreConstants.CssConstants.PrimaryFont,
+    fontSize: CoreConstants.CssConstants.HeaderFontSize,
     fontWeight: '500'
 }
 
@@ -29,14 +28,14 @@ const options = {
     plotOptions: {
         candlestick: {
             colors: {
-                upward: 'rgb(113, 221, 55)',
-                downward: 'rgb(255, 62, 29)'
+                upward: CoreConstants.CssConstants.GreenCandleColor,
+                downward: CoreConstants.CssConstants.RedCandleColor
             }
         }
     },
     stroke: {
         width: [1, 5],
-        colors: ['rgb(100, 100, 250)', '#ff80ab'],
+        colors: [CoreConstants.CssConstants.PrimaryColor, CoreConstants.CssConstants.TrendLineColor],
         curve: 'smooth'
     },
     title: {

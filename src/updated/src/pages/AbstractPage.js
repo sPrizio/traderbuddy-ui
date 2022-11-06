@@ -12,7 +12,7 @@ export default class AbstractPage extends Component {
         super(props);
 
         this.state = {
-            currentPage: 'history'
+            currentPage: 'home'
         }
 
         this.handlePageChange = this.handlePageChange.bind(this)

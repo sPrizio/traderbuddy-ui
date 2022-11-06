@@ -5,8 +5,42 @@ import PerformanceStatistics from "../components/account/performance/Performance
 import PerformanceSummary from "../components/account/performance/PerformanceSummary";
 import TradeHistory from "../components/account/tradehistory/TradeHistory";
 import Retrospective from "../components/retrospective/Retrospective";
+import {CoreConstants} from "../constants/coreConstants";
 
 export default class HomePage extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: false,
+            recentRetro: {},
+        }
+    }
+
+
+    //  GENERAL FUNCTIONS
+
+    async getRecentRetrospective() {
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(
+                CoreConstants.ApiUrls.RecentRetrospective
+                    .replace('{interval}', 'WEEKLY')
+            )
+
+            const data = await response.json()
+            this.setState({
+                recentRetro: data.data,
+            })
+        } catch (e) {
+            console.log(e)
+        }
+
+        this.setState({
+            isLoading: false,
+        })
+    }
 
 
     //  RENDER FUNCTION
@@ -38,7 +72,12 @@ export default class HomePage extends Component {
                     <div className="column is-10-desktop is-offset-1-desktop is-12-tablet is-12-mobile">
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-7-desktop is-12-tablet is-12-mobile">
-                                <Retrospective showTotals={false} />
+                                <Retrospective
+                                    interval={'WEEKLY'}
+                                    showTotals={false}
+                                    isLoading={this.state.isLoading}
+                                    retro={this.state.recentRetro}
+                                />
                             </div>
                             <div className="column is-5-desktop is-12-tablet is-12-mobile">
                                 <TradeHistory count={6} />
@@ -48,5 +87,12 @@ export default class HomePage extends Component {
                 </div>
             </div>
         );
+    }
+
+
+    //  LIFECYCLE FUNCTIONS
+
+    async componentDidMount() {
+        await this.getRecentRetrospective();
     }
 }

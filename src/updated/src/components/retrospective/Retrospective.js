@@ -2,13 +2,45 @@ import React, {Component} from "react";
 import {AiFillRightCircle} from "react-icons/ai";
 import {RiAlarmWarningLine} from "react-icons/ri";
 import {formatNumberForDisplay} from "../../service/FormattingService";
+import RetrospectiveLoader from "../loader/retrospective/RetrospectiveLoader";
+import moment from "moment";
 
 export default class Retrospective extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+
+    //  GENERAL FUNCTIONS
+
+    getDate() {
+        if (this.props.retro && this.props.retro.startDate && this.props.retro.endDate) {
+
+            if (this.props.interval === 'WEEKLY') {
+                return moment(this.props.retro.startDate).format('MMMM Do') + ' - ' + moment(this.props.retro.endDate).format('Do')
+            } else if (this.props.interval === 'DAILY') {
+                return moment(this.props.retro.startDate).format('MMMM Do')
+            } else if (this.props.interval === 'YEARLY') {
+                return moment(this.props.retro.startDate).format('YYYY')
+            } else {
+                return moment(this.props.retro.startDate).format('MMMM YYYY')
+            }
+        }
+
+
+        return ''
+    }
 
 
     //  RENDER FUNCTION
 
     render() {
+        let loader = null
+        if (this.props.isLoading) {
+            loader = <RetrospectiveLoader count={this.props.count} isLoading={this.props.isLoading} />
+        }
+
         let totals = null
         if (this.props.showTotals) {
             totals =
@@ -49,74 +81,57 @@ export default class Retrospective extends Component {
                 </div>
         }
 
+        const displayKeyPoints = []
+        if (this.props.retro && this.props.retro.points) {
+            this.props.retro.points.filter(p => p.keyPoint).forEach((item, key) => {
+                displayKeyPoints.push(
+                    <p key={key}>
+                        <span className="icon-text">
+                            <span className="icon">
+                                <RiAlarmWarningLine/>
+                            </span>
+                        </span>
+                        {item.entryText}
+                    </p>
+                )
+            })
+        }
+
+        const displayPoints = []
+        if (this.props.retro && this.props.retro.points) {
+            this.props.retro.points.filter(p => !p.keyPoint).forEach((item, key) => {
+                displayPoints.push(
+                    <div className="block" key={key}>
+                        <span className="icon-text">
+                            <span className="icon">
+                                <AiFillRightCircle/>
+                            </span>
+                        </span>
+                        {item.entryText}
+                    </div>
+                )
+            })
+        }
+
         return (
             <div className="retrospective">
                 <div className="card">
                     <div className="card-content">
-                        <h5 className="header">Retrospective</h5>
-                        <h6 className="sub-header">October 10th - 16th</h6>
-                        <div className="container">
-                            <div className="block">
-                                <div className="message is-primary">
-                                    <div className="message-body">
-                                        <p>
-                                            <span className="icon-text">
-                                                <span className="icon">
-                                                    <RiAlarmWarningLine/>
-                                                </span>
-                                            </span>
-                                            Go live was a good start. I need to focus on strategy, rules and small
-                                            position sizes.
-                                        </p>
-                                        <p>
-                                            <span className="icon-text">
-                                                <span className="icon">
-                                                    <RiAlarmWarningLine/>
-                                                </span>
-                                            </span>
-                                            Avoid max position size scalping
-                                        </p>
+                        {loader}
+                        <div className={"" + (this.props.isLoading ? ' no-show ' : '')}>
+                            <h5 className="header">Retrospective</h5>
+                            <h6 className="sub-header">{this.getDate()}</h6>
+                            <div className="container">
+                                <div className="block">
+                                    <div className="message is-primary">
+                                        <div className="message-body">
+                                            {displayKeyPoints}
+                                        </div>
                                     </div>
                                 </div>
+                                {displayPoints}
+                                {totals}
                             </div>
-                            <div className="block">
-                                <span className="icon-text">
-                                    <span className="icon">
-                                        <AiFillRightCircle/>
-                                    </span>
-                                </span>
-                                This was go live week! Had some good trading days, was a little nervous but overall I
-                                performed very well. Small position sizes was a great call
-                            </div>
-                            <div className="block">
-                                <span className="icon-text">
-                                    <span className="icon">
-                                        <AiFillRightCircle/>
-                                    </span>
-                                </span>
-                                I need to focus on following my regular strategy and not leaning too heavily on things
-                                I'm not used to like RSI. I should use it to support my ideas and not rely on it
-                            </div>
-                            <div className="block">
-                                <span className="icon-text">
-                                    <span className="icon">
-                                        <AiFillRightCircle/>
-                                    </span>
-                                </span>
-                                Friday was a dangerous trading day since I was scalping at max position size. While it
-                                was easier to make money, it could have easily backfired on me. I should focus on fewer
-                                trades, smaller position sizes and better entries
-                            </div>
-                            <div className="block">
-                                <span className="icon-text">
-                                    <span className="icon">
-                                        <AiFillRightCircle/>
-                                    </span>
-                                </span>
-                                Got a little greedy now that I'm using real money. I should avoid trading once my target
-                                is hit because I can very easily give those profits back
-                            </div>
-                            {totals}
                         </div>
                     </div>
                 </div>
