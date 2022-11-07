@@ -7,10 +7,6 @@ import moment from "moment";
 
 export default class Retrospective extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
 
     //  GENERAL FUNCTIONS
 

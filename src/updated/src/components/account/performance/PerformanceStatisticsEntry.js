@@ -3,6 +3,51 @@ import {AiOutlineArrowDown, AiOutlineArrowUp} from "react-icons/ai";
 
 export default class PerformanceStatisticsEntry extends Component {
 
+    //  GENERAL FUNCTIONS
+
+    computeSentimentClass() {
+
+        if (this.props.delta === 0) {
+            return ''
+        }
+
+        if (this.props.sentiment === 'positive') {
+            if (this.props.delta > 0) {
+                return 'positive'
+            }
+
+            return 'negative'
+        } else {
+            if (this.props.delta < 0) {
+                return 'positive'
+            }
+
+            return 'negative'
+        }
+    }
+
+    computeSentimentIcon() {
+
+        if (this.props.delta === 0) {
+            return null
+        }
+
+        if (this.props.sentiment === 'positive') {
+            if (this.props.delta > 0) {
+                return <AiOutlineArrowUp />
+            }
+
+            return <AiOutlineArrowDown />
+        } else {
+            if (this.props.delta < 0) {
+                return <AiOutlineArrowDown />
+            }
+
+            return <AiOutlineArrowUp />
+        }
+    }
+
+
     //  RENDER FUNCTION
 
     render() {
@@ -11,15 +56,10 @@ export default class PerformanceStatisticsEntry extends Component {
                 <div className="columns is-multiline is-mobile is-vcentered">
                     <div className="column is-8">
                         <h5 className="row-entry-header">{this.props.label}</h5>
-                        <h6 className={"row-entry-small " + (this.props.sentiment === 'positive' ? ' positive ' : ' negative ')}>
+                        <h6 className={"row-entry-small " + (this.computeSentimentClass())}>
                             <span className="icon-text">
                                 <span className="icon">
-                                    {
-                                        this.props.sentiment === 'positive' ?
-                                            <AiOutlineArrowUp />
-                                            :
-                                            <AiOutlineArrowDown />
-                                    }
+                                    {this.computeSentimentIcon()}
                                 </span>
                                 <span>{this.props.delta}%</span>
                             </span>
