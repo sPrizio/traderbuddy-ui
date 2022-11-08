@@ -3,6 +3,7 @@ import {getDomain} from "../service/ConfigurationService";
 export const CoreConstants = {
     ApiUrls: {
         AccountOverview: getDomain() + '/account/overview',
+        EquityCurve: getDomain() + '/account/equity-curve?start={start}&end={end}&interval={interval}',
         RecentRetrospective: getDomain() + '/retrospectives/most-recent?interval={interval}',
         TradeHistory: getDomain() + '/trade-record/log?count={count}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',
         UploadTrades: getDomain() + '/trade/import-trades?delimiter={delimiter}&tradePlatform={tradePlatform}'
