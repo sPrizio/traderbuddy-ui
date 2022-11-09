@@ -13,12 +13,91 @@ export default class TradeHistoryPage extends Component {
             start: moment().startOf('month').format('YYYY-MM-DD'),
             end: moment().add(1, 'months').startOf('month').format('YYYY-MM-DD'),
             interval: 'DAILY',
-            trades: []
+            trades: [],
+            activeYears: [],
+            activeMonths: [],
+            currentMonth: moment().format('MMMM'),
+            currentYear: moment().format('YYYY')
         };
+
+        this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.handleEntrySelect = this.handleEntrySelect.bind(this)
+        this.handleMonthChange = this.handleMonthChange.bind(this)
+    }
+
+
+    //  HANDLER FUNCTIONS
+
+    handleButtonClick(value) {
+        let val, st, en;
+        if (value === 'DAILY') {
+            val = 'MONTHLY'
+            st = moment().startOf('year').format('YYYY-MM-DD')
+            en = moment().startOf('year').add(2, 'years').format('YYYY-MM-DD')
+        } else if (value === 'MONTHLY') {
+            val = 'YEARLY'
+            st = moment().startOf('year').subtract(100, 'years').format('YYYY-MM-DD')
+            en = moment().startOf('year').add(2, 'years').format('YYYY-MM-DD')
+        } else {
+            val = 'DAILY'
+            st = moment().startOf('month').format('YYYY-MM-DD')
+            en = moment().startOf('month').add(1, 'month').format('YYYY-MM-DD')
+        }
+
+        this.setState({
+            interval: val,
+            start: st,
+            end: en
+        }, () => this.getTradeLog())
+    }
+
+    handleEntrySelect(value, start, end) {
+        let val;
+        if (value === 'MONTHLY') {
+            val = 'DAILY'
+        } else {
+            val = 'MONTHLY'
+        }
+
+        this.setState({
+            interval: val,
+            start: start,
+            end: end
+        }, () => this.getTradeLog())
+    }
+
+    handleMonthChange(e) {
+        const d = moment().month(e.target.value).startOf('month')
+        this.setState({
+            currentMonth: e.target.value,
+            start: d.format('YYYY-MM-DD'),
+            end: d.add(1, 'months').format('YYYY-MM-DD')
+        }, () => this.getTradeLog())
     }
 
 
     //  GENERAL FUNCTIONS
+
+    async getActiveMonths() {
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(
+                CoreConstants.ApiUrls.ActiveMonths
+                    .replace('{year}', this.state.currentYear)
+            )
+
+            const data = await response.json()
+            this.setState({
+                activeMonths: data.data
+            })
+        } catch (e) {
+            console.log(e)
+        }
+
+        this.setState({
+            isLoading: false,
+        })
+    }
 
     async getTradeLog() {
         try {
@@ -48,37 +127,56 @@ export default class TradeHistoryPage extends Component {
     //  RENDER FUNCTION
 
     render() {
+        let button
+        if (this.state.interval === 'DAILY') {
+            button =
+                <button className="button" onClick={() => this.handleButtonClick('DAILY')}>
+                    <span className="icon">
+                        <AiOutlineArrowLeft/>
+                    </span>
+                    <span>{this.state.currentYear}</span>
+                </button>
+        } else if (this.state.interval === 'MONTHLY') {
+            button =
+                <button className="button" onClick={() => this.handleButtonClick('MONTHLY')}>
+                    <span className="icon">
+                        <AiOutlineArrowLeft/>
+                    </span>
+                    <span>All-Time</span>
+                </button>
+        } else {
+            button = null
+        }
+
+        let select = null
+        if (this.state.interval === 'DAILY') {
+            select =
+                <div className="select">
+                    <select value={this.state.currentMonth} onChange={this.handleMonthChange}>
+                        {
+                            this.state.activeMonths.map((item, key) => {
+                                return (
+                                    <option key={key} disabled={!item.active}>
+                                        {item.month}
+                                    </option>
+                                )
+                            })
+                        }
+                    </select>
+                </div>
+        }
+
         return (
             <div className="trade-history">
                 <div className="level">
                     <div className="level-left">
                         <div className="level-item">
-                            <button className="button">
-                                        <span className="icon">
-                                            <AiOutlineArrowLeft/>
-                                        </span>
-                                <span>2022</span>
-                            </button>
+                            {button}
                         </div>
                     </div>
                     <div className="level-right">
                         <div className="level-item">
-                            <div className="select">
-                                <select>
-                                    <option disabled={true}>January</option>
-                                    <option disabled={true}>February</option>
-                                    <option disabled={true}>March</option>
-                                    <option disabled={true}>April</option>
-                                    <option disabled={true}>May</option>
-                                    <option disabled={true}>June</option>
-                                    <option disabled={true}>July</option>
-                                    <option>August</option>
-                                    <option>September</option>
-                                    <option>October</option>
-                                    <option selected={true}>November</option>
-                                    <option disabled={true}>December</option>
-                                </select>
-                            </div>
+                            {select}
                         </div>
                     </div>
                 </div>
@@ -87,7 +185,7 @@ export default class TradeHistoryPage extends Component {
                         this.state.trades.map((item, key) => {
                             return (
                                 <div className="column is-12" key={key}>
-                                    <TradeLogEntry tradeRecord={item} index={key} />
+                                    <TradeLogEntry tradeRecord={item} index={key} selectEntryHandler={this.handleEntrySelect} />
                                 </div>
                             )
                         })
@@ -101,6 +199,7 @@ export default class TradeHistoryPage extends Component {
     //  LIFECYCLE FUNCTIONS
 
     async componentDidMount() {
+        await this.getActiveMonths()
         await this.getTradeLog()
     }
 }

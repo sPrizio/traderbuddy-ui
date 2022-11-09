@@ -7,6 +7,7 @@ import TradeLogTradeList from "../list/TradeLogTradeList";
 import TradeLogEntryCandleChart from "../chart/TradeLogEntryCandleChart";
 import {options} from "../../../../util/CandleStickChartConfig";
 import moment from "moment";
+import {SlMagnifier} from "react-icons/sl";
 
 export default class TradeLogEntry extends Component {
 
@@ -313,24 +314,30 @@ export default class TradeLogEntry extends Component {
 
     //  GENERAL FUNCTIONS
 
-    computeDate() {
+    computeHeader() {
         const interval = this.props.tradeRecord.aggregateInterval
         if (interval === 'DAILY') {
             return moment(this.props.tradeRecord.startDate).format('MMMM Do')
         } else if (interval === 'WEEKLY') {
             return moment(this.props.tradeRecord.startDate).format('MMMM Do') + ' - ' + moment(this.props.tradeRecord.endDate).format('Do')
         } else if (interval === 'MONTHLY') {
-            return moment(this.props.tradeRecord.startDate).format('MMMM YYYY')
+            return moment(this.props.tradeRecord.startDate).format('MMMM')
         }
 
         return moment(this.props.tradeRecord.startDate).format('YYYY')
     }
 
-    computeDayOfWeek() {
+    computeSubHeader() {
         if (this.props.tradeRecord.aggregateInterval === 'DAILY') {
             return (
                 <h6 className="sub-header">
                     {moment(this.props.tradeRecord.startDate).format('dddd')}
+                </h6>
+            )
+        } else if (this.props.tradeRecord.aggregateInterval === 'MONTHLY') {
+            return (
+                <h6 className="sub-header">
+                    {moment(this.props.tradeRecord.startDate).format('YYYY')}
                 </h6>
             )
         }
@@ -357,23 +364,43 @@ export default class TradeLogEntry extends Component {
     //  RENDER FUNCTION
 
     render() {
+        let expandButton = null
+        if (this.props.tradeRecord.aggregateInterval === 'DAILY') {
+            expandButton =
+                <span className="expand" onClick={this.toggleTradeView}>
+                    {
+                        this.state.isActive ?
+                            <FaChevronUp /> :
+                            <FaChevronDown />
+                    }
+                </span>
+        }
+
+        let exploreButton = null
+        if (this.props.tradeRecord.aggregateInterval !== 'DAILY') {
+            exploreButton =
+                <span className="expand" onClick={() => {
+                    const record = this.props.tradeRecord
+                    const st = record.startDate
+                    const en = moment(record.endDate).add(1, 'days').format('YYYY-MM-DD')
+                    this.props.selectEntryHandler(record.aggregateInterval, st, en)
+                }}>
+                    <SlMagnifier />
+                </span>
+        }
+
         return (
             <div className="trade-log">
                 <div className="card">
                     <div className="card-content">
                         <div className="columns is-multiline is-mobile is-gapless is-vcentered">
                             <div className="column is-11">
-                                <h5 className="header">{this.computeDate()}</h5>
-                                {this.computeDayOfWeek()}
+                                <h5 className="header">{this.computeHeader()}</h5>
+                                {this.computeSubHeader()}
                             </div>
                             <div className="column is-1 has-text-centered">
-                                <span className="expand" onClick={this.toggleTradeView}>
-                                    {
-                                        this.state.isActive ?
-                                            <FaChevronUp /> :
-                                            <FaChevronDown />
-                                    }
-                                </span>
+                                {expandButton}
+                                {exploreButton}
                             </div>
                         </div>
                         <hr />
@@ -426,16 +453,16 @@ export default class TradeLogEntry extends Component {
                                                 {formatNumberForDisplay(this.props.tradeRecord.statistics.netProfit)}
                                             </h5>
                                             <h6 className="row-entry-small">
+                                                <span className="icon-text negative">
+                                                    <span>{formatNumberForDisplay(Math.abs(this.props.tradeRecord.statistics.grossLossAmount))}</span>
+                                                    <span className="icon">
+                                                        <AiOutlineArrowDown />
+                                                    </span>
+                                                </span>
                                                 <span className="icon-text positive">
                                                     <span>{formatNumberForDisplay(this.props.tradeRecord.statistics.grossWinAmount)}</span>
                                                     <span className="icon">
                                                         <AiOutlineArrowUp />
-                                                    </span>
-                                                </span>
-                                                <span className="icon-text negative">
-                                                    <span>{formatNumberForDisplay(this.props.tradeRecord.statistics.grossLossAmount)}</span>
-                                                    <span className="icon">
-                                                        <AiOutlineArrowDown />
                                                     </span>
                                                 </span>
                                             </h6>
