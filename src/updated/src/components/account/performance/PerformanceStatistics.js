@@ -50,7 +50,7 @@ export default class PerformanceStatistics extends Component {
         try {
             this.setState({isLoading: true})
             const response = await fetch(
-                CoreConstants.ApiUrls.TradeHistory
+                CoreConstants.ApiUrls.RecentTradeHistory
                     .replace('{count}', '1')
                     .replace('{aggregateInterval}', 'MONTHLY')
                     .replace('{sortOrder}', 'DESC')

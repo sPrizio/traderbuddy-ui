@@ -71,6 +71,10 @@ body {
     white-space: nowrap;
 }
 
+option[disabled] {
+    color: rgba(161, 172, 184, 0.35);
+}
+
 /*
 LOADER
  */
@@ -276,12 +280,6 @@ Trade History
     color: white;
 }
 
-.trade-history .chart-container {
-    margin: 0 auto;
-    height: 500px;
-    width: 100%;
-}
-
 .trade-history-entry.is-active .sub-header, .trade-history-entry.is-active .value {
     color: white;
 }
@@ -398,6 +396,62 @@ Forecasting
 .forecasting-page .table tr.is-active td .sub-header, .forecasting-page .table tr.is-active td .value {
     color: white;
 }
+
+/*
+Trade Log
+ */
+.trade-log .expand:hover {
+    cursor: pointer;
+}
+
+.trade-log .row-entry-small {
+    color: rgb(161, 172, 184);
+    font-size: 12.75px;
+    font-weight: 400;
+}
+
+.trade-log .value {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.trade-log .ordered-columns .column {
+}
+
+.trade-log .ordered-columns .column:not(:first-child):not(:last-child) {
+    /*border-right: 2px solid rgba(105, 108, 255, 0.35);*/
+    border-right: 2px solid rgba(105, 108, 255, 0.0);
+}
+
+.trade-log .ordered-columns .column .table tr:not(:last-child) td,
+.trade-log .ordered-columns .column .table tr:not(:last-child) th {
+    border-bottom: 2px solid rgba(105, 108, 255, 0.35);
+}
+
+.trade-log .positive {
+    color: rgb(113, 221, 55)
+}
+
+.trade-log .negative {
+    color: rgb(255, 62, 29)
+}
+
+.trade-log .chart-container {
+    margin: 0 auto;
+    height: 500px;
+    width: 100%;
+}
+
+.trade-list .table .hide-lines td {
+    border: none !important;
+}
+
+.trade-list .table tr.selected td {
+    background-color: #696cff;
+    color: white;
+}
+
 
 /*
 Footer

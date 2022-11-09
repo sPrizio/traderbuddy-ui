@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {FiSettings} from "react-icons/fi";
 import {FaUserCircle} from "react-icons/fa";
-import FileImportComponent from "../account/FileImportComponent";
+import FileImportComponent from "../data/FileImportComponent";
 
 export default class NavBar extends Component {
 

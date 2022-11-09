@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import AccountOverview from "../components/account/AccountOverview";
-import ProfitCurve from "../components/account/ProfitCurve";
+import ProfitCurve from "../components/account/performance/ProfitCurve";
 import PerformanceStatistics from "../components/account/performance/PerformanceStatistics";
 import PerformanceSummary from "../components/account/performance/PerformanceSummary";
-import TradeHistory from "../components/account/tradehistory/TradeHistory";
+import TradeHistory from "../components/trade/history/TradeHistory";
 import Retrospective from "../components/retrospective/Retrospective";
 import {CoreConstants} from "../constants/coreConstants";
 
