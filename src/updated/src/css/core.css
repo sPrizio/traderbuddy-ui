@@ -429,6 +429,11 @@ Trade Log
     border-bottom: 2px solid rgba(105, 108, 255, 0.35);
 }
 
+.trade-log .trade-list .table thead tr td,
+.trade-log .trade-list .table thead tr th {
+    border-bottom: 2px solid rgba(105, 108, 255, 0.35);
+}
+
 .trade-log .positive {
     color: rgb(113, 221, 55)
 }

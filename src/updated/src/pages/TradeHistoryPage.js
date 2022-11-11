@@ -3,6 +3,7 @@ import {AiOutlineArrowLeft} from "react-icons/ai";
 import TradeLogEntry from "../components/trade/log/entry/TradeLogEntry";
 import {CoreConstants} from "../constants/coreConstants";
 import moment from "moment";
+import {displayString} from "../service/FormattingService";
 
 export default class TradeHistoryPage extends Component {
 
@@ -16,7 +17,7 @@ export default class TradeHistoryPage extends Component {
             trades: [],
             activeYears: [],
             activeMonths: [],
-            currentMonth: moment().format('MMMM'),
+            currentMonth: moment().format('MMMM').toUpperCase(),
             currentYear: moment().format('YYYY')
         };
 
@@ -156,8 +157,8 @@ export default class TradeHistoryPage extends Component {
                         {
                             this.state.activeMonths.map((item, key) => {
                                 return (
-                                    <option key={key} disabled={!item.active}>
-                                        {item.month}
+                                    <option key={key} disabled={!item.active} value={item.month}>
+                                        {displayString(item.month)}
                                     </option>
                                 )
                             })
@@ -185,7 +186,12 @@ export default class TradeHistoryPage extends Component {
                         this.state.trades.map((item, key) => {
                             return (
                                 <div className="column is-12" key={key}>
-                                    <TradeLogEntry tradeRecord={item} index={key} selectEntryHandler={this.handleEntrySelect} />
+                                    <TradeLogEntry
+                                        tradeRecord={item}
+                                        index={key}
+                                        selectEntryHandler={this.handleEntrySelect}
+                                        listId={key}
+                                    />
                                 </div>
                             )
                         })

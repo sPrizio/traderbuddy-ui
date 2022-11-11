@@ -7,6 +7,8 @@ export const CoreConstants = {
         EquityCurve: getDomain() + '/account/equity-curve?start={start}&end={end}&interval={interval}',
         RecentRetrospective: getDomain() + '/retrospectives/most-recent?interval={interval}',
         RecentTradeHistory: getDomain() + '/trade-record/log?count={count}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',
+        TradeList: getDomain() + '/trade/for-interval?start={start}&end={end}&includeNonRelevant={includeNonRelevant}',
+        TradeListPaged: getDomain() + '/trade/for-interval-paged?start={start}&end={end}&includeNonRelevant={includeNonRelevant}&page={page}&pageSize={pageSize}',
         TradeHistory: getDomain() + '/trade-record/history?start={start}&end={end}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',
         UploadTrades: getDomain() + '/trade/import-trades?delimiter={delimiter}&tradePlatform={tradePlatform}'
     },

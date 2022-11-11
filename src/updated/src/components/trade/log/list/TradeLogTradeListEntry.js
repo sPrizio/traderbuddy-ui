@@ -1,26 +1,42 @@
 import React, {Component} from "react";
-import {formatNumberForDisplay} from "../../../../service/FormattingService";
+import {displayString, formatNumberForDisplay} from "../../../../service/FormattingService";
 import {AiFillDelete} from "react-icons/ai";
+import moment from "moment";
 
 export default class TradeLogTradeListEntry extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            active: false
+        }
+    }
+
+
+    //  GENERAL FUNCTIONS
+
+    sanitizeText(val) {
+        return val.replace('- Cash', '').trim()
+    }
 
 
     //  RENDER FUNCTION
 
     render() {
         return (
-            <tr className={"hide-lines" + (this.props.active ? ' selected ' : '')}>
+            <tr className={"hide-lines" + (this.state.active ? ' selected ' : '')} onClick={() => this.props.selectTradeHandler(this.props.listId)}>
                 <td className="has-text-centered is-vcentered">
-                    {this.props.openTime}
+                    {moment(this.props.openTime).format('HH:mm')}
                 </td>
                 <td className="has-text-centered is-vcentered">
-                    {this.props.closeTime}
+                    {moment(this.props.closeTime).format('HH:mm')}
                 </td>
                 <td className="has-text-centered is-vcentered">
-                    {this.props.tradeType}
+                    {displayString(this.props.tradeType)}
                 </td>
                 <td className="has-text-centered is-vcentered">
-                    {this.props.symbol}
+                    {this.sanitizeText(this.props.symbol)}
                 </td>
                 <td className="has-text-centered is-vcentered">
                     {formatNumberForDisplay(this.props.size)}&nbsp;pts
@@ -35,5 +51,15 @@ export default class TradeLogTradeListEntry extends Component {
                 </td>*/}
             </tr>
         );
+    }
+
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if (prevProps.selectedTrade !== this.props.selectedTrade && this.props.listId === this.props.selectedTrade) {
+            this.setState({active: true})
+        } else if (prevProps.selectedTrade !== this.props.selectedTrade && this.props.listId !== this.props.selectedTrade) {
+            this.setState({active: false})
+        }
     }
 }

@@ -151,8 +151,6 @@ U
 %src/components/FileImportComponent.js,b\1\b1397f578bb31d0986a5735ddbb95243f2deb3d4
 o
 ?src/updated/src/components/account/tradehistory/TradeHistory.js,4\4\44acc28286ea3264dc30441921fba2a8193c21f7
-L
-src/updated/src/css/core.css,e\d\ede3f44c6377875726221a9102ef2bb7d0a9a196
 H
 src/updated/package.json,5\b\5bede194612c7b9f8d0bd126b675f27828a72b15
 M
@@ -179,9 +177,3 @@ v
 Fsrc/updated/src/components/trade/log/chart/TradeLogEntryCandleChart.js,0\7\07e37cddd19caf2ae4caede5763f214abad37aae
 v
 Fsrc/updated/src/components/trade/log/entry/TradeLogEntryEquityCurve.js,a\4\a419b58f569fe2419e374445ae248950a9cb7885
-n
->src/updated/src/components/trade/log/list/TradeLogTradeList.js,2\9\29ed89711ef6249dc5808e2b039b1c3957f18210
-s
-Csrc/updated/src/components/trade/log/list/TradeLogTradeListEntry.js,1\b\1b2bf4554698a146110c42a046ca75facb365985
-x
-Hsrc/updated/src/components/trade/log/list/TradeLogTradeListPagination.js,3\d\3dcbb95fa00071cb1787ab1e7d043e5ce225e8fe

@@ -8,6 +8,7 @@ import TradeLogEntryCandleChart from "../chart/TradeLogEntryCandleChart";
 import {options} from "../../../../util/CandleStickChartConfig";
 import moment from "moment";
 import {SlMagnifier} from "react-icons/sl";
+import {CoreConstants} from "../../../../constants/coreConstants";
 
 export default class TradeLogEntry extends Component {
 
@@ -16,11 +17,15 @@ export default class TradeLogEntry extends Component {
 
         this.state = {
             isLoading: false,
-            curveData: [],
-            isActive: false,
+            isActive: /*this.props.listId === 0*/ false,
+            isTradeSelected: false,
+            trades: [],
+            currentPage: 0,
+            pageSize: 10,
+            selectedTrade: -1,
 
             //  format: [[Timestamp], [Open, High, Low, Close]]
-            series: [
+            chartData: [
                 {
                     name: 'Price',
                     type: 'candlestick',
@@ -301,14 +306,24 @@ export default class TradeLogEntry extends Component {
             options: options,
         }
 
+        this.changePage = this.changePage.bind(this)
+        this.selectTrade = this.selectTrade.bind(this)
         this.toggleTradeView = this.toggleTradeView.bind(this)
     }
 
 
     //  HANDLERS
 
+    changePage(val) {
+        this.setState({currentPage: val, selectedTrade: -1}, () => this.getTrades())
+    }
+
+    selectTrade(val) {
+        this.setState({selectedTrade: val})
+    }
+
     toggleTradeView() {
-        this.setState({isActive: !this.state.isActive})
+        this.setState({isActive: !this.state.isActive}, () => this.getTrades())
     }
 
 
@@ -360,6 +375,32 @@ export default class TradeLogEntry extends Component {
         )
     }
 
+    async getTrades() {
+
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(
+                CoreConstants.ApiUrls.TradeListPaged
+                    .replace('{start}', moment(this.props.tradeRecord.startDate).format('YYYY-MM-DDTHH:mm:ss'))
+                    .replace('{end}', moment(this.props.tradeRecord.endDate).format('YYYY-MM-DDTHH:mm:ss'))
+                    .replace('{includeNonRelevant}', 'false')
+                    .replace('{page}', this.state.currentPage)
+                    .replace('{pageSize}', this.state.pageSize)
+            )
+
+            const data = await response.json()
+            this.setState({
+                trades: data.data
+            })
+        } catch (e) {
+            console.log(e)
+        }
+
+        this.setState({
+            isLoading: false,
+        })
+    }
+
 
     //  RENDER FUNCTION
 
@@ -387,6 +428,19 @@ export default class TradeLogEntry extends Component {
                 }}>
                     <SlMagnifier />
                 </span>
+        }
+
+        let chart =
+            <div className="has-text-centered">
+                <p>Select a trade to view on the chart</p>
+            </div>
+        if (this.state.isTradeSelected && (!this.state.chartData || this.state.chartData.length === 0)) {
+            chart =
+                <div className="has-text-centered">
+                    <p>Chart Data is currently unavailable. Please try again later or a few hours after market close.</p>
+                </div>
+        } else if (this.state.isTradeSelected && this.state.chartData && this.state.chartData.length !== 0) {
+            chart = <TradeLogEntryCandleChart series={this.state.chartData} options={this.state.options} />
         }
 
         return (
@@ -493,13 +547,15 @@ export default class TradeLogEntry extends Component {
                                 <hr />
                                 <div className="columns is-multiline is-mobile is-vcentered">
                                     <div className="column is-6">
-                                        <TradeLogTradeList />
+                                        <TradeLogTradeList
+                                            tradeData={this.state.trades}
+                                            pageHandler={this.changePage}
+                                            selectedTrade={this.state.selectedTrade}
+                                            selectTradeHandler={this.selectTrade}
+                                        />
                                     </div>
                                     <div className="column is-6">
-                                        {/*<div className="has-text-centered">
-                                            <p>Chart Data is currently unavailable. Please try again later or a few hours after market close.</p>
-                                        </div>*/}
-                                        <TradeLogEntryCandleChart series={this.state.series} options={this.state.options} />
+                                        {chart}
                                     </div>
                                 </div>
                             </div>
