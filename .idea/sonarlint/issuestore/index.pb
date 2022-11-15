@@ -13,8 +13,6 @@ c
 3src/components/layout/forecast/ForecastComponent.js,6\2\620df38104e642eba4e136bda94746706631b401
 i
 9src/components/layout/retrospective/RetrospectiveModal.js,d\e\de53ba260f7ae573950993248b5d3030b7f5c631
-O
-src/pages/TradingSummaryPage.js,0\7\074bfa67984cffc8739b3eac74a6d3aa221eccd6
 L
 src/pages/TradingPlanPage.js,9\9\998c71dff8ccc062371d0ca753eefd11f8f81b16
 :
@@ -67,10 +65,6 @@ R
 M
 src/updated/src/setupTests.js,3\b\3bb05dbe8d4d1ab94efc9bb6c644c942e9e154cf
 [
-+src/components/layout/grid/GridComponent.js,b\8\b8d38ce25512e3f7773676f71ef39055829cbf0c
-e
-5src/components/trades/overview/TradesListComponent.js,f\f\ffa1ef82438a7cc86ce61c7ce0ec2ff200f86a35
-[
 +src/updated/src/components/layout/Footer.js,f\c\fceb875ab8395b8171f9d40acfe2123651f7b3ba
 [
 +src/updated/src/components/layout/TopBar.js,a\3\a341e2e9df6b7fcd8fd1be8880860d9fa9b9cac8
@@ -115,8 +109,6 @@ c
 0src/components/layout/grid/GridTradeComponent.js,2\c\2c3b7c8f90664e7e119a67de857e3a19d65907e0
 H
 src/css/trader-buddy.css,b\7\b7f952709f5eb1384fe7da6ccf3be5eb099e07a2
-N
-src/pages/RetrospectivePage.js,c\c\cc61efb804bc7b025c41df435236c790a81630f5
 ^
 .src/updated/src/util/CandleStickChartConfig.js,e\d\edcbc85f6b347b0649a05c74cc84f83bc30118be
 i
@@ -169,11 +161,9 @@ t
 Dsrc/updated/src/components/account/performance/PerformanceSummary.js,7\e\7e00ef7923ac7a7843e16f66c075f6c8b4a640a1
 m
 =src/updated/src/components/account/performance/ProfitCurve.js,3\c\3cf8d08d18faa957b9b06bdf6a528a90a8152f21
-h
-8src/updated/src/components/trade/history/TradeHistory.js,9\d\9de7ac179d7097de68d30242b6a9e4b718c42c82
-m
-=src/updated/src/components/trade/history/TradeHistoryEntry.js,b\3\b31879a9833f375636a7f48b381051f92305d135
 v
 Fsrc/updated/src/components/trade/log/chart/TradeLogEntryCandleChart.js,0\7\07e37cddd19caf2ae4caede5763f214abad37aae
 v
 Fsrc/updated/src/components/trade/log/entry/TradeLogEntryEquityCurve.js,a\4\a419b58f569fe2419e374445ae248950a9cb7885
+x
+Hsrc/updated/src/components/trade/log/list/TradeLogTradeListPagination.js,3\d\3dcbb95fa00071cb1787ab1e7d043e5ce225e8fe

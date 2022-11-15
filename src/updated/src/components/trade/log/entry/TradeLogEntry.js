@@ -17,12 +17,12 @@ export default class TradeLogEntry extends Component {
 
         this.state = {
             isLoading: false,
-            isActive: /*this.props.listId === 0*/ false,
+            isActive: false,
             isTradeSelected: false,
             trades: [],
             currentPage: 0,
             pageSize: 10,
-            selectedTrade: -1,
+            selectedTrade: 'none',
 
             //  format: [[Timestamp], [Open, High, Low, Close]]
             chartData: [
@@ -307,6 +307,7 @@ export default class TradeLogEntry extends Component {
         }
 
         this.changePage = this.changePage.bind(this)
+        this.disregardTrade = this.disregardTrade.bind(this)
         this.selectTrade = this.selectTrade.bind(this)
         this.toggleTradeView = this.toggleTradeView.bind(this)
     }
@@ -315,11 +316,14 @@ export default class TradeLogEntry extends Component {
     //  HANDLERS
 
     changePage(val) {
-        this.setState({currentPage: val, selectedTrade: -1}, () => this.getTrades())
+        this.setState({currentPage: val, selectedTrade: 'none'}, () => this.getTrades())
     }
 
     selectTrade(val) {
-        this.setState({selectedTrade: val})
+        this.setState({
+            selectedTrade: val,
+            isTradeSelected: true
+        })
     }
 
     toggleTradeView() {
@@ -401,6 +405,34 @@ export default class TradeLogEntry extends Component {
         })
     }
 
+    async disregardTrade(val) {
+        try {
+            const requestOptions = {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({tradeId: val})
+            }
+
+            this.setState({isLoading: true})
+            const response = await fetch(
+                CoreConstants.ApiUrls.DisregardTrade,
+                requestOptions
+            )
+
+            const data = await response.json();
+            if (data.data && data.success) {
+                await this.getTrades()
+                this.forceUpdate(() => window.location.reload(true))
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
+        this.setState({
+            isLoading: false,
+        })
+    }
+
 
     //  RENDER FUNCTION
 
@@ -426,7 +458,14 @@ export default class TradeLogEntry extends Component {
                     const en = moment(record.endDate).add(1, 'days').format('YYYY-MM-DD')
                     this.props.selectEntryHandler(record.aggregateInterval, st, en)
                 }}>
-                    <SlMagnifier />
+                    <button className="button is-primary">
+                        <span className="icon-text">
+                            <span className="icon">
+                                <SlMagnifier />
+                            </span>
+                            <span>Explore</span>
+                        </span>
+                    </button>
                 </span>
         }
 
@@ -543,7 +582,7 @@ export default class TradeLogEntry extends Component {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className={"column is-12" + (this.state.isActive ? '' : ' no-show ')}>
+                            <div className={"column is-12" + ((this.state.isActive && this.props.shouldAllowTradeList) ? '' : ' no-show ')}>
                                 <hr />
                                 <div className="columns is-multiline is-mobile is-vcentered">
                                     <div className="column is-6">
@@ -552,6 +591,7 @@ export default class TradeLogEntry extends Component {
                                             pageHandler={this.changePage}
                                             selectedTrade={this.state.selectedTrade}
                                             selectTradeHandler={this.selectTrade}
+                                            disregardHandler={this.disregardTrade}
                                         />
                                     </div>
                                     <div className="column is-6">
@@ -564,5 +604,21 @@ export default class TradeLogEntry extends Component {
                 </div>
             </div>
         );
+    }
+
+
+    //  LIFECYCLE FUNCTIONS
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.shouldAllowTradeList !== this.props.shouldAllowTradeList) {
+            this.setState({
+                isActive: false,
+                isTradeSelected: false,
+                trades: [],
+                currentPage: 0,
+                pageSize: 10,
+                selectedTrade: 'none'
+            })
+        }
     }
 }

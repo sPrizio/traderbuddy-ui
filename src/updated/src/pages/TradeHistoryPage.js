@@ -191,6 +191,7 @@ export default class TradeHistoryPage extends Component {
                                         index={key}
                                         selectEntryHandler={this.handleEntrySelect}
                                         listId={key}
+                                        shouldAllowTradeList={this.state.interval === 'DAILY'}
                                     />
                                 </div>
                             )

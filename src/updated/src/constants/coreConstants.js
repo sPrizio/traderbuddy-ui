@@ -4,6 +4,7 @@ export const CoreConstants = {
     ApiUrls: {
         AccountOverview: getDomain() + '/account/overview',
         ActiveMonths: getDomain() + '/trade-record/active-months?year={year}',
+        DisregardTrade: getDomain() + '/trade/disregard',
         EquityCurve: getDomain() + '/account/equity-curve?start={start}&end={end}&interval={interval}',
         RecentRetrospective: getDomain() + '/retrospectives/most-recent?interval={interval}',
         RecentTradeHistory: getDomain() + '/trade-record/log?count={count}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',

@@ -33,7 +33,8 @@ export default class TradeHistoryEntry extends Component {
                 </td>
                 <td className="has-text-centered is-vcentered">{this.props.trades}</td>
                 <td className="has-text-centered is-vcentered">{this.props.winPercentage}</td>
-                <td className={"has-text-centered is-vcentered " + (this.props.netProfit >= 0 ? ' positive-cell ' : ' negative-cell ')}>
+                {/*<td className={"has-text-centered is-vcentered " + (this.props.netProfit >= 0 ? ' positive-cell ' : ' negative-cell ')}>*/}
+                <td className="has-text-centered is-vcentered">
                     <div>
                         {formatNumberForDisplay(this.props.netProfit)}
                     </div>

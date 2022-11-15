@@ -25,7 +25,7 @@ export default class TradeLogTradeListEntry extends Component {
 
     render() {
         return (
-            <tr className={"hide-lines" + (this.state.active ? ' selected ' : '')} onClick={() => this.props.selectTradeHandler(this.props.listId)}>
+            <tr className={"hide-lines" + (this.state.active ? ' selected ' : '')} onClick={() => this.props.selectTradeHandler(this.props.tradeId)}>
                 <td className="has-text-centered is-vcentered">
                     {moment(this.props.openTime).format('HH:mm')}
                 </td>
@@ -44,11 +44,6 @@ export default class TradeLogTradeListEntry extends Component {
                 <td className="has-text-centered is-vcentered">
                     {formatNumberForDisplay(this.props.netProfit)}
                 </td>
-                {/*<td className="has-text-centered is-vcentered">
-                    <button className="button">
-                        <AiFillDelete/>
-                    </button>
-                </td>*/}
             </tr>
         );
     }
@@ -56,9 +51,9 @@ export default class TradeLogTradeListEntry extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        if (prevProps.selectedTrade !== this.props.selectedTrade && this.props.listId === this.props.selectedTrade) {
+        if (prevProps.selectedTrade !== this.props.selectedTrade && this.props.tradeId === this.props.selectedTrade) {
             this.setState({active: true})
-        } else if (prevProps.selectedTrade !== this.props.selectedTrade && this.props.listId !== this.props.selectedTrade) {
+        } else if (prevProps.selectedTrade !== this.props.selectedTrade && this.props.tradeId !== this.props.selectedTrade) {
             this.setState({active: false})
         }
     }

@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {AiFillDelete} from "react-icons/ai";
 import TradeLogTradeListEntry from "./TradeLogTradeListEntry";
 import TradeLogTradeListPagination from "./TradeLogTradeListPagination";
 
@@ -13,7 +12,7 @@ export default class TradeLogTradeList extends Component {
             <div className="trade-list">
                 <div className="container">
                     <div className="table-container" style={{minHeight: "450px"}}>
-                        <table className="table is-fullwidth hoverable-table">
+                        <table className="table is-fullwidth is-striped hoverable-table">
                             <thead>
                             <tr>
                                 <th className="has-text-centered is-vcentered">Opened</th>
@@ -22,7 +21,6 @@ export default class TradeLogTradeList extends Component {
                                 <th className="has-text-centered is-vcentered">Product</th>
                                 <th className="has-text-centered is-vcentered">Size</th>
                                 <th className="has-text-centered is-vcentered">P&L</th>
-                                {/*<th/>*/}
                             </tr>
                             </thead>
                             <tbody>
@@ -37,17 +35,22 @@ export default class TradeLogTradeList extends Component {
                                             tradeType={item.tradeType}
                                             symbol={item.product}
                                             size={item.lotSize}
+                                            tradeId={item.tradeId}
                                             netProfit={item.netProfit}
                                             selectedTrade={this.props.selectedTrade}
                                             key={key}
                                             selectTradeHandler={this.props.selectTradeHandler}
-                                            listId={key}
                                         />
                                     )
                                 })
                             }
                             </tbody>
                         </table>
+                    </div>
+                    <div className={"disregard-container" + (this.props.selectedTrade !== 'none' ? '' : ' no-show ')}>
+                        <button className="button is-primary" onClick={() => this.props.disregardHandler(this.props.selectedTrade)}>
+                            Remove Trade
+                        </button>
                     </div>
                     <TradeLogTradeListPagination
                         page={

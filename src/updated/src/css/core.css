@@ -457,6 +457,16 @@ Trade Log
     color: white;
 }
 
+.trade-list .table-container {
+    margin-bottom: 0;
+}
+
+.trade-list .disregard-container {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 
 /*
 Footer

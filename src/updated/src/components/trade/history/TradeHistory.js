@@ -69,7 +69,7 @@ export default class TradeHistory extends Component {
                                         <thead>
                                         <tr>
                                             <th className="has-text-left">Date</th>
-                                            <th className="has-text-centered"># of Trades</th>
+                                            <th className="has-text-centered">Trades</th>
                                             <th className="has-text-centered">Win %</th>
                                             <th className="has-text-centered">P&L</th>
                                         </tr>
