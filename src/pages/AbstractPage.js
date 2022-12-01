@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import FooterComponent from "../components/layout/FooterComponent";
-import TradingPlanPage from "./TradingPlanPage";
-import TradingSummaryPage from "./TradingSummaryPage";
-import RetrospectivePage from "./RetrospectivePage";
-import NavbarComponent from "../components/layout/navigation/NavbarComponent";
 import HomePage from "./HomePage";
+import NavBar from "../components/layout/NavBar";
+import Footer from "../components/layout/Footer";
+import TradeHistoryPage from "./TradeHistoryPage";
+import ForecastingPage from "./ForecastingPage";
+import RetrospectivesPage from "./RetrospectivesPage";
 
 export default class AbstractPage extends Component {
 
@@ -31,25 +31,31 @@ export default class AbstractPage extends Component {
     render() {
         let currentPage;
         switch (this.state.currentPage) {
-            case "summary":
-                currentPage = <TradingSummaryPage />
+            case "history":
+                currentPage = <TradeHistoryPage/>
                 break
-            case "planning":
-                currentPage = <TradingPlanPage />
+            case "forecasting":
+                currentPage = <ForecastingPage/>
                 break
-            case "retro":
-                currentPage = <RetrospectivePage />
+            case "retrospectives":
+                currentPage = <RetrospectivesPage />
                 break
             default:
-                currentPage = <HomePage />
+                currentPage = <HomePage/>
                 break
         }
 
         return (
-            <div>
-                <NavbarComponent pageChangeHandler={this.handlePageChange} />
-                {currentPage}
-                <FooterComponent />
+            <div className="abstract-page">
+                <NavBar pageChangeHandler={this.handlePageChange}/>
+                <div className="container global-container">
+                    <div className="columns is-multiline is-mobile">
+                        <div className="column is-12-desktop is-12-tablet is-12-mobile">
+                            {currentPage}
+                        </div>
+                    </div>
+                </div>
+                <Footer/>
             </div>
         );
     }

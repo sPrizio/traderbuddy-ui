@@ -1,0 +1,506 @@
+body {
+    background-color: rgb(245, 245, 249);
+    /*background-color: rgb(237, 242, 249);*/
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    min-height: 100vh;
+    padding-bottom: 25px;
+}
+
+.global-container {
+    margin-top: 25px;
+    min-height: 80vh;
+}
+
+.test-border {
+    border: 1px solid green;
+
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card .card-content .header {
+    color: rgb(86, 106, 127);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.card .card-content .sub-header {
+    color: rgb(161, 172, 184);
+    font-size: 12.75px;
+    font-weight: 400;
+}
+
+.button.is-primary {
+    background-color: #696cff;
+    box-shadow: rgba(105, 108, 255, 0.4) 0 2px 4px 0;
+    border-radius: 6px;
+    transition: background-color 0.25s ease;
+}
+
+.button.is-primary:hover {
+    background-color: rgba(105, 108, 255, 0.40);
+    color: #696cff;
+}
+
+.button.is-primary:focus:not(:active), .button.is-primary.is-focused:not(:active) {
+    box-shadow: 0 0 0 0.125em rgba(105, 108, 255, 0.25);
+}
+
+.hoverable-table tbody tr:hover {
+    cursor: pointer;
+}
+
+.hoverable-table tbody tr:hover > td {
+    cursor: pointer;
+}
+
+.no-show {
+    display: none;
+}
+
+.no-button {
+    border: none;
+    padding: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+option[disabled] {
+    color: rgba(161, 172, 184, 0.35);
+}
+
+.brand img {
+    /*height: 42px !important;
+    width: 122px;*/
+}
+
+/*
+NAV BAR
+ */
+.navbar {
+    box-shadow: rgba(10, 10, 10, 0.1) 0 8px 16px -2px, rgba(10, 10, 10, 0.02) 0 0 0 1px;
+}
+
+.navbar .navbar-item.hoverable {
+    cursor: pointer;
+}
+
+/*
+LOADER
+ */
+
+/*
+Tabs
+ */
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.tabs ul {
+    border-bottom-color: rgba(105, 108, 255, 0.4);
+}
+
+.tabs ul li a {
+    color: rgb(86, 106, 127);
+}
+
+.tabs li.is-active a {
+    border-bottom-color: #696cff;
+    color: #696cff;
+}
+
+.tabs.is-boxed li.is-active a {
+    background-color: white;
+    border-color: rgba(105, 108, 255, 0.4);
+    border-bottom-color: transparent;
+}
+
+.tabs a:hover {
+    border-bottom-color: rgba(105, 108, 255, 0.4);
+    color: #696cff;
+}
+
+/*
+Login
+ */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 97vh;
+}
+
+.login-container .card {
+    width: 400px;
+}
+
+.login-container label {
+    color: rgb(86, 106, 127);
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.login-container .input {
+    margin-top: 10px;
+}
+
+.login-container .forgot-password {
+    padding-top: 5px;
+    text-align: right;
+}
+
+.login-container .forgot-password .forgot-password-text {
+    color: #696cff;
+    font-size: 12.75px;
+}
+
+.login-container .register {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+}
+
+.login-container .welcome .header {
+    color: rgb(86, 106, 127);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.login-container .welcome .sub-header {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/*
+Account Summary
+ */
+.account-summary .title {
+    color: rgb(105, 122, 141);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.account-summary .balance {
+    color: rgb(86, 106, 127);
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.account-summary .net {
+    font-size: 12.75px;
+    font-weight: 600;
+}
+
+.account-summary .net .positive {
+    color: rgb(113, 221, 55)
+}
+
+.account-summary .net .negative {
+    color: rgb(255, 62, 29)
+}
+
+.account-summary .target {
+    color: #a1acb8;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/*
+Profit Curve
+ */
+.profit-curve .chart-container {
+    margin-top: 25px;
+}
+
+.profit-curve .card {
+    min-height: 406px;
+}
+
+/*
+Performance Statistics
+ */
+.performance-statistics .container {
+    margin-top: 25px;
+}
+
+.performance-statistics .row-entry-header {
+    color: rgb(86, 106, 127);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.performance-statistics .row-entry-small {
+    color: rgb(161, 172, 184);
+    font-size: 12.75px;
+    font-weight: 400;
+}
+
+.performance-statistics .value {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.performance-statistics-entry .positive {
+    color: rgb(113, 221, 55);
+    font-size: 12.75px;
+    font-weight: 600;
+}
+
+.performance-statistics-entry .negative {
+    color: rgb(255, 62, 29);
+    font-size: 12.75px;
+    font-weight: 600;
+}
+
+/*
+Performance Summary
+ */
+.performance-summary .container {
+    margin-top: 25px;
+}
+
+.performance-summary .value {
+    color: #696CFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/*
+Trade History
+ */
+.trade-history .container {
+    margin-top: 25px;
+}
+
+.trade-history .value {
+    color: #696CFF;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.trade-history .positive-cell {
+    background: linear-gradient(to top right, #ffffff 60%, rgba(113, 221, 55, 0.35));
+}
+
+.trade-history .negative-cell {
+    background: linear-gradient(to bottom right, #ffffff 60%, rgba(255, 62, 29, 0.35));
+}
+
+.trade-history-entry.is-active, .trade-history-entry.is-active .positive-cell, .trade-history-entry.is-active .negative-cell {
+    background: #696CFF;
+    color: white;
+}
+
+.trade-history-entry.is-active .sub-header, .trade-history-entry.is-active .value {
+    color: white;
+}
+
+/*
+Retrospective
+ */
+.retrospective .container {
+    margin-top: 25px;
+}
+
+.retrospective .message .message-body p:not(:last-child) {
+    padding-bottom: 15px;
+}
+
+.retrospective .message.is-primary {
+    background-color: rgba(105, 108, 255, 0.075);
+}
+
+.retrospective .message.is-primary .message-header {
+    background-color: #696CFF;
+    color: #fff;
+}
+
+.retrospective .message.is-primary .message-body {
+    border-color: #696CFF;
+    color: #696CFF;
+}
+
+.retrospective .block {
+    font-size: 15px;
+}
+
+.retrospective .block .icon {
+    color: #696CFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.retrospective .value {
+    color: #696CFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/*
+Trade List
+ */
+.trade-list .container {
+    margin-top: 25px;
+}
+
+.pagination-link {
+    color: rgb(105, 122, 141);
+    background-color: rgb(240, 242, 244);
+    border: none;
+}
+
+.pagination-link.is-current {
+    background-color: #696CFF;
+}
+
+/*
+Forecasting
+ */
+.forecasting-page .container {
+    margin-top: 25px;
+}
+
+.forecasting-page .container .level {
+    margin-bottom: 5px;
+}
+
+.forecasting-page .min-height {
+    min-height: 350px;
+}
+
+.forecasting-page .flex-container {
+    display: flex;
+    margin-top: 25px;
+}
+
+.forecasting-page .flex-container .flex-block {
+    flex: 1;
+}
+
+.forecasting-page .table td {
+    height: 60px;
+}
+
+.forecasting-page .border-left {
+    border-left: 1px solid #696cff;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.forecasting-page .border-right {
+    border-right: 1px solid #696cff;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.forecasting-page .value {
+    color: #696CFF;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.forecasting-page .table tr.is-active td {
+    background-color: #696CFF;
+    color: white;
+}
+
+.forecasting-page .table tr.is-active td .sub-header, .forecasting-page .table tr.is-active td .value {
+    color: white;
+}
+
+/*
+Trade Log
+ */
+.trade-log .expand:hover {
+    cursor: pointer;
+}
+
+.trade-log .row-entry-small {
+    color: rgb(161, 172, 184);
+    font-size: 12.75px;
+    font-weight: 400;
+}
+
+.trade-log .value {
+    color: rgb(105, 122, 141);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.trade-log .ordered-columns .column {
+}
+
+.trade-log .ordered-columns .column:not(:first-child):not(:last-child) {
+    /*border-right: 2px solid rgba(105, 108, 255, 0.35);*/
+    border-right: 2px solid rgba(105, 108, 255, 0.0);
+}
+
+.trade-log .ordered-columns .column .table tr:not(:last-child) td,
+.trade-log .ordered-columns .column .table tr:not(:last-child) th {
+    border-bottom: 2px solid rgba(105, 108, 255, 0.35);
+}
+
+.trade-log .trade-list .table thead tr td,
+.trade-log .trade-list .table thead tr th {
+    border-bottom: 2px solid rgba(105, 108, 255, 0.35);
+}
+
+.trade-log .positive {
+    color: rgb(113, 221, 55)
+}
+
+.trade-log .negative {
+    color: rgb(255, 62, 29)
+}
+
+.trade-log .chart-container {
+    margin: 0 auto;
+    height: 500px;
+    width: 100%;
+}
+
+.trade-log .percentage {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.trade-log .percentage.positive {
+    color: rgb(113, 221, 55);
+}
+
+.trade-log .percentage.negative {
+    color: rgb(255, 62, 29);
+}
+
+.trade-list .table .hide-lines td {
+    border: none !important;
+}
+
+.trade-list .table tr.selected td {
+    background-color: #696cff;
+    color: white;
+}
+
+.trade-list .table-container {
+    margin-bottom: 0;
+}
+
+.trade-list .disregard-container {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/*
+Footer
+ */
+.footer {
+    padding-top: 6rem;
+    background-color: rgb(245, 245, 249);
+}
