@@ -25,7 +25,11 @@ export default class FileImport extends Component {
 
     async handleSubmit(event) {
         event.preventDefault()
-        this.setState({fileInputKey: Math.random().toString(36)})
+        this.setState({
+            fileInputKey: Math.random().toString(36),
+            isLoading: true
+        })
+
         if (this.state.file) {
             try {
                 const formData = new FormData();
@@ -43,6 +47,8 @@ export default class FileImport extends Component {
                 console.log(e)
             }
         }
+
+        this.setState({isLoading: false})
     }
 
 
@@ -82,7 +88,7 @@ export default class FileImport extends Component {
                         </p>
                     </section>
                     <footer className="modal-card-foot has-text-right">
-                        <button className="button is-primary" type={"submit"}>Upload</button>
+                        <button className={"button is-primary" + (this.state.isLoading ? ' is-loading' : '')} type={"submit"}>Upload</button>
                         <button className="button" onClick={this.props.closeHandler}>Cancel</button>
                     </footer>
                 </form>

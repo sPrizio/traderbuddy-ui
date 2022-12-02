@@ -11,15 +11,14 @@ export default class RetrospectivesPage extends Component {
     constructor(props) {
         super(props);
 
-        const now = moment()
         this.state = {
-            start: now.startOf('month').format(CoreConstants.DateTime.ISODateFormat),
-            end: now.startOf('month').add(1, 'months').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat),
+            start: moment().startOf('month').format(CoreConstants.DateTime.ISODateFormat),
+            end: moment().startOf('month').add(1, 'months').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat),
             selectedInterval: 'WEEKLY',
             activeMonths: [],
-            currentMonth: now.startOf('month').format(CoreConstants.DateTime.ISODateFormat),
+            currentMonth: moment().startOf('month').format(CoreConstants.DateTime.ISODateFormat),
             activeYears: [],
-            currentYear: now.startOf('year').format(CoreConstants.DateTime.ISODateFormat),
+            currentYear: moment().startOf('year').format(CoreConstants.DateTime.ISODateFormat),
             retros: [],
 
             //  modal
@@ -379,8 +378,8 @@ export default class RetrospectivesPage extends Component {
     //  LIFECYCLE FUNCTIONS
 
     async componentDidMount() {
-        await this.getActiveMonths()
         await this.getActiveYears()
+        await this.getActiveMonths()
         await this.getRetrospectives()
     }
 }

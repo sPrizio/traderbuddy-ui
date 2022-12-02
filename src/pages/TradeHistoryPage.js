@@ -72,7 +72,7 @@ export default class TradeHistoryPage extends Component {
         this.setState({
             currentMonth: e.target.value,
             start: d.format(CoreConstants.DateTime.ISODateFormat),
-            end: d.add(1, 'months').format(CoreConstants.DateTime.ISODateFormat)
+            end: d.add(1, 'months').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat)
         }, () => this.getTradeLog())
     }
 
