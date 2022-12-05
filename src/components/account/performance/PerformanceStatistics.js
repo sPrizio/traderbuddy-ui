@@ -3,6 +3,7 @@ import PerformanceStatisticsEntry from "./PerformanceStatisticsEntry";
 import PerformanceStatisticsLoader from "../../loader/account/performance/PerformanceStatisticsLoader";
 import moment from "moment/moment";
 import {CoreConstants} from "../../../constants/coreConstants";
+import {computeDate} from "../../../service/DateTimeService";
 
 export default class PerformanceStatistics extends Component {
 
@@ -32,19 +33,6 @@ export default class PerformanceStatistics extends Component {
 
 
     //  GENERAL FUNCTIONS
-
-    computeDate(val1, val2, interval) {
-        switch (interval) {
-            case 'WEEKLY':
-                return moment(val1).format(CoreConstants.DateTime.ISOMonthDayFormat) + ' - ' + moment(val2).format(CoreConstants.DateTime.ISODayFormat)
-            case 'MONTHLY':
-                return moment(val1).format(CoreConstants.DateTime.ISOMonthYearFormat)
-            case 'YEARLY':
-                return moment(val1).format(CoreConstants.DateTime.ISOYearFormat)
-            default:
-                return moment(val1).format(CoreConstants.DateTime.ISOMonthDayFormat)
-        }
-    }
 
     async getStats() {
         try {
@@ -87,7 +75,7 @@ export default class PerformanceStatistics extends Component {
                         {loader}
                         <div className={"" + (this.state.isLoading ? ' no-show ' : '')}>
                             <h5 className="header">Statistics</h5>
-                            <h6 className="sub-header">{this.computeDate(this.state.stats.startDate, this.state.stats.endDate, this.state.stats.aggregateInterval)}</h6>
+                            <h6 className="sub-header">{computeDate(this.state.stats.startDate, this.state.stats.endDate, this.state.stats.aggregateInterval)}</h6>
                             <div className="container">
                                 <div className="columns is-multiline is-mobile is-vcentered">
                                     <PerformanceStatisticsEntry

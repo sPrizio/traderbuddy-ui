@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PerformanceSummaryLoader from "../../loader/account/performance/PerformanceSummaryLoader";
 import {CoreConstants} from "../../../constants/coreConstants";
 import moment from "moment";
+import {computeDate} from "../../../service/DateTimeService";
 
 export default class PerformanceSummary extends Component {
 
@@ -23,19 +24,6 @@ export default class PerformanceSummary extends Component {
 
 
     //  GENERAL FUNCTIONS
-
-    computeDate(val1, val2, interval) {
-        switch (interval) {
-            case 'WEEKLY':
-                return moment(val1).format(CoreConstants.DateTime.ISOMonthDayFormat) + ' - ' + moment(val2).format(CoreConstants.DateTime.ISODayFormat)
-            case 'MONTHLY':
-                return moment(val1).format(CoreConstants.DateTime.ISOMonthYearFormat)
-            case 'YEARLY':
-                return moment(val1).format(CoreConstants.DateTime.ISOYearFormat)
-            default:
-                return moment(val1).format(CoreConstants.DateTime.ISOMonthDayFormat)
-        }
-    }
 
     async getSummary() {
         try {
@@ -78,7 +66,7 @@ export default class PerformanceSummary extends Component {
                         {loader}
                         <div className={"" + (this.state.isLoading ? ' no-show ' : '')}>
                             <h5 className="header">Summary</h5>
-                            <h6 className="sub-header">{this.computeDate(this.state.summary.startDate, this.state.summary.endDate, this.state.summary.aggregateInterval)}</h6>
+                            <h6 className="sub-header">{computeDate(this.state.summary.startDate, this.state.summary.endDate, this.state.summary.aggregateInterval)}</h6>
                             <div className="container">
                                 <nav className="level is-mobile">
                                     <div className="level-item has-text-centered">
