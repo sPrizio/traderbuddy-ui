@@ -5,6 +5,7 @@ import moment from "moment";
 import {HiPlus} from "react-icons/hi";
 import 'bulma-floating-button/dist/css/bulma-floating-button.min.css'
 import RetrospectiveModal from "../components/retrospective/RetrospectiveModal";
+import {Helmet} from "react-helmet";
 
 export default class RetrospectivesPage extends Component {
 
@@ -285,92 +286,97 @@ export default class RetrospectivesPage extends Component {
 
 
         return (
-            <div className="retrospectives-page">
-                <div className="container">
-                    <div className="tabs is-boxed is-centered">
-                        <ul>
-                            <li className={(this.state.selectedInterval === 'WEEKLY' ? ' is-active ' : '')}>
-                                <a onClick={() => this.selectTab('WEEKLY')}>Weekly</a>
-                            </li>
-                            <li className={(this.state.selectedInterval === 'MONTHLY' ? ' is-active ' : '')}>
-                                <a onClick={() => this.selectTab('MONTHLY')}>Monthly</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="columns is-multiline is-mobile is-vcentered">
-                        <div className="column is-12">
-                            <div className="field is-grouped is-grouped-right">
-                                <div className="control">
-                                    <div className="select">
-                                        <select value={this.state.currentYear} onChange={this.handleYearChange}>
-                                            {
-                                                this.state.activeYears && this.state.activeYears.map((item, key) => {
-                                                    const val = moment(item)
-                                                    return (
-                                                        <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
-                                                                key={key}>
-                                                            {val.format(CoreConstants.DateTime.ISOYearFormat)}
-                                                        </option>
-                                                    )
-                                                })
-                                            }
-                                        </select>
+            <>
+                <Helmet>
+                    <title>TraderBuddy | Retrospectives</title>
+                </Helmet>
+                <div className="retrospectives-page">
+                    <div className="container">
+                        <div className="tabs is-boxed is-centered">
+                            <ul>
+                                <li className={(this.state.selectedInterval === 'WEEKLY' ? ' is-active ' : '')}>
+                                    <a onClick={() => this.selectTab('WEEKLY')}>Weekly</a>
+                                </li>
+                                <li className={(this.state.selectedInterval === 'MONTHLY' ? ' is-active ' : '')}>
+                                    <a onClick={() => this.selectTab('MONTHLY')}>Monthly</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="columns is-multiline is-mobile is-vcentered">
+                            <div className="column is-12">
+                                <div className="field is-grouped is-grouped-right">
+                                    <div className="control">
+                                        <div className="select">
+                                            <select value={this.state.currentYear} onChange={this.handleYearChange}>
+                                                {
+                                                    this.state.activeYears && this.state.activeYears.map((item, key) => {
+                                                        const val = moment(item)
+                                                        return (
+                                                            <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
+                                                                    key={key}>
+                                                                {val.format(CoreConstants.DateTime.ISOYearFormat)}
+                                                            </option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="control">
-                                    <div className="select">
-                                        <select value={this.state.currentMonth} onChange={this.handleMonthChange}>
-                                            {
-                                                this.state.activeMonths && this.state.activeMonths.map((item, key) => {
-                                                    const val = moment(item)
-                                                    return (
-                                                        <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
-                                                                key={key}>
-                                                            {val.format(CoreConstants.DateTime.ISOMonthFormat)}
-                                                        </option>
-                                                    )
-                                                })
-                                            }
-                                        </select>
+                                    <div className="control">
+                                        <div className="select">
+                                            <select value={this.state.currentMonth} onChange={this.handleMonthChange}>
+                                                {
+                                                    this.state.activeMonths && this.state.activeMonths.map((item, key) => {
+                                                        const val = moment(item)
+                                                        return (
+                                                            <option value={val.format(CoreConstants.DateTime.ISODateFormat)}
+                                                                    key={key}>
+                                                                {val.format(CoreConstants.DateTime.ISOMonthFormat)}
+                                                            </option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            {
+                                this.state.retros && this.state.retros.map((item, key) => {
+                                    return (
+                                        <div className="column is-12" key={key}>
+                                            <Retrospective
+                                                interval={this.state.selectedInterval}
+                                                showTotals={true}
+                                                isLoading={this.state.isLoading}
+                                                retro={item}
+                                                editHandler={this.handleEdit}
+                                                deleteHandler={this.handleDelete}
+                                                showCrud={true}
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
+                            {emptyText}
                         </div>
-                        {
-                            this.state.retros && this.state.retros.map((item, key) => {
-                                return (
-                                    <div className="column is-12" key={key}>
-                                        <Retrospective
-                                            interval={this.state.selectedInterval}
-                                            showTotals={true}
-                                            isLoading={this.state.isLoading}
-                                            retro={item}
-                                            editHandler={this.handleEdit}
-                                            deleteHandler={this.handleDelete}
-                                            showCrud={true}
-                                        />
-                                    </div>
-                                )
-                            })
-                        }
-                        {emptyText}
                     </div>
-                </div>
 
-                <button className="button is-floating is-info is-vcentered has-text-centered"
-                        onClick={() => this.toggleModal(true)}>
+                    <button className="button is-floating is-info is-vcentered has-text-centered"
+                            onClick={() => this.toggleModal(true)}>
                     <span className="is-size-3" style={{marginTop: "5px"}}>
                         <HiPlus/>
                     </span>
-                </button>
+                    </button>
 
-                <RetrospectiveModal modalActive={this.state.modalActive}
-                                    toggleModal={this.toggleModal}
-                                    handleSubmit={this.handleSubmit}
-                                    newRetro={this.state.newRetro}
-                                    datePicker={this.state.datePicker}
-                />
-            </div>
+                    <RetrospectiveModal modalActive={this.state.modalActive}
+                                        toggleModal={this.toggleModal}
+                                        handleSubmit={this.handleSubmit}
+                                        newRetro={this.state.newRetro}
+                                        datePicker={this.state.datePicker}
+                    />
+                </div>
+            </>
         );
     }
 

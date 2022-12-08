@@ -3,8 +3,6 @@
 src/logo.svg,6\d\6d3a8cd532ece5b4ddbd4b3b6a678ba686d300bc
 w
 G.idea/sonarlint/issuestore/6/d/6d3a8cd532ece5b4ddbd4b3b6a678ba686d300bc,4\2\42c76c28010a6da6e9d28de3ef3fcf8cf3ad03d8
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 =
 src/index.css,c\5\c5d38a62d1faae90a2acaa34b79a7ef365c917e4
 ;
@@ -17,8 +15,6 @@ D
 public/manifest.json,4\2\42e89cd2213b9d5dfae4f63522702c623170d792
 A
 public/robots.txt,d\a\dac799070c2d0c2fa24462b02c1f2dcc3fb3a1e9
-I
-src/pages/AbstractPage.js,2\4\24041b6b17b85412403eaa3acc175571f5afbac6
 f
 6src/components/loader/account/AccountOverviewLoader.js,0\c\0c1f70d71c1fbc2d784f463f8f6815467f3dbb98
 :
@@ -30,26 +26,16 @@ R
 "src/util/CandleStickChartConfig.js,9\2\92359f31826aea2e4ce0647421146413029bbd97
 S
 #src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
-N
-src/constants/coreConstants.js,3\6\361691215ecc08ed0599163e6dba9a39197f74c2
 V
 &src/components/data/FileImportModal.js,4\2\42ef683f1eff683925a2ac438eb8178b92e50a6b
 O
 src/components/layout/Footer.js,e\f\efd33d9a22078b66a8df96196dcf2ff495cf7bc6
-L
-src/pages/ForecastingPage.js,0\e\0e251de492e8a76ffdffd9e2783c6e0e23098c46
-H
-src/pages/GenericPage.js,3\b\3b6e2beacb9097a18cffeb20218414c5a2ae8965
 A
 public/index.html,f\4\f43ecdf8d666ee908aacce037b4cd72159e4741b
-<
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 S
 #src/components/loader/LoaderBody.js,b\f\bfb149797b7dc8bae5efb410896ec6665126a254
 U
 %src/components/loader/LoaderHeader.js,2\4\24f0f0d1d6388dc8942916173a63f6074b92ddbe
-U
-%src/pages/authentication/LoginPage.js,2\c\2c73456d3ec976513215e08610cc5545cfb31f33
 O
 src/components/layout/NavBar.js,8\c\8c90d95aba39771b3c6af52c515b7371e6173018
 p
@@ -58,14 +44,10 @@ x
 Hsrc/components/loader/account/performance/PerformanceStatisticsLoader.js,0\5\059c82d834c6ae19f6863e334ce514d3e401caf1
 u
 Esrc/components/loader/account/performance/PerformanceSummaryLoader.js,4\6\467412b8279363483121941391a79dcb79e7e6bf
-a
-1src/components/account/performance/ProfitCurve.js,6\f\6f2fdb9686efc7a46e5f14ef870276029df07b60
 b
 2src/components/loader/account/ProfitCurveLoader.js,7\0\70d4d295e73aaca3f571323090aee56b88d1a2e6
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-X
-(src/pages/authentication/RegisterPage.js,b\2\b2ed50027c943e560bbbcde8117ecb26b1b88ae4
 F
 src/reportWebVitals.js,1\c\1ce5e63ae1582ed0b425c46001299a07515efbf9
 ]
@@ -194,9 +176,13 @@ w
 G.idea/sonarlint/issuestore/1/8/1841ab520fd541976a7c78bcd00d0ec6927b39c9,2\a\2a353de18bfa438d47c3ac63ff54a1fe9995326c
 w
 G.idea/sonarlint/issuestore/1/c/1ce5e63ae1582ed0b425c46001299a07515efbf9,6\8\68b4a0d825cd792f31f5de7b1f048268501bc0f5
-A
-package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 Q
 !src/components/data/FileImport.js,1\c\1c29758f0ff1fc7fe09f5851e7091d7cbee96dd1
-M
-src/pages/TradeHistoryPage.js,9\e\9e03ff9ae3a148d852e79baae065362029af1a00
+Y
+)src/components/account/AccountOverview.js,5\d\5df6ef5c934542113bf1e942dc219852dc12db1b
+P
+ src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
+N
+src/service/DateTimeService.js,e\e\ee0f7e804cfa0c347e08b00ba4688585b30f4ca1
+k
+;src/components/account/performance/PerformanceStatistics.js,e\e\eef99a92ecdad86e0b18037899bf4d9ff2ee9263

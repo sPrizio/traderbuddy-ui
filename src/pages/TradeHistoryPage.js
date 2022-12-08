@@ -4,6 +4,7 @@ import TradeLogEntry from "../components/trade/log/entry/TradeLogEntry";
 import {CoreConstants} from "../constants/coreConstants";
 import moment from "moment";
 import {displayString} from "../service/FormattingService";
+import {Helmet} from "react-helmet";
 
 export default class TradeHistoryPage extends Component {
 
@@ -168,37 +169,42 @@ export default class TradeHistoryPage extends Component {
         }
 
         return (
-            <div className="trade-history">
-                <div className="level">
-                    <div className="level-left">
-                        <div className="level-item">
-                            {button}
+            <>
+                <Helmet>
+                    <title>TraderBuddy | Trade History</title>
+                </Helmet>
+                <div className="trade-history">
+                    <div className="level">
+                        <div className="level-left">
+                            <div className="level-item">
+                                {button}
+                            </div>
+                        </div>
+                        <div className="level-right">
+                            <div className="level-item">
+                                {select}
+                            </div>
                         </div>
                     </div>
-                    <div className="level-right">
-                        <div className="level-item">
-                            {select}
-                        </div>
+                    <div className={"columns is-multiline is-mobile"}>
+                        {
+                            this.state.trades.map((item, key) => {
+                                return (
+                                    <div className="column is-12" key={key}>
+                                        <TradeLogEntry
+                                            tradeRecord={item}
+                                            index={key}
+                                            selectEntryHandler={this.handleEntrySelect}
+                                            listId={key}
+                                            shouldAllowTradeList={this.state.interval === 'DAILY'}
+                                        />
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
-                <div className={"columns is-multiline is-mobile"}>
-                    {
-                        this.state.trades.map((item, key) => {
-                            return (
-                                <div className="column is-12" key={key}>
-                                    <TradeLogEntry
-                                        tradeRecord={item}
-                                        index={key}
-                                        selectEntryHandler={this.handleEntrySelect}
-                                        listId={key}
-                                        shouldAllowTradeList={this.state.interval === 'DAILY'}
-                                    />
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </div>
+            </>
         );
     }
 

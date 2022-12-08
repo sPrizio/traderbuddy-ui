@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Helmet} from "react-helmet";
 
 export default class RegisterPage extends Component {
 
@@ -7,9 +8,14 @@ export default class RegisterPage extends Component {
 
     render() {
         return (
-            <div className="register-page">
-                <p>Hello World!</p>
-            </div>
+            <>
+                <Helmet>
+                    <title>TraderBuddy | Register</title>
+                </Helmet>
+                <div className="register-page">
+                    <p>Hello World!</p>
+                </div>
+            </>
         );
     }
 }
