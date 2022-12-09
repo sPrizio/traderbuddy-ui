@@ -15,7 +15,7 @@ export default class Retrospective extends Component {
         if (this.props.retro && this.props.retro.startDate && this.props.retro.endDate) {
 
             if (this.props.interval === 'WEEKLY') {
-                return moment(this.props.retro.startDate).format(CoreConstants.DateTime.ISOMonthDayFormat) + ' - ' + moment(this.props.retro.endDate).format(CoreConstants.DateTime.ISODayFormat)
+                return moment(this.props.retro.startDate).format(CoreConstants.DateTime.ISOMonthDayFormat) + ' - ' + moment(this.props.retro.endDate).format(CoreConstants.DateTime.ISOMonthDayFormat)
             } else if (this.props.interval === 'DAILY') {
                 return moment(this.props.retro.startDate).format(CoreConstants.DateTime.ISOMonthDayFormat)
             } else if (this.props.interval === 'YEARLY') {
