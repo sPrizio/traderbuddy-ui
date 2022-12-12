@@ -76,6 +76,11 @@ option[disabled] {
     width: 122px;*/
 }
 
+.file .file-cta.is-primary {
+    background-color: #696cff;
+    color: white;
+}
+
 /*
 NAV BAR
  */

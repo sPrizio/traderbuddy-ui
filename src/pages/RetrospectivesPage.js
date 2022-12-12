@@ -362,7 +362,7 @@ export default class RetrospectivesPage extends Component {
                         </div>
                     </div>
 
-                    <button className="button is-floating is-info is-vcentered has-text-centered"
+                    <button className="button is-floating is-primary is-vcentered has-text-centered"
                             onClick={() => this.toggleModal(true)}>
                     <span className="is-size-3" style={{marginTop: "5px"}}>
                         <HiPlus/>

@@ -7,8 +7,6 @@
 src/App.css,a\a\aa7165aefcf8ee3d73539e99ab007daf1aa18d8d
 A
 src/css/fonts.css,6\f\6fba100dad58d31e51893b8a59e78ec98bc2ab08
-@
-src/css/core.css,1\8\1841ab520fd541976a7c78bcd00d0ec6927b39c9
 D
 public/manifest.json,4\2\42e89cd2213b9d5dfae4f63522702c623170d792
 A
@@ -24,8 +22,6 @@ R
 "src/util/CandleStickChartConfig.js,9\2\92359f31826aea2e4ce0647421146413029bbd97
 S
 #src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
-V
-&src/components/data/FileImportModal.js,4\2\42ef683f1eff683925a2ac438eb8178b92e50a6b
 O
 src/components/layout/Footer.js,e\f\efd33d9a22078b66a8df96196dcf2ff495cf7bc6
 A
@@ -50,8 +46,6 @@ F
 src/reportWebVitals.js,1\c\1ce5e63ae1582ed0b425c46001299a07515efbf9
 j
 :src/components/loader/retrospective/RetrospectiveLoader.js,f\c\fcad08df2cadb719783fa2198098759f7059d4e8
-b
-2src/components/retrospective/RetrospectiveModal.js,8\8\88cd3ec6891b448f94c386a17e4d0108cc73edda
 A
 src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
 O
@@ -94,8 +88,6 @@ w
 G.idea/sonarlint/issuestore/7/0/7030d0b2f71b999ff89a343de08c414af32fc93a,9\d\9d19eaab4327edc07435a682d68ef383811840e5
 w
 G.idea/sonarlint/issuestore/2/4/24041b6b17b85412403eaa3acc175571f5afbac6,7\4\74c305abbc246b844abf6a7e99608ddf5ae4351a
-Q
-!src/components/data/FileImport.js,1\c\1c29758f0ff1fc7fe09f5851e7091d7cbee96dd1
 Y
 )src/components/account/AccountOverview.js,5\d\5df6ef5c934542113bf1e942dc219852dc12db1b
 P
@@ -126,8 +118,6 @@ U
 %src/pages/authentication/LoginPage.js,2\c\2c73456d3ec976513215e08610cc5545cfb31f33
 X
 (src/pages/authentication/RegisterPage.js,b\2\b2ed50027c943e560bbbcde8117ecb26b1b88ae4
-O
-src/pages/RetrospectivesPage.js,d\3\d3853a0d85ee4e080f2edb9057d0b84f2a3a036c
 M
 src/pages/TradeHistoryPage.js,9\e\9e03ff9ae3a148d852e79baae065362029af1a00
 :

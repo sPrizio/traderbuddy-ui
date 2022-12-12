@@ -222,7 +222,7 @@ export default class RetrospectiveModal extends Component {
                         </div>
                     </section>
                     <footer className="modal-card-foot">
-                        <button className="button is-info" onClick={() => {
+                        <button className="button is-primary" onClick={() => {
                             if (this.state.retroData.startDate.length === 0 && this.state.retroData.endDate.length === 0) {
                                 this.setState({isInvalidDate: true})
                             } else {

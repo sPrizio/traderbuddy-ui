@@ -65,12 +65,12 @@ export default class FileImport extends Component {
                     <section className="modal-card-body">
                         <p>Keep track of your trades by uploading a .csv file of your trades!</p>
                         <br />
-                        <div className="file is-right is-info is-fullwidth">
+                        <div className="file is-right is-fullwidth">
                             <label className="file-label">
                                 <input className="file-input" type="file" name="importTrades"
                                        onChange={this.handleChange}
                                        key={this.state.fileInputKey}/>
-                                <span className="file-cta">
+                                <span className="file-cta is-primary">
                                     <span className="file-icon">
                                         <CgSoftwareUpload/>
                                     </span>
