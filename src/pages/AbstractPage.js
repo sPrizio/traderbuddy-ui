@@ -6,6 +6,7 @@ import TradeHistoryPage from "./TradeHistoryPage";
 import ForecastingPage from "./ForecastingPage";
 import RetrospectivesPage from "./RetrospectivesPage";
 import { Helmet } from 'react-helmet';
+import AnalysisPage from "./AnalysisPage";
 
 export default class AbstractPage extends Component {
 
@@ -13,7 +14,7 @@ export default class AbstractPage extends Component {
         super(props);
 
         this.state = {
-            currentPage: 'home'
+            currentPage: 'analysis'
         }
 
         this.handlePageChange = this.handlePageChange.bind(this)
@@ -40,6 +41,9 @@ export default class AbstractPage extends Component {
                 break
             case "retrospectives":
                 currentPage = <RetrospectivesPage />
+                break
+            case "analysis":
+                currentPage = <AnalysisPage />
                 break
             default:
                 currentPage = <HomePage/>

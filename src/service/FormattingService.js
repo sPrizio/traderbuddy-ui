@@ -21,3 +21,17 @@ export function formatNumberForDisplay(value) {
 
     return '0'
 }
+
+export function sanitizeText(val) {
+    return val.replace('- Cash', '').trim()
+}
+
+export function tradeDuration(val) {
+    if (val < 3600) {
+        return new Date(val * 1000).toISOString().substring(14, 19)
+    } else if (val >= 3600 && val < 86400) {
+        return new Date(val * 1000).toISOString().substring(11, 16)
+    } else {
+        return  val + ' days'
+    }
+}

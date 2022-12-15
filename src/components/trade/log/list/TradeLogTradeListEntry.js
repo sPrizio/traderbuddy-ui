@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import {displayString, formatNumberForDisplay} from "../../../../service/FormattingService";
-import {AiFillDelete} from "react-icons/ai";
+import {displayString, formatNumberForDisplay, sanitizeText} from "../../../../service/FormattingService";
 import moment from "moment";
 import {CoreConstants} from "../../../../constants/coreConstants";
 
@@ -12,13 +11,6 @@ export default class TradeLogTradeListEntry extends Component {
         this.state = {
             active: false
         }
-    }
-
-
-    //  GENERAL FUNCTIONS
-
-    sanitizeText(val) {
-        return val.replace('- Cash', '').trim()
     }
 
 
@@ -37,7 +29,7 @@ export default class TradeLogTradeListEntry extends Component {
                     {displayString(this.props.tradeType)}
                 </td>
                 <td className="has-text-centered is-vcentered">
-                    {this.sanitizeText(this.props.symbol)}
+                    {sanitizeText(this.props.symbol)}
                 </td>
                 <td className="has-text-centered is-vcentered">
                     {formatNumberForDisplay(this.props.size)}&nbsp;pts

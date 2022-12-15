@@ -10,6 +10,10 @@ export function getAccountDomain() {
     return getDomain('/account')
 }
 
+export function getAnalysisDomain() {
+    return getDomain('/analysis')
+}
+
 export function getRetrospectiveDomain() {
     return getDomain('/retrospective')
 }

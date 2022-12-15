@@ -1,5 +1,5 @@
 import {
-    getAccountDomain,
+    getAccountDomain, getAnalysisDomain,
     getRetrospectiveDomain,
     getTradeDomain,
     getTradeRecordDomain
@@ -11,6 +11,9 @@ export const CoreConstants = {
         Account: {
             EquityCurve: getAccountDomain() + '/equity-curve?start={start}&end={end}&interval={interval}',
             Overview: getAccountDomain() + '/overview',
+        },
+        Analysis: {
+            TopTrades: getAnalysisDomain() + '/top-trades?start={start}&end={end}&sort={sort}&sortByLosses={sortByLosses}&count={count}'
         },
         Retrospective: {
             ActiveMonths: getRetrospectiveDomain() + '/active-months?year={year}&includeStarterMonth={includeStarterMonth}',
@@ -26,6 +29,7 @@ export const CoreConstants = {
             Disregard: getTradeDomain() + '/disregard',
             List: getTradeDomain() + '/for-interval?start={start}&end={end}&includeNonRelevant={includeNonRelevant}',
             ListPaged: getTradeDomain() + '/for-interval-paged?start={start}&end={end}&includeNonRelevant={includeNonRelevant}&page={page}&pageSize={pageSize}',
+            Recap: getTradeDomain() + '/recap?tradeId={tradeId}',
             Upload: getTradeDomain() + '/import-trades?delimiter={delimiter}&tradePlatform={tradePlatform}'
         },
         TradeRecord: {
@@ -53,11 +57,13 @@ export const CoreConstants = {
         ISODateFormat: 'YYYY-MM-DD',
         ISODateTimeFormat: 'YYYY-MM-DDTHH:mm:ss',
         ISODayFormat: 'Do',
+        ISOLongMonthDayYearFormat: 'MMMM Do[,] YYYY',
         ISOMonthDayFormat: 'MMMM Do',
         ISOMonthFormat: 'MMMM',
         ISOYearFormat: 'YYYY',
         ISOMonthYearFormat: 'MMMM YYYY',
         ISOShortMonthFormat: 'MMM',
+        ISOShortMonthDayYearFormat: 'MMM Do[,] YYYY',
         ISOShortTimeFormat: 'HH:mm',
         ISOWeekdayFormat: 'dddd'
     },

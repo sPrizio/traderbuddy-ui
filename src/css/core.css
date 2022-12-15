@@ -95,6 +95,21 @@ NAV BAR
 /*
 LOADER
  */
+.spinner-loader-container {
+    margin: 0 auto;
+    min-height: 500px;
+    display: table;
+}
+
+.spinner-loader-container .spinner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.spinner-loader-container svg {
+    display: block;
+    margin: 0 auto;
+}
 
 /*
 Tabs
@@ -303,6 +318,13 @@ Trade History
 
 .trade-history-entry.is-active .sub-header, .trade-history-entry.is-active .value {
     color: white;
+}
+
+/*
+Trade Recap
+ */
+.trade-recap .card-content .chart-container {
+    min-height: 600px;
 }
 
 /*
