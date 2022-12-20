@@ -269,18 +269,19 @@ export default class TradeLogEntry extends Component {
                                                 {formatNumberForDisplay(this.props.tradeRecord.statistics.netProfit)}
                                             </h5>
                                             <h6 className="row-entry-small">
-                                                <span className="icon-text negative">
-                                                    <span>{formatNumberForDisplay(Math.abs(this.props.tradeRecord.statistics.grossLossAmount))}</span>
+                                                {formatNumberForDisplay(this.props.tradeRecord.statistics.netPips)}&nbsp;pips
+                                                {/*<span className="icon-text negative">
+                                                    <span>{formatNumberForDisplay(Math.abs(this.props.tradeRecord.statistics.pipsLost))}</span>
                                                     <span className="icon">
                                                         <AiOutlineArrowDown/>
                                                     </span>
                                                 </span>
                                                 <span className="icon-text positive">
-                                                    <span>{formatNumberForDisplay(this.props.tradeRecord.statistics.grossWinAmount)}</span>
+                                                    <span>{formatNumberForDisplay(this.props.tradeRecord.statistics.pipsEarned)}</span>
                                                     <span className="icon">
                                                         <AiOutlineArrowUp/>
                                                     </span>
-                                                </span>
+                                                </span>*/}
                                             </h6>
                                         </td>
                                         <td className="has-text-left">

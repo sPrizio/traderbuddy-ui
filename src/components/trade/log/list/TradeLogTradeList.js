@@ -15,12 +15,12 @@ export default class TradeLogTradeList extends Component {
                         <table className="table is-fullwidth is-striped hoverable-table">
                             <thead>
                             <tr>
-                                <th className="has-text-centered is-vcentered">Opened</th>
-                                <th className="has-text-centered is-vcentered">Closed</th>
+                                <th className="has-text-left is-vcentered">Time</th>
                                 <th className="has-text-centered is-vcentered">Type</th>
                                 <th className="has-text-centered is-vcentered">Product</th>
                                 <th className="has-text-centered is-vcentered">Size</th>
                                 <th className="has-text-centered is-vcentered">P&L</th>
+                                <th className="has-text-centered is-vcentered">Pips</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,6 +37,7 @@ export default class TradeLogTradeList extends Component {
                                             size={item.lotSize}
                                             tradeId={item.tradeId}
                                             netProfit={item.netProfit}
+                                            pips={item.pips}
                                             selectedTrade={this.props.selectedTrade}
                                             key={key}
                                             selectTradeHandler={this.props.selectTradeHandler}

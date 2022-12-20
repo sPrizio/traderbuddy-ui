@@ -19,10 +19,11 @@ export default class TradeLogTradeListEntry extends Component {
     render() {
         return (
             <tr className={"hide-lines" + (this.state.active ? ' selected ' : '')} onClick={() => this.props.selectTradeHandler(this.props.tradeId)}>
-                <td className="has-text-centered is-vcentered">
+                <td className="has-text-left is-vcentered">
                     {moment(this.props.openTime).format(CoreConstants.DateTime.ISOShortTimeFormat)}
-                </td>
-                <td className="has-text-centered is-vcentered">
+                    &nbsp;
+                    ->
+                    &nbsp;
                     {moment(this.props.closeTime).format(CoreConstants.DateTime.ISOShortTimeFormat)}
                 </td>
                 <td className="has-text-centered is-vcentered">
@@ -36,6 +37,9 @@ export default class TradeLogTradeListEntry extends Component {
                 </td>
                 <td className="has-text-centered is-vcentered">
                     {formatNumberForDisplay(this.props.netProfit)}
+                </td>
+                <td className="has-text-centered is-vcentered">
+                    {formatNumberForDisplay(this.props.pips)}
                 </td>
             </tr>
         );

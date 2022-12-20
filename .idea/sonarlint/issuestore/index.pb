@@ -38,8 +38,6 @@ O
 src/components/layout/TopBar.js,6\5\659087161f1a0d1febd55236a9d202578811f98e
 j
 :src/components/trade/log/entry/TradeLogEntryEquityCurve.js,c\f\cfc12760728a237334c1dfde25906b53953b4b0d
-b
-2src/components/trade/log/list/TradeLogTradeList.js,3\9\393c384da186024921d31fcdb0d5dc558c961c35
 l
 <src/components/trade/log/list/TradeLogTradeListPagination.js,e\e\ee2ae6b132c74acf2f1e4889d55bbbdecf475e3e
 J
@@ -115,3 +113,21 @@ U
 %src/components/loader/LoaderHeader.js,2\4\24f0f0d1d6388dc8942916173a63f6074b92ddbe
 S
 #src/components/loader/LoaderBody.js,b\f\bfb149797b7dc8bae5efb410896ec6665126a254
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+A
+package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
+I
+src/pages/AbstractPage.js,2\4\24041b6b17b85412403eaa3acc175571f5afbac6
+S
+#src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
+P
+ src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
+Z
+*src/components/analysis/TopTradesByPips.js,0\9\09e78ff5835f98f4c6eca8f758b7041b62de3dab
+\
+,src/components/analysis/TopTradesByProfit.js,d\6\d6f7b8a504cbe6d0b19141980cf3bc1226d7ac37
+a
+1src/components/loader/analysis/TopTradesLoader.js,9\7\97c5cf2c000ce27ed5138271c370e6303fb9c861
+j
+:src/components/loader/trade/TradeRecapCandleChartLoader.js,d\e\de5bbaddc1dab44039ee6906d0f0498761c941a2
