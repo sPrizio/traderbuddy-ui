@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import PerformanceStatisticsEntry from "./PerformanceStatisticsEntry";
 import PerformanceStatisticsLoader from "../../loader/account/performance/PerformanceStatisticsLoader";
-import moment from "moment/moment";
 import {CoreConstants} from "../../../constants/coreConstants";
 import {computeDate} from "../../../service/DateTimeService";
 

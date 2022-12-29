@@ -5,7 +5,7 @@ import Footer from "../components/layout/Footer";
 import TradeHistoryPage from "./TradeHistoryPage";
 import ForecastingPage from "./ForecastingPage";
 import RetrospectivesPage from "./RetrospectivesPage";
-import { Helmet } from 'react-helmet';
+import {Helmet} from 'react-helmet';
 import AnalysisPage from "./AnalysisPage";
 
 export default class AbstractPage extends Component {

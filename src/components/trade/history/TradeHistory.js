@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import TradeHistoryEntry from "./TradeHistoryEntry";
-import {RiHistoryFill} from "react-icons/ri";
 import TradeHistoryLoader from "../../loader/account/tradehistory/TradeHistoryLoader";
 import {CoreConstants} from "../../../constants/coreConstants";
 

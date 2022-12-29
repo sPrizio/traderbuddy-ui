@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {formatNumberForDisplay} from "../../../../service/FormattingService";
 import {FaChevronDown, FaChevronUp} from "react-icons/fa";
 import TradeLogEntryEquityCurve from "./TradeLogEntryEquityCurve";
-import {AiOutlineArrowDown, AiOutlineArrowUp} from "react-icons/ai";
 import TradeLogTradeList from "../list/TradeLogTradeList";
 import TradeRecapCandleChart from "../../recap/TradeRecapCandleChart";
 import moment from "moment";

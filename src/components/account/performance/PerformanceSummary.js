@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import PerformanceSummaryLoader from "../../loader/account/performance/PerformanceSummaryLoader";
 import {CoreConstants} from "../../../constants/coreConstants";
-import moment from "moment";
 import {computeDate} from "../../../service/DateTimeService";
 
 export default class PerformanceSummary extends Component {

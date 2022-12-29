@@ -16,8 +16,6 @@ f
 :
 
 src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
-?
-src/App.test.js,9\2\923703ced91ac38943d37930d9d27a7ebe8f01ad
 O
 src/components/layout/Footer.js,e\f\efd33d9a22078b66a8df96196dcf2ff495cf7bc6
 A
@@ -32,12 +30,8 @@ F
 src/reportWebVitals.js,1\c\1ce5e63ae1582ed0b425c46001299a07515efbf9
 j
 :src/components/loader/retrospective/RetrospectiveLoader.js,f\c\fcad08df2cadb719783fa2198098759f7059d4e8
-A
-src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
 O
 src/components/layout/TopBar.js,6\5\659087161f1a0d1febd55236a9d202578811f98e
-j
-:src/components/trade/log/entry/TradeLogEntryEquityCurve.js,c\f\cfc12760728a237334c1dfde25906b53953b4b0d
 l
 <src/components/trade/log/list/TradeLogTradeListPagination.js,e\e\ee2ae6b132c74acf2f1e4889d55bbbdecf475e3e
 J
@@ -55,8 +49,6 @@ G.idea/sonarlint/issuestore/2/c/2c73456d3ec976513215e08610cc5545cfb31f33,9\b\9b
 w
 G.idea/sonarlint/issuestore/b/2/b2ed50027c943e560bbbcde8117ecb26b1b88ae4,d\3\d3f2c327e569a12f91ded1cc19925bac4dd1dd02
 w
-G.idea/sonarlint/issuestore/3/6/361691215ecc08ed0599163e6dba9a39197f74c2,0\2\021fbaedeae2072b8a8755d679125247f38e95d7
-w
 G.idea/sonarlint/issuestore/7/0/7030d0b2f71b999ff89a343de08c414af32fc93a,9\d\9d19eaab4327edc07435a682d68ef383811840e5
 w
 G.idea/sonarlint/issuestore/2/4/24041b6b17b85412403eaa3acc175571f5afbac6,7\4\74c305abbc246b844abf6a7e99608ddf5ae4351a
@@ -64,10 +56,6 @@ Y
 )src/components/account/AccountOverview.js,5\d\5df6ef5c934542113bf1e942dc219852dc12db1b
 N
 src/service/DateTimeService.js,e\e\ee0f7e804cfa0c347e08b00ba4688585b30f4ca1
-a
-1src/components/account/performance/ProfitCurve.js,6\f\6f2fdb9686efc7a46e5f14ef870276029df07b60
-h
-8src/components/account/performance/PerformanceSummary.js,c\4\c474739365ed558250e0a8296e8e92da3b09cbcc
 <
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 U
@@ -93,8 +81,6 @@ O
 src/components/layout/NavBar.js,8\c\8c90d95aba39771b3c6af52c515b7371e6173018
 x
 Hsrc/components/loader/account/performance/PerformanceStatisticsLoader.js,0\5\059c82d834c6ae19f6863e334ce514d3e401caf1
-k
-;src/components/account/performance/PerformanceStatistics.js,e\e\eef99a92ecdad86e0b18037899bf4d9ff2ee9263
 H
 src/pages/GenericPage.js,3\b\3b6e2beacb9097a18cffeb20218414c5a2ae8965
 O
@@ -105,8 +91,6 @@ M
 src/pages/TradeHistoryPage.js,9\e\9e03ff9ae3a148d852e79baae065362029af1a00
 a
 1src/components/trade/history/TradeHistoryEntry.js,b\d\bdd7f0caa9fbb4b60e762e87deb62bc393b7a528
-\
-,src/components/trade/history/TradeHistory.js,b\8\b82be4920630f2e8dacdf99b37daf1b4a1821f89
 p
 @src/components/loader/account/tradehistory/TradeHistoryLoader.js,3\f\3f8a0be4457ef3bf4c8eaf05a91ac08f52682aae
 U
@@ -117,17 +101,21 @@ S
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-I
-src/pages/AbstractPage.js,2\4\24041b6b17b85412403eaa3acc175571f5afbac6
 S
 #src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
 P
  src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
-Z
-*src/components/analysis/TopTradesByPips.js,0\9\09e78ff5835f98f4c6eca8f758b7041b62de3dab
 \
 ,src/components/analysis/TopTradesByProfit.js,d\6\d6f7b8a504cbe6d0b19141980cf3bc1226d7ac37
-a
-1src/components/loader/analysis/TopTradesLoader.js,9\7\97c5cf2c000ce27ed5138271c370e6303fb9c861
 j
 :src/components/loader/trade/TradeRecapCandleChartLoader.js,d\e\de5bbaddc1dab44039ee6906d0f0498761c941a2
+c
+3src/components/trade/recap/TradeRecapCandleChart.js,5\b\5bee4cd015b064ac3a28e0f7b5d1b9191745eab3
+g
+7src/components/trade/log/list/TradeLogTradeListEntry.js,9\f\9f6a4c41043d3e1186cfc50cbc95778428ec246d
+b
+2src/components/trade/log/list/TradeLogTradeList.js,3\9\393c384da186024921d31fcdb0d5dc558c961c35
+a
+1src/components/loader/analysis/TopTradesLoader.js,9\7\97c5cf2c000ce27ed5138271c370e6303fb9c861
+R
+"src/util/CandleStickChartConfig.js,9\2\92359f31826aea2e4ce0647421146413029bbd97

@@ -1,5 +1,6 @@
 import {
-    getAccountDomain, getAnalysisDomain,
+    getAccountDomain,
+    getAnalysisDomain,
     getRetrospectiveDomain,
     getTradeDomain,
     getTradeRecordDomain
@@ -13,6 +14,8 @@ export const CoreConstants = {
             Overview: getAccountDomain() + '/overview',
         },
         Analysis: {
+            Average: getAnalysisDomain() + '/average?start={start}&end={end}&win={win}&count={count}',
+            Bucket: getAnalysisDomain() + '/bucket?start={start}&end={end}&bucket={bucket}',
             TopTrades: getAnalysisDomain() + '/top-trades?start={start}&end={end}&sort={sort}&sortByLosses={sortByLosses}&count={count}'
         },
         Retrospective: {
