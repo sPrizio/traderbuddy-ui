@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Area, CartesianGrid, ComposedChart, ReferenceLine, ResponsiveContainer, XAxis, YAxis} from "recharts";
+import {CoreConstants} from "../../../../constants/coreConstants";
 
 export default class TradeLogEntryEquityCurve extends Component {
 
@@ -33,9 +34,9 @@ export default class TradeLogEntryEquityCurve extends Component {
                     <ComposedChart data={this.props.points}>
                         <defs>
                             <linearGradient id={"split_" + this.props.index} x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stopColor="#4caf50" stopOpacity={0.75} />
-                                <stop offset={this.computeGradientOffset()} stopColor="#FFFFFF" stopOpacity={0.75} />
-                                <stop offset="100%" stopColor="#ba000d" stopOpacity={0.75} />
+                                <stop offset="0%" stopColor={CoreConstants.CssConstants.EquityCurveGreen} stopOpacity={0.75} />
+                                <stop offset={this.computeGradientOffset()} stopColor={CoreConstants.CssConstants.White} stopOpacity={0.75} />
+                                <stop offset="100%" stopColor={CoreConstants.CssConstants.EquityCurveRed} stopOpacity={0.75} />
                             </linearGradient>
                         </defs>
                         <CartesianGrid horizontal={false} vertical={false}/>

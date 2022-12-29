@@ -1,3 +1,5 @@
+const stopWords = ['- Cash', 'US', 'USA', 'DEU', 'GER', 'CAN', 'CA']
+
 export function displayString(value) {
 
     if (value) {
@@ -23,7 +25,13 @@ export function formatNumberForDisplay(value) {
 }
 
 export function sanitizeText(val) {
-    return val.replace('- Cash', '').trim()
+    stopWords.forEach(str => {
+        if (val.includes(str)) {
+            val = val.replace(str, '')
+        }
+    })
+
+    return val.trim()
 }
 
 export function tradeDuration(val) {
@@ -32,6 +40,6 @@ export function tradeDuration(val) {
     } else if (val >= 3600 && val < 86400) {
         return new Date(val * 1000).toISOString().substring(11, 16)
     } else {
-        return  val + ' days'
+        return val + ' days'
     }
 }

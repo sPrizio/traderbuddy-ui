@@ -120,7 +120,7 @@ export default class TradeRecapCandleChart extends Component {
             y: point.y,
             marker: {
                 size: 6,
-                fillColor: '#ffffff',
+                fillColor: CoreConstants.CssConstants.White,
                 strokeColor: color,
                 strokeWidth: 3,
                 shape: 'circle',

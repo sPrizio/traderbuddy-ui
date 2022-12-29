@@ -103,16 +103,10 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 S
 #src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
-P
- src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
 \
 ,src/components/analysis/TopTradesByProfit.js,d\6\d6f7b8a504cbe6d0b19141980cf3bc1226d7ac37
 j
 :src/components/loader/trade/TradeRecapCandleChartLoader.js,d\e\de5bbaddc1dab44039ee6906d0f0498761c941a2
-c
-3src/components/trade/recap/TradeRecapCandleChart.js,5\b\5bee4cd015b064ac3a28e0f7b5d1b9191745eab3
-g
-7src/components/trade/log/list/TradeLogTradeListEntry.js,9\f\9f6a4c41043d3e1186cfc50cbc95778428ec246d
 b
 2src/components/trade/log/list/TradeLogTradeList.js,3\9\393c384da186024921d31fcdb0d5dc558c961c35
 a

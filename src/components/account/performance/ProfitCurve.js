@@ -85,8 +85,8 @@ export default class ProfitCurve extends Component {
                                     <ComposedChart data={this.state.curveData}>
                                         <defs>
                                             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                                                <stop offset="25%" stopColor="#696CFF" stopOpacity={0.2}/>
-                                                <stop offset="95%" stopColor="#FFFFFF" stopOpacity={0.1}/>
+                                                <stop offset="25%" stopColor={CoreConstants.CssConstants.ProfitCurvePrimary} stopOpacity={0.2}/>
+                                                <stop offset="95%" stopColor={CoreConstants.CssConstants.White} stopOpacity={0.1}/>
                                             </linearGradient>
                                         </defs>
                                         <CartesianGrid horizontal={false} vertical={false} />
@@ -101,7 +101,7 @@ export default class ProfitCurve extends Component {
                                             labelFormatter={(value) => moment(value).format(CoreConstants.DateTime.ISOMonthYearFormat)}
                                             formatter={(value) => formatNumberForDisplay(value)}
                                         />
-                                        <Area type="monotone" name="Value" dataKey="amt" stroke="#696CFF" fillOpacity={1} fill="url(#colorUv)" strokeWidth={3} />
+                                        <Area type="monotone" name="Value" dataKey="amt" stroke={CoreConstants.CssConstants.ProfitCurvePrimary} fillOpacity={1} fill="url(#colorUv)" strokeWidth={3} />
                                     </ComposedChart>
                                 </ResponsiveContainer>
                             </div>

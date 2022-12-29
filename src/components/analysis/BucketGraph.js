@@ -93,18 +93,18 @@ export default class BucketGraph extends Component {
 
     computeFill(val, isLoser) {
         if (isLoser && val.winPercentage > 50) {
-            return '#e8e8e8e8'
+            return CoreConstants.CssConstants.FadedBarColor
         } else if (isLoser && val.winPercentage < 50) {
-            return '#ca828b'
+            return CoreConstants.CssConstants.RedBarColor
         }
 
         if (!isLoser && val.winPercentage > 50) {
-            return '#82ca9d'
+            return CoreConstants.CssConstants.GreenBarColor
         } else if (!isLoser && val.winPercentage < 50) {
-            return '#e8e8e8e8'
+            return CoreConstants.CssConstants.FadedBarColor
         }
 
-        return 'rgba(100,100,250,0.50)'
+        return CoreConstants.CssConstants.NeutralBarColor
     }
 
     async getBucket() {
