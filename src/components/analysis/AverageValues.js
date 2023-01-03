@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {formatNumberForDisplay, tradeDuration} from "../../service/FormattingService";
 import AverageValuesLoader from "../loader/analysis/AverageValuesLoader";
 import {CoreConstants} from "../../constants/coreConstants";
+import moment from "moment";
 
 export default class AverageValues extends Component {
 
@@ -61,7 +62,9 @@ export default class AverageValues extends Component {
                             <h5 className="header">
                                 {this.props.isWin ? 'Win' : 'Loss'}&nbsp;Averages
                             </h5>
-                            <h6 className="sub-header">December 2022</h6>
+                            <h6 className="sub-header">
+                                {moment(this.props.start).format(CoreConstants.DateTime.ISOMonthYearFormat)}
+                            </h6>
                             <div className="container">
                                 <div className="columns is-multiline is-mobile">
                                     <div className="column is-12 performance-statistics-entry">
@@ -142,5 +145,11 @@ export default class AverageValues extends Component {
 
     async componentDidMount() {
         await this.getAverage()
+    }
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.start !== this.props.start) {
+            await this.getAverage()
+        }
     }
 }

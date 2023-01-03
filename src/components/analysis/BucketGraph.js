@@ -180,4 +180,10 @@ export default class BucketGraph extends Component {
     async componentDidMount() {
         await this.getBucket()
     }
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.start !== this.props.start) {
+            await this.getBucket()
+        }
+    }
 }

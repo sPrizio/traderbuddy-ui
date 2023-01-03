@@ -4,7 +4,7 @@ import {CoreConstants} from "../../constants/coreConstants";
 import moment from "moment";
 import {sanitizeText, tradeDuration} from "../../service/FormattingService";
 
-export default class TopTradesByPips extends Component {
+export default class TopTrades extends Component {
 
     constructor(props) {
         super(props);
@@ -25,9 +25,9 @@ export default class TopTradesByPips extends Component {
             this.setState({isLoading: true})
             const response = await fetch(
                 CoreConstants.ApiUrls.Analysis.TopTrades
-                    .replace('{start}', this.state.start)
-                    .replace('{end}', this.state.end)
-                    .replace('{sort}', 'PIPS')
+                    .replace('{start}', this.props.start)
+                    .replace('{end}', this.props.end)
+                    .replace('{sort}', this.props.sort)
                     .replace('{sortByLosses}', this.props.sortByLosses)
                     .replace('{count}', this.props.count)
             )
@@ -50,9 +50,6 @@ export default class TopTradesByPips extends Component {
 
     //  RENDER FUNCTION
 
-    //  TODO: merge this with TopTradesByProfit to reduce duplicate code
-    //  TODO: dynamic date formatting depending on interval for both subheader and above product name
-
     render() {
         let loader = null
         if (this.state.isLoading) {
@@ -66,9 +63,11 @@ export default class TopTradesByPips extends Component {
                         {loader}
                         <div className={"" + (this.state.isLoading ? ' no-show ' : '')}>
                             <h5 className="header">
-                                Pips {this.props.sortByLosses ? 'Lost' : 'Gained'}
+                                {this.props.title}&nbsp;{this.props.sortByLosses ? 'Lost' : 'Gained'}
                             </h5>
-                            <h6 className="sub-header">December 2022</h6>
+                            <h6 className="sub-header">
+                                {moment(this.props.start).format(CoreConstants.DateTime.ISOMonthYearFormat)}
+                            </h6>
                             <div className="container">
                                 <div className="columns is-multiline is-mobile">
 
@@ -86,7 +85,7 @@ export default class TopTradesByPips extends Component {
                                                         </div>
                                                         <div className="column is-4 has-text-right">
                                                             <h5 className="value">
-                                                                {item.pips}
+                                                                {item[this.props.dataKey]}
                                                             </h5>
                                                             <h6 className="row-entry-small">{item.lotSize}&nbsp;pts</h6>
                                                         </div>
@@ -110,5 +109,11 @@ export default class TopTradesByPips extends Component {
 
     async componentDidMount() {
         await this.getTrades()
+    }
+
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.start !== this.props.start) {
+            await this.getTrades()
+        }
     }
 }

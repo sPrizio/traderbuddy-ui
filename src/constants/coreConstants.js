@@ -37,6 +37,7 @@ export const CoreConstants = {
         },
         TradeRecord: {
             ActiveMonths: getTradeRecordDomain() + '/active-months?year={year}',
+            ActiveYears: getTradeRecordDomain() + '/active-years',
             History: getTradeRecordDomain() + '/history?start={start}&end={end}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',
             RecentHistory: getTradeRecordDomain() + '/log?count={count}&aggregateInterval={aggregateInterval}&sortOrder={sortOrder}',
         },
@@ -66,6 +67,7 @@ export const CoreConstants = {
 
     DateTime: {
         ISODateFormat: 'YYYY-MM-DD',
+        ISODateLongMonthFormat: 'YYYY-MMMM-DD',
         ISODateTimeFormat: 'YYYY-MM-DDTHH:mm:ss',
         ISODayFormat: 'Do',
         ISOLongMonthDayYearFormat: 'MMMM Do[,] YYYY',
@@ -74,6 +76,7 @@ export const CoreConstants = {
         ISOYearFormat: 'YYYY',
         ISOMonthYearFormat: 'MMMM YYYY',
         ISOShortMonthFormat: 'MMM',
+        ISOShortestMonthFormat: 'MM',
         ISOShortMonthDayYearFormat: 'MMM Do[,] YYYY',
         ISOShortTimeFormat: 'HH:mm',
         ISOWeekdayFormat: 'dddd'

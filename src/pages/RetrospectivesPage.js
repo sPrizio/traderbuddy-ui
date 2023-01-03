@@ -47,7 +47,6 @@ export default class RetrospectivesPage extends Component {
     //  HANDLER FUNCTIONS
 
     handleMonthChange(e) {
-
         this.setState({
             currentMonth: e.target.value,
             start: moment(e.target.value).format(CoreConstants.DateTime.ISODateFormat),

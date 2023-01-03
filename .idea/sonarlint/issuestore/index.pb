@@ -83,8 +83,6 @@ x
 Hsrc/components/loader/account/performance/PerformanceStatisticsLoader.js,0\5\059c82d834c6ae19f6863e334ce514d3e401caf1
 H
 src/pages/GenericPage.js,3\b\3b6e2beacb9097a18cffeb20218414c5a2ae8965
-O
-src/pages/RetrospectivesPage.js,d\3\d3853a0d85ee4e080f2edb9057d0b84f2a3a036c
 p
 @src/components/account/performance/PerformanceStatisticsEntry.js,9\4\94b3515eddc3ec6116888f07c67e2700dc457902
 M
@@ -103,13 +101,31 @@ A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 S
 #src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
-\
-,src/components/analysis/TopTradesByProfit.js,d\6\d6f7b8a504cbe6d0b19141980cf3bc1226d7ac37
 j
 :src/components/loader/trade/TradeRecapCandleChartLoader.js,d\e\de5bbaddc1dab44039ee6906d0f0498761c941a2
-b
-2src/components/trade/log/list/TradeLogTradeList.js,3\9\393c384da186024921d31fcdb0d5dc558c961c35
 a
 1src/components/loader/analysis/TopTradesLoader.js,9\7\97c5cf2c000ce27ed5138271c370e6303fb9c861
 R
 "src/util/CandleStickChartConfig.js,9\2\92359f31826aea2e4ce0647421146413029bbd97
+I
+src/pages/AbstractPage.js,2\4\24041b6b17b85412403eaa3acc175571f5afbac6
+?
+src/App.test.js,9\2\923703ced91ac38943d37930d9d27a7ebe8f01ad
+e
+5src/components/loader/analysis/AverageValuesLoader.js,4\b\4bf137ae2f05bfbc3d656a8d7deb64b525accd2f
+c
+3src/components/loader/analysis/BucketGraphLoader.js,2\1\21e49171f5eb0a19eff4db1b77179df1d9646b65
+k
+;src/components/account/performance/PerformanceStatistics.js,e\e\eef99a92ecdad86e0b18037899bf4d9ff2ee9263
+h
+8src/components/account/performance/PerformanceSummary.js,c\4\c474739365ed558250e0a8296e8e92da3b09cbcc
+A
+src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
+\
+,src/components/trade/history/TradeHistory.js,b\8\b82be4920630f2e8dacdf99b37daf1b4a1821f89
+_
+/src/components/trade/log/entry/TradeLogEntry.js,2\7\270777a246edd3523b6afa0b00c82d83f4963d4b
+P
+ src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
+a
+1src/components/account/performance/ProfitCurve.js,6\f\6f2fdb9686efc7a46e5f14ef870276029df07b60

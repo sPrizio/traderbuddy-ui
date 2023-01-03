@@ -29,13 +29,18 @@ export default class TradeLogTradeListEntry extends Component {
                     {sanitizeText(this.props.symbol)}
                 </td>
                 <td className="has-text-centered is-vcentered">
-                    {formatNumberForDisplay(this.props.size)}&nbsp;pts
+                    {formatNumberForDisplay(this.props.size)}
                 </td>
                 <td className="has-text-centered is-vcentered">
                     {formatNumberForDisplay(this.props.netProfit)}
                 </td>
                 <td className="has-text-centered is-vcentered">
-                    {formatNumberForDisplay(this.props.pips)}
+                    {
+                        this.props.netProfit < 0 ?
+                            '(' + formatNumberForDisplay(this.props.pips) + ')'
+                            :
+                            formatNumberForDisplay(this.props.pips)
+                    }
                 </td>
             </tr>
         );
