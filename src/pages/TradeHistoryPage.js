@@ -34,22 +34,24 @@ export default class TradeHistoryPage extends Component {
         let val, st, en;
         if (value === 'DAILY') {
             val = 'MONTHLY'
-            st = moment().startOf('year').format(CoreConstants.DateTime.ISODateFormat)
-            en = moment().startOf('year').add(2, 'years').format(CoreConstants.DateTime.ISODateFormat)
+            st = moment(this.state.currentYear + '-' + this.state.currentMonth + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('year').format(CoreConstants.DateTime.ISODateFormat)
+            en = moment(this.state.currentYear + '-' + this.state.currentMonth + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('year').add(1, 'years').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat)
         } else if (value === 'MONTHLY') {
             val = 'YEARLY'
-            st = moment().startOf('year').subtract(100, 'years').format(CoreConstants.DateTime.ISODateFormat)
-            en = moment().startOf('year').add(2, 'years').format(CoreConstants.DateTime.ISODateFormat)
+            st = moment(this.state.currentYear + '-' + this.state.currentMonth + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('year').subtract(100, 'years').format(CoreConstants.DateTime.ISODateFormat)
+            en = moment(this.state.currentYear + '-' + this.state.currentMonth + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('year').add(2, 'years').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat)
         } else {
             val = 'DAILY'
-            st = moment().startOf('month').format(CoreConstants.DateTime.ISODateFormat)
-            en = moment().startOf('month').add(1, 'month').format(CoreConstants.DateTime.ISODateFormat)
+            st = moment(this.state.currentYear + '-' + this.state.currentMonth + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('month').format(CoreConstants.DateTime.ISODateFormat)
+            en = moment(this.state.currentYear + '-' + this.state.currentMonth + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('month').add(1, 'month').format(CoreConstants.DateTime.ISODateFormat)
         }
 
         this.setState({
             interval: val,
             start: st,
-            end: en
+            end: en,
+            currentYear: st,
+            currentMonth: st
         }, () => this.getTradeLog())
     }
 
@@ -64,12 +66,17 @@ export default class TradeHistoryPage extends Component {
         this.setState({
             interval: val,
             start: start,
-            end: end
-        }, () => this.getTradeLog())
+            end: end,
+            currentYear: moment(start).format(CoreConstants.DateTime.ISOYearFormat),
+            currentMonth: moment(start).format(CoreConstants.DateTime.ISOMonthFormat).toUpperCase()
+        }, () => {
+            this.getTradeLog()
+            this.getActiveMonths()
+        })
     }
 
     handleMonthChange(e) {
-        const d = moment().month(e.target.value).startOf('month')
+        const d = moment(this.state.currentYear + '-' + e.target.value + '-01', CoreConstants.DateTime.ISODateLongMonthFormat).startOf('month')
         this.setState({
             currentMonth: e.target.value,
             start: d.format(CoreConstants.DateTime.ISODateFormat),
