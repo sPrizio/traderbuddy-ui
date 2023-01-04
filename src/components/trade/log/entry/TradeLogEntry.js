@@ -7,6 +7,8 @@ import TradeRecapCandleChart from "../../recap/TradeRecapCandleChart";
 import moment from "moment";
 import {SlMagnifier} from "react-icons/sl";
 import {CoreConstants} from "../../../../constants/coreConstants";
+import TradeLogEntryEquityCurveModal from "./TradeLogEntryEquityCurveModal";
+import {MdInsertChartOutlined} from "react-icons/md";
 
 export default class TradeLogEntry extends Component {
 
@@ -21,12 +23,14 @@ export default class TradeLogEntry extends Component {
             currentPage: 0,
             pageSize: 10,
             selectedTrade: 'none',
+            modalActive: false,
         }
 
         this.changePage = this.changePage.bind(this)
         this.disregardTrade = this.disregardTrade.bind(this)
         this.selectTrade = this.selectTrade.bind(this)
         this.toggleTradeView = this.toggleTradeView.bind(this)
+        this.toggleModal = this.toggleModal.bind(this)
     }
 
 
@@ -45,6 +49,11 @@ export default class TradeLogEntry extends Component {
 
     toggleTradeView() {
         this.setState({isActive: !this.state.isActive}, () => this.getTrades())
+    }
+
+    toggleModal() {
+        const val = this.state.modalActive
+        this.setState({modalActive: !val})
     }
 
 
@@ -177,6 +186,7 @@ export default class TradeLogEntry extends Component {
                 }}>
                     <button className="button is-primary">
                         <span className="icon-text">
+                            <span>View</span>
                             <span className="icon">
                                 <SlMagnifier/>
                             </span>
@@ -190,7 +200,7 @@ export default class TradeLogEntry extends Component {
                 <p>Select a trade to view on the chart</p>
             </div>
         if (this.state.isTradeSelected) {
-            chart = <TradeRecapCandleChart tradeId={this.state.selectedTrade} hideYAxis={true} hideXAxis={true} />
+            chart = <TradeRecapCandleChart tradeId={this.state.selectedTrade} hideYAxis={true} hideXAxis={true}/>
         }
 
         return (
@@ -198,7 +208,7 @@ export default class TradeLogEntry extends Component {
                 <div className="card">
                     <div className="card-content">
                         <div className="columns is-multiline is-mobile is-gapless is-vcentered">
-                            <div className="column is-10">
+                            <div className="column is-9">
                                 <h5 className="header">{this.computeHeader()}</h5>
                                 {this.computeSubHeader()}
                             </div>
@@ -212,6 +222,20 @@ export default class TradeLogEntry extends Component {
                                     }
                                 </p>
                             </div>
+                            <div className="column is-1 has-text-right">
+                                {
+                                    this.props.shouldAllowTradeList ?
+                                        <button className="button is-primary" onClick={this.toggleModal}>
+                                            <span className="icon-text">
+                                                <span>Chart</span>
+                                                <span className="icon trade-log-header">
+                                                    <MdInsertChartOutlined/>
+                                                </span>
+                                            </span>
+                                        </button>
+                                        : null
+                                }
+                            </div>
                             <div className="column is-1 has-text-centered">
                                 {expandButton}
                                 {exploreButton}
@@ -220,8 +244,14 @@ export default class TradeLogEntry extends Component {
                         <hr/>
                         <div className="columns is-multiline is-mobile is-vcentered ordered-columns">
                             <div className="column is-3">
-                                <TradeLogEntryEquityCurve points={this.props.tradeRecord.statistics.points}
-                                                          index={this.props.index}/>
+                                <TradeLogEntryEquityCurve
+                                    points={this.props.tradeRecord.statistics.points}
+                                    index={this.props.index}
+                                    height={125}
+                                    showXAxis={false}
+                                    showYAxis={false}
+                                    showTooltip={false}
+                                />
                             </div>
                             <div className="column is-9">
                                 <table className="table is-fullwidth">
@@ -262,6 +292,9 @@ export default class TradeLogEntry extends Component {
                                             <h5 className="header">
                                                 Net P&L
                                             </h5>
+                                            <h6 className="row-entry-small">
+                                                Profitability: {formatNumberForDisplay(1.86)}
+                                            </h6>
                                         </td>
                                         <td className="has-text-right">
                                             <h5 className="value">
@@ -269,18 +302,6 @@ export default class TradeLogEntry extends Component {
                                             </h5>
                                             <h6 className="row-entry-small">
                                                 {formatNumberForDisplay(this.props.tradeRecord.statistics.netPips)}&nbsp;pips
-                                                {/*<span className="icon-text negative">
-                                                    <span>{formatNumberForDisplay(Math.abs(this.props.tradeRecord.statistics.pipsLost))}</span>
-                                                    <span className="icon">
-                                                        <AiOutlineArrowDown/>
-                                                    </span>
-                                                </span>
-                                                <span className="icon-text positive">
-                                                    <span>{formatNumberForDisplay(this.props.tradeRecord.statistics.pipsEarned)}</span>
-                                                    <span className="icon">
-                                                        <AiOutlineArrowUp/>
-                                                    </span>
-                                                </span>*/}
                                             </h6>
                                         </td>
                                         <td className="has-text-left">
@@ -326,6 +347,16 @@ export default class TradeLogEntry extends Component {
                         </div>
                     </div>
                 </div>
+                <TradeLogEntryEquityCurveModal modalActive={this.state.modalActive} toggleModal={this.toggleModal}>
+                    <TradeLogEntryEquityCurve
+                        points={this.props.tradeRecord.statistics.points}
+                        index={this.props.index}
+                        height={500}
+                        showXAxis={true}
+                        showYAxis={true}
+                        showTooltip={true}
+                    />
+                </TradeLogEntryEquityCurveModal>
             </div>
         );
     }

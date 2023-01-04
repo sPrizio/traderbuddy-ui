@@ -14,7 +14,7 @@ export default class AbstractPage extends Component {
         super(props);
 
         this.state = {
-            currentPage: 'analysis'
+            currentPage: 'history'
         }
 
         this.handlePageChange = this.handlePageChange.bind(this)

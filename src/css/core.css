@@ -81,6 +81,11 @@ option[disabled] {
     color: white;
 }
 
+.trade-log-header svg {
+    height: 24px;
+    width: 24px;
+}
+
 /*
 NAV BAR
  */

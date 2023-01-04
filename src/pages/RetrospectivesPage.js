@@ -124,13 +124,13 @@ export default class RetrospectivesPage extends Component {
             const response = await fetch(
                 CoreConstants.ApiUrls.Retrospective.Create,
                 {
-                method: 'POST',
-                body: JSON.stringify({'retrospective': this.state.newRetro}),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-            })
+                    method: 'POST',
+                    body: JSON.stringify({'retrospective': this.state.newRetro}),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                })
 
             const data = await response.json()
             if (data.success) {
@@ -252,13 +252,13 @@ export default class RetrospectivesPage extends Component {
                 CoreConstants.ApiUrls.Retrospective.Edit
                     .replace('{uid}', this.state.newRetro.uid),
                 {
-                method: 'PUT',
-                body: JSON.stringify({'retrospective': this.state.newRetro}),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-            })
+                    method: 'PUT',
+                    body: JSON.stringify({'retrospective': this.state.newRetro}),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                })
 
             const data = await response.json()
             if (data.success) {
@@ -368,11 +368,12 @@ export default class RetrospectivesPage extends Component {
                     </span>
                     </button>
 
-                    <RetrospectiveModal modalActive={this.state.modalActive}
-                                        toggleModal={this.toggleModal}
-                                        handleSubmit={this.handleSubmit}
-                                        newRetro={this.state.newRetro}
-                                        datePicker={this.state.datePicker}
+                    <RetrospectiveModal
+                        modalActive={this.state.modalActive}
+                        toggleModal={this.toggleModal}
+                        handleSubmit={this.handleSubmit}
+                        newRetro={this.state.newRetro}
+                        datePicker={this.state.datePicker}
                     />
                 </div>
             </>

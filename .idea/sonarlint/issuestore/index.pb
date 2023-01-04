@@ -73,8 +73,6 @@ V
 -src/components/retrospective/Retrospective.js,d\1\d16bd39164677717109085c2276f2a949684db34
 Q
 !src/components/data/FileImport.js,1\c\1c29758f0ff1fc7fe09f5851e7091d7cbee96dd1
-b
-2src/components/retrospective/RetrospectiveModal.js,8\8\88cd3ec6891b448f94c386a17e4d0108cc73edda
 L
 src/pages/ForecastingPage.js,0\e\0e251de492e8a76ffdffd9e2783c6e0e23098c46
 O
@@ -85,10 +83,6 @@ H
 src/pages/GenericPage.js,3\b\3b6e2beacb9097a18cffeb20218414c5a2ae8965
 p
 @src/components/account/performance/PerformanceStatisticsEntry.js,9\4\94b3515eddc3ec6116888f07c67e2700dc457902
-M
-src/pages/TradeHistoryPage.js,9\e\9e03ff9ae3a148d852e79baae065362029af1a00
-a
-1src/components/trade/history/TradeHistoryEntry.js,b\d\bdd7f0caa9fbb4b60e762e87deb62bc393b7a528
 p
 @src/components/loader/account/tradehistory/TradeHistoryLoader.js,3\f\3f8a0be4457ef3bf4c8eaf05a91ac08f52682aae
 U
@@ -107,8 +101,6 @@ a
 1src/components/loader/analysis/TopTradesLoader.js,9\7\97c5cf2c000ce27ed5138271c370e6303fb9c861
 R
 "src/util/CandleStickChartConfig.js,9\2\92359f31826aea2e4ce0647421146413029bbd97
-I
-src/pages/AbstractPage.js,2\4\24041b6b17b85412403eaa3acc175571f5afbac6
 ?
 src/App.test.js,9\2\923703ced91ac38943d37930d9d27a7ebe8f01ad
 e
@@ -123,9 +115,13 @@ A
 src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
 \
 ,src/components/trade/history/TradeHistory.js,b\8\b82be4920630f2e8dacdf99b37daf1b4a1821f89
-_
-/src/components/trade/log/entry/TradeLogEntry.js,2\7\270777a246edd3523b6afa0b00c82d83f4963d4b
 P
  src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
 a
 1src/components/account/performance/ProfitCurve.js,6\f\6f2fdb9686efc7a46e5f14ef870276029df07b60
+b
+2src/components/trade/log/list/TradeLogTradeList.js,3\9\393c384da186024921d31fcdb0d5dc558c961c35
+c
+3src/components/trade/recap/TradeRecapCandleChart.js,5\b\5bee4cd015b064ac3a28e0f7b5d1b9191745eab3
+g
+7src/components/trade/log/list/TradeLogTradeListEntry.js,9\f\9f6a4c41043d3e1186cfc50cbc95778428ec246d

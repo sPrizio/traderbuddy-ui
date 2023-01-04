@@ -4,8 +4,6 @@ import {
     Bar,
     CartesianGrid, Cell,
     ComposedChart,
-    ErrorBar,
-    LabelList,
     ResponsiveContainer,
     Tooltip,
     XAxis,
@@ -15,14 +13,14 @@ import moment from "moment/moment";
 import {formatNumberForDisplay} from "../../service/FormattingService";
 
 const CustomTooltip = ({active, payload, label}) => {
-    if (active && payload && payload.length) {
+    if (active && payload && payload.length && payload.length > 0) {
         return (
             <div className="performance-statistics">
                 <div className="card">
                     <div className="card-content">
                         <div className="columns is-multiline is-mobile is-gapless">
                             <div className="column is-6">
-                                <h5 className="row-entry-small">Time</h5>
+                                <h5 className="row-entry-small">Time:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
                                 <h5 className="row-entry-small">{moment(payload[0].payload.start, 'HH:mm:ss').format(CoreConstants.DateTime.ISOShortTimeFormat)}</h5>
@@ -30,7 +28,7 @@ const CustomTooltip = ({active, payload, label}) => {
                         </div>
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="row-entry-small">Win&nbsp;%</h5>
+                                <h5 className="row-entry-small">Win&nbsp;%:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
                                 <h5 className="row-entry-small">{payload[0].payload.winPercentage}</h5>
@@ -38,7 +36,7 @@ const CustomTooltip = ({active, payload, label}) => {
                         </div>
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="row-entry-small">Wins</h5>
+                                <h5 className="row-entry-small">Wins:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
                                 <h5 className="row-entry-small">{payload[0].payload.winningTrades}</h5>
@@ -46,7 +44,7 @@ const CustomTooltip = ({active, payload, label}) => {
                         </div>
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="row-entry-small">Losses</h5>
+                                <h5 className="row-entry-small">Losses:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
                                 <h5 className="row-entry-small">{payload[0].payload.losingTrades}</h5>
@@ -54,7 +52,7 @@ const CustomTooltip = ({active, payload, label}) => {
                         </div>
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="row-entry-small">Pips</h5>
+                                <h5 className="row-entry-small">Pips:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
                                 <h5 className="row-entry-small">{formatNumberForDisplay(payload[0].payload.pips)}</h5>
@@ -62,7 +60,7 @@ const CustomTooltip = ({active, payload, label}) => {
                         </div>
                         <div className="columns is-multiline is-mobile">
                             <div className="column is-6">
-                                <h5 className="row-entry-small">P&L</h5>
+                                <h5 className="row-entry-small">P&L:</h5>
                             </div>
                             <div className="column is-6 has-text-right">
                                 <h5 className="row-entry-small">{formatNumberForDisplay(payload[0].payload.netProfit)}</h5>
