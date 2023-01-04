@@ -293,7 +293,7 @@ export default class TradeLogEntry extends Component {
                                                 Net P&L
                                             </h5>
                                             <h6 className="row-entry-small">
-                                                Profitability: {formatNumberForDisplay(1.86)}
+                                                Profitability: {formatNumberForDisplay(this.props.tradeRecord.statistics.profitability)}
                                             </h6>
                                         </td>
                                         <td className="has-text-right">
