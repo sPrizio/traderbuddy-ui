@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {TbTrendingDown, TbTrendingUp} from "react-icons/tb";
 import {formatNumberForDisplay} from "../../service/FormattingService";
 import AccountOverviewLoader from "../loader/account/AccountOverviewLoader";
-import {CoreConstants} from "../../constants/coreConstants";
 import accountImage from '../../assets/images/458.jpg';
 
 export default class AccountOverview extends Component {
@@ -12,7 +11,6 @@ export default class AccountOverview extends Component {
 
         this.state = {
             isLoading: false,
-            overview: {}
         }
     }
 
@@ -20,29 +18,7 @@ export default class AccountOverview extends Component {
     //  GENERAL FUNCTIONS
 
     computeClass() {
-        return this.state.overview.dailyEarnings >= 0 ? ' positive ' : ' negative '
-    }
-
-    async getAccountOverview() {
-        try {
-            this.setState({isLoading: true})
-            const response = await fetch(
-                CoreConstants.ApiUrls.Account.Overview
-            )
-
-            const data = await response.json()
-            if (data.data) {
-                this.setState({
-                    overview: data.data,
-                })
-            }
-        } catch (e) {
-            console.log(e)
-        }
-
-        this.setState({
-            isLoading: false,
-        })
+        return this.props.overview.dailyEarnings >= 0 ? ' positive ' : ' negative '
     }
 
 
@@ -66,24 +42,24 @@ export default class AccountOverview extends Component {
                                     <div className="columns is-multiline is-mobile is-gapless">
                                         <div className="column is-12">
                                             <h4 className="balance">
-                                                {formatNumberForDisplay(this.state.overview.balance)}
+                                                {formatNumberForDisplay(this.props.overview.balance)}
                                             </h4>
                                             <span className="icon-text net">
                                                 <span className={"icon " + (this.computeClass())}>
                                                     {
-                                                        this.state.overview.dailyEarnings >= 0 ?
+                                                        this.props.overview.dailyEarnings >= 0 ?
                                                             <TbTrendingUp/> :
                                                             <TbTrendingDown />
                                                     }
                                                 </span>
                                                 <span className={this.computeClass()}>
-                                                    {formatNumberForDisplay(this.state.overview.dailyEarnings)}
+                                                    {formatNumberForDisplay(this.props.overview.dailyEarnings)}
                                                 </span>
                                             </span>
                                         </div>
                                         <div className="column is-12">
-                                            <h4 className={"target" + (this.state.overview.nextTarget > 0 ? '' : ' no-show ')}>
-                                                Next Target: {formatNumberForDisplay(this.state.overview.nextTarget)}
+                                            <h4 className={"target" + (this.props.overview.nextTarget > 0 ? '' : ' no-show ')}>
+                                                Next Target: {formatNumberForDisplay(this.props.overview.nextTarget)}
                                             </h4>
                                         </div>
                                     </div>
@@ -98,12 +74,5 @@ export default class AccountOverview extends Component {
                 </div>
             </div>
         );
-    }
-
-
-    //  LIFECYCLE FUNCTIONS
-
-    async componentDidMount() {
-        await this.getAccountOverview()
     }
 }

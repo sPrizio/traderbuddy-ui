@@ -86,6 +86,22 @@ option[disabled] {
     width: 24px;
 }
 
+.progress.is-primary::-webkit-progress-value {
+    background-color: #696cff;
+}
+
+.progress.is-primary::-moz-progress-bar {
+    background-color: #696cff;
+}
+
+.progress.is-primary::-ms-fill {
+    background-color: #696cff;
+}
+
+.progress.is-primary:indeterminate {
+    background-image: linear-gradient(to right, #696cff 30%, #ededed 30%);
+}
+
 /*
 NAV BAR
  */
@@ -220,11 +236,11 @@ Account Summary
     font-weight: 600;
 }
 
-.account-summary .net .positive {
+.account-summary .net .positive, .skill-progress .net .positive {
     color: rgb(113, 221, 55)
 }
 
-.account-summary .net .negative {
+.account-summary .net .negative, .skill-progress .net .negative {
     color: rgb(255, 62, 29)
 }
 
@@ -293,6 +309,26 @@ Performance Summary
     color: #696CFF;
     font-size: 18px;
     font-weight: 700;
+}
+
+/*
+Skill Progress
+ */
+.skill-progress .container {
+   /* margin-top: 25px;*/
+}
+
+.skill-progress .level:first-child {
+    margin-bottom: 10px;
+}
+
+.skill-progress .level:last-child {
+    margin-top: 10px;
+}
+
+.skill-progress .net {
+    font-size: 14px;
+    font-weight: 600;
 }
 
 /*

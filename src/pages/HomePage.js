@@ -7,6 +7,7 @@ import TradeHistory from "../components/trade/history/TradeHistory";
 import Retrospective from "../components/retrospective/Retrospective";
 import {CoreConstants} from "../constants/coreConstants";
 import {Helmet} from "react-helmet";
+import SkillProgress from "../components/levelling/SkillProgress";
 
 export default class HomePage extends Component {
 
@@ -16,11 +17,39 @@ export default class HomePage extends Component {
         this.state = {
             isLoading: false,
             recentRetro: {},
+            overview: {
+                skill: {
+                    level: 0,
+                    delta: 0
+                }
+            }
         }
     }
 
 
     //  GENERAL FUNCTIONS
+
+    async getAccountOverview() {
+        try {
+            this.setState({isLoading: true})
+            const response = await fetch(
+                CoreConstants.ApiUrls.Account.Overview
+            )
+
+            const data = await response.json()
+            if (data.data) {
+                this.setState({
+                    overview: data.data,
+                })
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
+        this.setState({
+            isLoading: false,
+        })
+    }
 
     async getRecentRetrospective() {
         try {
@@ -56,20 +85,23 @@ export default class HomePage extends Component {
                     <div className="columns is-multiline is-vcentered is-mobile">
                         <div className="column is-4-desktop is-offset-1-desktop is-12-tablet is-12-mobile">
                             <div className="columns is-multiline is-mobile is-vcentered">
-                                <div className="column is-12 is-mobile">
-                                    <AccountOverview/>
+                                <div className="column is-12">
+                                    <AccountOverview overview={this.state.overview} />
                                 </div>
-                                <div className="column is-12 is-mobile">
+                                <div className="column is-12">
+                                    <SkillProgress overview={this.state.overview} />
+                                </div>
+                                <div className="column is-12">
                                     <PerformanceStatistics />
                                 </div>
                             </div>
                         </div>
                         <div className="column is-6-desktop is-12-tablet is-12-mobile">
                             <div className="columns is-multiline is-mobile is-vcentered">
-                                <div className="column is-12 is-mobile">
+                                <div className="column is-12">
                                     <ProfitCurve count={6} />
                                 </div>
-                                <div className="column is-12 is-mobile">
+                                <div className="column is-12">
                                     <PerformanceSummary />
                                 </div>
                             </div>
@@ -101,5 +133,6 @@ export default class HomePage extends Component {
 
     async componentDidMount() {
         await this.getRecentRetrospective();
+        await this.getAccountOverview()
     }
 }

@@ -45,8 +45,6 @@ w
 G.idea/sonarlint/issuestore/7/0/7030d0b2f71b999ff89a343de08c414af32fc93a,9\d\9d19eaab4327edc07435a682d68ef383811840e5
 w
 G.idea/sonarlint/issuestore/2/4/24041b6b17b85412403eaa3acc175571f5afbac6,7\4\74c305abbc246b844abf6a7e99608ddf5ae4351a
-Y
-)src/components/account/AccountOverview.js,5\d\5df6ef5c934542113bf1e942dc219852dc12db1b
 N
 src/service/DateTimeService.js,e\e\ee0f7e804cfa0c347e08b00ba4688585b30f4ca1
 <
@@ -58,8 +56,6 @@ X
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-E
-src/pages/HomePage.js,4\d\4db683ff575e26ae883644a0a2f570e5dc9ff483
 V
 &src/components/data/FileImportModal.js,4\2\42ef683f1eff683925a2ac438eb8178b92e50a6b
 ]
@@ -100,10 +96,6 @@ e
 5src/components/loader/analysis/AverageValuesLoader.js,4\b\4bf137ae2f05bfbc3d656a8d7deb64b525accd2f
 c
 3src/components/loader/analysis/BucketGraphLoader.js,2\1\21e49171f5eb0a19eff4db1b77179df1d9646b65
-k
-;src/components/account/performance/PerformanceStatistics.js,e\e\eef99a92ecdad86e0b18037899bf4d9ff2ee9263
-h
-8src/components/account/performance/PerformanceSummary.js,c\4\c474739365ed558250e0a8296e8e92da3b09cbcc
 A
 src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
 \
