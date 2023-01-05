@@ -1,6 +1,4 @@
 
-<
-src/logo.svg,6\d\6d3a8cd532ece5b4ddbd4b3b6a678ba686d300bc
 =
 src/index.css,c\5\c5d38a62d1faae90a2acaa34b79a7ef365c917e4
 ;
@@ -13,13 +11,8 @@ A
 public/robots.txt,d\a\dac799070c2d0c2fa24462b02c1f2dcc3fb3a1e9
 f
 6src/components/loader/account/AccountOverviewLoader.js,0\c\0c1f70d71c1fbc2d784f463f8f6815467f3dbb98
-:
-
-src/App.js,1\e\1e43fa63aecd2127be034b3fb9d4caa172275714
 O
 src/components/layout/Footer.js,e\f\efd33d9a22078b66a8df96196dcf2ff495cf7bc6
-A
-public/index.html,f\4\f43ecdf8d666ee908aacce037b4cd72159e4741b
 u
 Esrc/components/loader/account/performance/PerformanceSummaryLoader.js,4\6\467412b8279363483121941391a79dcb79e7e6bf
 b
@@ -125,3 +118,19 @@ c
 3src/components/trade/recap/TradeRecapCandleChart.js,5\b\5bee4cd015b064ac3a28e0f7b5d1b9191745eab3
 g
 7src/components/trade/log/list/TradeLogTradeListEntry.js,9\f\9f6a4c41043d3e1186cfc50cbc95778428ec246d
+T
+$src/components/analysis/TopTrades.js,2\8\2812bdad8374615e774ba48c1dbbf77c0e99d9a7
+I
+src/pages/AnalysisPage.js,0\2\022df4772f61e654fdbebd56e2fe5e8e7ea7ed1f
+a
+1src/components/trade/history/TradeHistoryEntry.js,b\d\bdd7f0caa9fbb4b60e762e87deb62bc393b7a528
+b
+2src/components/retrospective/RetrospectiveModal.js,8\8\88cd3ec6891b448f94c386a17e4d0108cc73edda
+V
+&src/components/analysis/BucketGraph.js,d\f\df6d64bd226f96e89f8e2839d7b89a8594835c74
+j
+:src/components/trade/log/entry/TradeLogEntryEquityCurve.js,c\f\cfc12760728a237334c1dfde25906b53953b4b0d
+o
+?src/components/trade/log/entry/TradeLogEntryEquityCurveModal.js,c\a\ca7d7001214a74333cfa0e712a383f4782becc66
+X
+(src/components/analysis/AverageValues.js,f\9\f9b66830995e11ecbf62192c79bde13c721dbd92
