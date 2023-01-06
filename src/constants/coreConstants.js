@@ -19,7 +19,7 @@ export const CoreConstants = {
             TopTrades: getAnalysisDomain() + '/top-trades?start={start}&end={end}&sort={sort}&sortByLosses={sortByLosses}&count={count}'
         },
         Retrospective: {
-            ActiveMonths: getRetrospectiveDomain() + '/active-months?year={year}&includeStarterMonth={includeStarterMonth}',
+            ActiveMonths: getRetrospectiveDomain() + '/active-months?year={year}',
             ActiveYears: getRetrospectiveDomain() + '/active-years',
             Create: getRetrospectiveDomain() + '/create',
             Delete: getRetrospectiveDomain() + '/delete?uid={uid}',

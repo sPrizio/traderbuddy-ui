@@ -61,7 +61,7 @@ export default class SkillProgress extends Component {
                                         <div className="level-right">
                                             <div className="level-item">
                                                 <div className="has-text-right">
-                                                    <p className="sub-header">Remaining: 86</p>
+                                                    <p className="sub-header">Remaining: {this.props.overview.skill.remaining}</p>
                                                 </div>
                                             </div>
                                         </div>

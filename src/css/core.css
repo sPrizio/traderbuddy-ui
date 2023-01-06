@@ -315,7 +315,7 @@ Performance Summary
 Skill Progress
  */
 .skill-progress .container {
-   /* margin-top: 25px;*/
+    /* margin-top: 25px;*/
 }
 
 .skill-progress .level:first-child {
@@ -329,6 +329,13 @@ Skill Progress
 .skill-progress .net {
     font-size: 14px;
     font-weight: 600;
+}
+
+/*
+Market News
+ */
+.market-news .container {
+    margin-top: 25px;
 }
 
 /*

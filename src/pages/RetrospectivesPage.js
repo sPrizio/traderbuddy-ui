@@ -13,14 +13,14 @@ export default class RetrospectivesPage extends Component {
         super(props);
 
         this.state = {
-            start: moment().startOf('month').format(CoreConstants.DateTime.ISODateFormat),
-            end: moment().startOf('month').add(1, 'months').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat),
             selectedInterval: 'WEEKLY',
             activeMonths: [],
             currentMonth: moment().startOf('month').format(CoreConstants.DateTime.ISODateFormat),
             activeYears: [],
             currentYear: moment().startOf('year').format(CoreConstants.DateTime.ISODateFormat),
             retros: [],
+            start: moment().startOf('month').format(CoreConstants.DateTime.ISODateFormat),
+            end: moment().startOf('month').add(1, 'months').add(1, 'days').format(CoreConstants.DateTime.ISODateFormat),
 
             //  modal
             modalActive: false,
@@ -50,16 +50,14 @@ export default class RetrospectivesPage extends Component {
         this.setState({
             currentMonth: e.target.value,
             start: moment(e.target.value).format(CoreConstants.DateTime.ISODateFormat),
-            end: moment(e.target.value).add(1, 'months').format(CoreConstants.DateTime.ISODateFormat),
+            end: moment(e.target.value).add(1, 'months').format(CoreConstants.DateTime.ISODateFormat)
         }, () => this.getRetrospectives())
     }
 
     handleYearChange(e) {
         this.setState({
-            currentYear: e.target.value,
-            start: moment(e.target.value).format(CoreConstants.DateTime.ISODateFormat),
-            end: moment(e.target.value).add(1, 'years').format(CoreConstants.DateTime.ISODateFormat),
-        }, () => this.getRetrospectives())
+            currentYear: e.target.value
+        }, () => this.getActiveMonths())
     }
 
     selectTab(val) {
@@ -164,13 +162,17 @@ export default class RetrospectivesPage extends Component {
             const response = await fetch(
                 CoreConstants.ApiUrls.Retrospective.ActiveMonths
                     .replace('{year}', moment(this.state.currentYear).format('YYYY'))
-                    .replace('{includeStarterMonth}', 'true')
             )
 
             const data = await response.json()
-            this.setState({
-                activeMonths: data.data,
-            })
+            if (data.data && data.data.length > 0) {
+                this.setState({
+                    currentMonth: data.data[data.data.length - 1],
+                    activeMonths: data.data,
+                    start: moment(data.data[data.data.length - 1]).format(CoreConstants.DateTime.ISODateFormat),
+                    end: moment(data.data[data.data.length - 1]).add(1, 'months').format(CoreConstants.DateTime.ISODateFormat)
+                }, () => this.getRetrospectives())
+            }
         } catch (e) {
             console.log(e)
         }
@@ -188,9 +190,12 @@ export default class RetrospectivesPage extends Component {
             )
 
             const data = await response.json()
-            this.setState({
-                activeYears: data.data,
-            })
+            if (data.data && data.data.length > 0) {
+                this.setState({
+                    currentYear: data.data[0],
+                    activeYears: data.data,
+                }, () => this.getActiveMonths())
+            }
         } catch (e) {
             console.log(e)
         }
@@ -385,7 +390,5 @@ export default class RetrospectivesPage extends Component {
 
     async componentDidMount() {
         await this.getActiveYears()
-        await this.getActiveMonths()
-        await this.getRetrospectives()
     }
 }
