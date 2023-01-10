@@ -58,12 +58,8 @@ X
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 V
 &src/components/data/FileImportModal.js,4\2\42ef683f1eff683925a2ac438eb8178b92e50a6b
-]
--src/components/retrospective/Retrospective.js,d\1\d16bd39164677717109085c2276f2a949684db34
 Q
 !src/components/data/FileImport.js,1\c\1c29758f0ff1fc7fe09f5851e7091d7cbee96dd1
-O
-src/components/layout/NavBar.js,8\c\8c90d95aba39771b3c6af52c515b7371e6173018
 x
 Hsrc/components/loader/account/performance/PerformanceStatisticsLoader.js,0\5\059c82d834c6ae19f6863e334ce514d3e401caf1
 H
@@ -80,8 +76,6 @@ S
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-S
-#src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
 j
 :src/components/loader/trade/TradeRecapCandleChartLoader.js,d\e\de5bbaddc1dab44039ee6906d0f0498761c941a2
 a
@@ -139,9 +133,11 @@ h
 8src/components/account/performance/PerformanceSummary.js,c\4\c474739365ed558250e0a8296e8e92da3b09cbcc
 _
 /src/components/trade/log/entry/TradeLogEntry.js,2\7\270777a246edd3523b6afa0b00c82d83f4963d4b
-Y
-)src/components/account/AccountOverview.js,5\d\5df6ef5c934542113bf1e942dc219852dc12db1b
 k
 ;src/components/account/performance/PerformanceStatistics.js,e\e\eef99a92ecdad86e0b18037899bf4d9ff2ee9263
 L
 src/pages/ForecastingPage.js,0\e\0e251de492e8a76ffdffd9e2783c6e0e23098c46
+U
+%src/components/calendar/MarketNews.js,5\0\504fd51fe6f7cdb98d1c7eb5ddb8900ee696d006
+Y
+)src/components/levelling/SkillProgress.js,0\7\07161844700ac0e4508fdf2d84e85210f19c7298

@@ -14,6 +14,10 @@ export function getAnalysisDomain() {
     return getDomain('/analysis')
 }
 
+export function getRankDomain() {
+    return getDomain('/rank')
+}
+
 export function getRetrospectiveDomain() {
     return getDomain('/retrospective')
 }

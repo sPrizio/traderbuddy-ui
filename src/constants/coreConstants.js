@@ -1,6 +1,6 @@
 import {
     getAccountDomain,
-    getAnalysisDomain,
+    getAnalysisDomain, getRankDomain,
     getRetrospectiveDomain,
     getTradeDomain,
     getTradeRecordDomain
@@ -17,6 +17,9 @@ export const CoreConstants = {
             Average: getAnalysisDomain() + '/average?start={start}&end={end}&win={win}&count={count}',
             Bucket: getAnalysisDomain() + '/bucket?start={start}&end={end}&bucket={bucket}',
             TopTrades: getAnalysisDomain() + '/top-trades?start={start}&end={end}&sort={sort}&sortByLosses={sortByLosses}&count={count}'
+        },
+        Rank: {
+            BaseRanks: getRankDomain() + '/base-ranks',
         },
         Retrospective: {
             ActiveMonths: getRetrospectiveDomain() + '/active-months?year={year}',
