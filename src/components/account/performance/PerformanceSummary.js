@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PerformanceSummaryLoader from "../../loader/account/performance/PerformanceSummaryLoader";
 import {CoreConstants} from "../../../constants/coreConstants";
 import {computeDate} from "../../../service/DateTimeService";
+import {formatNumberForDisplay} from "../../../service/FormattingService";
 
 export default class PerformanceSummary extends Component {
 
@@ -89,7 +90,13 @@ export default class PerformanceSummary extends Component {
                                     <div className="level-item has-text-centered">
                                         <div>
                                             <p className="sub-header">P & L</p>
-                                            <p className="value">{this.state.summary.statistics.netProfit}</p>
+                                            <p className="value">{formatNumberForDisplay(this.state.summary.statistics.netProfit)}</p>
+                                        </div>
+                                    </div>
+                                    <div className="level-item has-text-centered">
+                                        <div>
+                                            <p className="sub-header">Points</p>
+                                            <p className="value">{formatNumberForDisplay(this.state.summary.statistics.netPips)}</p>
                                         </div>
                                     </div>
                                 </nav>

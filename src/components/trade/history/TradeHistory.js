@@ -71,6 +71,7 @@ export default class TradeHistory extends Component {
                                             <th className="has-text-centered">Trades</th>
                                             <th className="has-text-centered">Win %</th>
                                             <th className="has-text-centered">P&L</th>
+                                            <th className="has-text-centered">Points</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -83,6 +84,7 @@ export default class TradeHistory extends Component {
                                                         trades={item.statistics.numberOfTrades}
                                                         winPercentage={item.statistics.winPercentage}
                                                         netProfit={item.statistics.netProfit}
+                                                        netPips={item.statistics.netPips}
                                                         key={key}
                                                     />
                                                 )

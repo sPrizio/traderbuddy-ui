@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {TbTrendingDown, TbTrendingUp} from "react-icons/tb";
 import {formatNumberForDisplay} from "../../service/FormattingService";
 import AccountOverviewLoader from "../loader/account/AccountOverviewLoader";
-import accountImage from '../../assets/images/458.jpg';
+import AccountOverviewRank from "./rank/AccountOverviewRank";
 
 export default class AccountOverview extends Component {
 
@@ -36,9 +36,9 @@ export default class AccountOverview extends Component {
                     <div className="card-content">
                         {loader}
                         <div className={"" + (this.state.isLoading ? ' no-show ' : '')}>
-                            <span className="title">Account Overview</span>
+                            <span className="title">Overview</span>
                             <div className="columns is-multiline is-mobile is-vcentered is-gapless">
-                                <div className="column is-6">
+                                <div className="column is-5">
                                     <div className="columns is-multiline is-mobile is-gapless">
                                         <div className="column is-12">
                                             <h4 className="balance">
@@ -64,9 +64,8 @@ export default class AccountOverview extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="column is-6 has-text-centered">
-                                    <img src={accountImage} alt={'fun cartoon'} height={115} width={115} />
-                                    {/*<a href="http://www.freepik.com">Designed by iconicbestiary / Freepik</a>*/}
+                                <div className="column is-7 has-text-centered">
+                                    <AccountOverviewRank rank={this.props.overview.rank} />
                                 </div>
                             </div>
                         </div>

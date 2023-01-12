@@ -101,6 +101,9 @@ option[disabled] {
 .progress.is-primary:indeterminate {
     background-image: linear-gradient(to right, #696cff 30%, #ededed 30%);
 }
+.progress.rank {
+    height: 0.35rem;
+}
 
 /*
 NAV BAR
@@ -249,6 +252,148 @@ Account Summary
     font-size: 14px;
     font-weight: 400;
 }
+
+.account-summary .value {
+    color: #696CFF;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.account-summary .value.bronze {
+    color: rgb(188, 120, 60);
+}
+.account-summary .value.garnet {
+    color: rgb(154, 42, 42);
+}
+.account-summary .value.silver {
+    color: rgb(165, 165, 165);
+}
+.account-summary .value.amethyst {
+    color: rgb(153, 102, 204);
+}
+.account-summary .value.gold {
+    color: rgb(237, 175, 53);
+}
+.account-summary .value.sapphire {
+    color: rgb(15, 82, 186);
+}
+.account-summary .value.platinum {
+    color: rgb(237, 214, 174);
+}
+.account-summary .value.ruby {
+    color: rgb(155, 17, 30);
+}
+.account-summary .value.diamond {
+    color: rgb(12, 191, 157);
+}
+.account-summary .value.emerald {
+    color: rgb(6, 95, 53);
+}
+.account-summary .value.obsidian {
+    color: rgb(86, 54, 217);
+}
+
+.account-summary .progress.bronze::-webkit-progress-value {
+    background-color: rgb(188, 120, 60);
+}
+.account-summary .progress.bronze::-moz-progress-bar {
+    background-color: rgb(188, 120, 60);
+}
+.account-summary .progress.bronze::-ms-fill {
+    background-color: rgb(188, 120, 60);
+}
+.account-summary .progress.garnet::-webkit-progress-value {
+    background-color: rgb(154, 42, 42);
+}
+.account-summary .progress.garnet::-moz-progress-bar {
+    background-color: rgb(154, 42, 42);
+}
+.account-summary .progress.garnet::-ms-fill {
+    background-color: rgb(154, 42, 42);
+}
+.account-summary .progress.silver::-webkit-progress-value {
+    background-color: rgb(165, 165, 165);
+}
+.account-summary .progress.silver::-moz-progress-bar {
+    background-color: rgb(165, 165, 165);
+}
+.account-summary .progress.silver::-ms-fill {
+    background-color: rgb(165, 165, 165);
+}
+.account-summary .progress.amethyst::-webkit-progress-value {
+    background-color: rgb(153, 102, 204);
+}
+.account-summary .progress.amethyst::-moz-progress-bar {
+    background-color: rgb(153, 102, 204);
+}
+.account-summary .progress.amethyst::-ms-fill {
+    background-color: rgb(153, 102, 204);
+}
+.account-summary .progress.gold::-webkit-progress-value {
+    background-color: rgb(237, 175, 53);
+}
+.account-summary .progress.gold::-moz-progress-bar {
+    background-color: rgb(237, 175, 53);
+}
+.account-summary .progress.gold::-ms-fill {
+    background-color: rgb(237, 175, 53);
+}
+.account-summary .progress.sapphire::-webkit-progress-value {
+    background-color:  rgb(15, 82, 186);
+}
+.account-summary .progress.sapphire::-moz-progress-bar {
+    background-color:  rgb(15, 82, 186);
+}
+.account-summary .progress.sapphire::-ms-fill {
+    background-color:  rgb(15, 82, 186);
+}
+.account-summary .progress.platinum::-webkit-progress-value {
+    background-color: rgb(237, 214, 174);
+}
+.account-summary .progress.platinum::-moz-progress-bar {
+    background-color: rgb(237, 214, 174);
+}
+.account-summary .progress.platinum::-ms-fill {
+    background-color: rgb(237, 214, 174);
+}
+.account-summary .progress.ruby::-webkit-progress-value {
+    background-color: rgb(155, 17, 30);
+}
+.account-summary .progress.ruby::-moz-progress-bar {
+    background-color: rgb(155, 17, 30);
+}
+.account-summary .progress.ruby::-ms-fill {
+    background-color: rgb(155, 17, 30);
+}
+.account-summary .progress.diamond::-webkit-progress-value {
+    background-color: rgb(12, 191, 157);
+}
+.account-summary .progress.diamond::-moz-progress-bar {
+    background-color: rgb(12, 191, 157);
+}
+.account-summary .progress.diamond::-ms-fill {
+    background-color: rgb(12, 191, 157);
+}
+.account-summary .progress.emerald::-webkit-progress-value {
+    background-color: rgb(6, 95, 53);
+}
+.account-summary .progress.emerald::-moz-progress-bar {
+    background-color: rgb(6, 95, 53);
+}
+.account-summary .progress.emerald::-ms-fill {
+    background-color: rgb(6, 95, 53);
+}
+.account-summary .progress.obsidian::-webkit-progress-value {
+    background-color: rgb(86, 54, 217);
+}
+.account-summary .progress.obsidian::-moz-progress-bar {
+    background-color: rgb(86, 54, 217);
+}
+.account-summary .progress.obsidian::-ms-fill {
+    background-color: rgb(86, 54, 217);
+}
+
 
 /*
 Profit Curve

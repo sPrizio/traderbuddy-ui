@@ -47,8 +47,6 @@ w
 G.idea/sonarlint/issuestore/2/4/24041b6b17b85412403eaa3acc175571f5afbac6,7\4\74c305abbc246b844abf6a7e99608ddf5ae4351a
 N
 src/service/DateTimeService.js,e\e\ee0f7e804cfa0c347e08b00ba4688585b30f4ca1
-<
-src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 U
 %src/pages/authentication/LoginPage.js,2\c\2c73456d3ec976513215e08610cc5545cfb31f33
 X
@@ -72,10 +70,6 @@ U
 %src/components/loader/LoaderHeader.js,2\4\24f0f0d1d6388dc8942916173a63f6074b92ddbe
 S
 #src/components/loader/LoaderBody.js,b\f\bfb149797b7dc8bae5efb410896ec6665126a254
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
-A
-package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
 j
 :src/components/loader/trade/TradeRecapCandleChartLoader.js,d\e\de5bbaddc1dab44039ee6906d0f0498761c941a2
 a
@@ -90,10 +84,6 @@ c
 3src/components/loader/analysis/BucketGraphLoader.js,2\1\21e49171f5eb0a19eff4db1b77179df1d9646b65
 A
 src/setupTests.js,b\7\b7e8d8f421068b8d51c89805d2035e747be2ff17
-\
-,src/components/trade/history/TradeHistory.js,b\8\b82be4920630f2e8dacdf99b37daf1b4a1821f89
-P
- src/service/FormattingService.js,3\6\36fe1991767d5769ae09f9de41e69e94345fa659
 a
 1src/components/account/performance/ProfitCurve.js,6\f\6f2fdb9686efc7a46e5f14ef870276029df07b60
 b
@@ -106,8 +96,6 @@ T
 $src/components/analysis/TopTrades.js,2\8\2812bdad8374615e774ba48c1dbbf77c0e99d9a7
 I
 src/pages/AnalysisPage.js,0\2\022df4772f61e654fdbebd56e2fe5e8e7ea7ed1f
-a
-1src/components/trade/history/TradeHistoryEntry.js,b\d\bdd7f0caa9fbb4b60e762e87deb62bc393b7a528
 b
 2src/components/retrospective/RetrospectiveModal.js,8\8\88cd3ec6891b448f94c386a17e4d0108cc73edda
 V
@@ -129,8 +117,6 @@ A
 public/index.html,f\4\f43ecdf8d666ee908aacce037b4cd72159e4741b
 V
 &src/assets/images/brand/react-logo.svg,5\f\5f8867775681495b6809b10cdb7bcdac6df0b8c5
-h
-8src/components/account/performance/PerformanceSummary.js,c\4\c474739365ed558250e0a8296e8e92da3b09cbcc
 _
 /src/components/trade/log/entry/TradeLogEntry.js,2\7\270777a246edd3523b6afa0b00c82d83f4963d4b
 k
@@ -139,5 +125,9 @@ L
 src/pages/ForecastingPage.js,0\e\0e251de492e8a76ffdffd9e2783c6e0e23098c46
 U
 %src/components/calendar/MarketNews.js,5\0\504fd51fe6f7cdb98d1c7eb5ddb8900ee696d006
-Y
-)src/components/levelling/SkillProgress.js,0\7\07161844700ac0e4508fdf2d84e85210f19c7298
+S
+#src/service/ConfigurationService.js,3\2\3243b47f551ba26b4aaa5375875ff43b670750ca
+O
+src/pages/RetrospectivesPage.js,d\3\d3853a0d85ee4e080f2edb9057d0b84f2a3a036c
+]
+-src/components/retrospective/Retrospective.js,d\1\d16bd39164677717109085c2276f2a949684db34

@@ -43,3 +43,41 @@ export function tradeDuration(val) {
         return val + ' days'
     }
 }
+
+export function displayRankName(val) {
+    const match = val.match('([a-zA-Z]*).(\\d*)')
+
+    if (match && match.length > 2) {
+        const num = match[2]
+
+        let temp;
+        switch (num) {
+            case '1':
+                temp = 'I'
+                break
+            case '2':
+                temp = 'II'
+                break
+            case '3':
+                temp = 'III'
+                break
+            case '4':
+                temp = 'IV'
+                break
+            case '5':
+                temp = 'V'
+                break
+            default:
+                temp = ''
+                break
+        }
+
+        return val.match('([a-zA-Z]*).(\\d*)')[1] + ' ' + temp
+    }
+
+    return val
+}
+
+export function normalize(min, max, val) {
+    return ((val - min) / (max - min)) * 100
+}

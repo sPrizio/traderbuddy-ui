@@ -22,7 +22,6 @@ export default class TradeHistoryEntry extends Component {
                 </div>
         }
 
-
         return (
             <tr className={"trade-history-entry" + (this.props.active ? ' is-active ' : '')} onClick={() => {
                 if (this.props.onClickHandler) {
@@ -39,6 +38,9 @@ export default class TradeHistoryEntry extends Component {
                     <div>
                         {formatNumberForDisplay(this.props.netProfit)}
                     </div>
+                </td>
+                <td className="has-text-centered is-vcentered">
+                    {formatNumberForDisplay(this.props.netPips)}
                 </td>
             </tr>
         );
